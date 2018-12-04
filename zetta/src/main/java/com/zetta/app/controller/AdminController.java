@@ -14,7 +14,7 @@ import com.zetta.app.dao.AdminDAO;
 import com.zetta.app.vo.AdminBean;
 
 @Controller
-public class UserController {
+public class AdminController {
 
 	@RequestMapping("/")
 	public String home(HttpServletRequest request) {
@@ -31,6 +31,8 @@ public class UserController {
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("admin_card_no");
 		String password = request.getParameter("password");
+		System.out.println("user" + adminid);
+		
 		AdminBean ab = adao.getAdmin(adminid, password); 
 		if(ab != null) {
 			if(ab.getRole() != null && ab.getRole().equals("admin")) { 
@@ -38,7 +40,7 @@ public class UserController {
 				request.setAttribute("name", ab.getName());
 				List<AdminBean> list = adao.getAdmins();
 				model.addAttribute("list", list);
-				return "admin_register";
+				return "admin";
 			}else {
 				model.addAttribute("errormsg","Username or Password is incorrect");
 				return "login";
@@ -55,6 +57,7 @@ public class UserController {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String registerSubmit(HttpServletRequest request,ModelMap model) {
 		AdminBean ab = new AdminBean(); 
+		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("admin_card_no");
 		String password = request.getParameter("password");
 		ab.setAdmin_card_no(adminid);
@@ -67,8 +70,7 @@ public class UserController {
 		ab.setMobile(request.getParameter("mobile"));
 		ab.setLocation(request.getParameter("location"));
 		ab.setRole(request.getParameter("role").trim());  
-		ab.setPassword1(password);
-		AdminDAO adao=new AdminDAO();
+		ab.setPassword1(password); 
 		adao.insertAdmin(ab);
 		model.addAttribute("successMessage","Admin Registered successfully.");
 		return "admin_register";
@@ -77,7 +79,8 @@ public class UserController {
 
 	@RequestMapping("/user/edit")
 	public String edit(HttpServletRequest request,ModelMap model) { 
-		String adminid1 = request.getParameter("id"); 
+		String adminid1 = request.getParameter("id");
+		AdminDAO adao=new AdminDAO();
 		AdminBean ab = adao.editAdmin(adminid1);
 		model.addAttribute("ab", ab);  
 		return "editAdmin";
@@ -86,7 +89,9 @@ public class UserController {
 	@RequestMapping(value="/user/edit",method=RequestMethod.POST)
 	public String editSubmit(HttpServletRequest request,ModelMap model) {
 		AdminBean ab = new AdminBean(); 
-		ab.setAdmin_card_no(adminid);
+		AdminDAO adao=new AdminDAO();
+		String adminid1 = request.getParameter("id");
+		ab.setAdmin_card_no(adminid1);
 		ab.setName(request.getParameter("name"));  
 		ab.setDob(request.getParameter("dob")); 
 		//System.out.println("DOB: "+request.getParameter("dob")); 
@@ -96,6 +101,7 @@ public class UserController {
 		ab.setMobile(request.getParameter("mobile"));
 		ab.setLocation(request.getParameter("location"));
 		ab.setRole(request.getParameter("role").trim());  
+		String password = request.getParameter("password");
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
@@ -107,9 +113,10 @@ public class UserController {
 		return "admin_register";
 	}
 	
-	@RequestMapping("/user/delete")
+	@RequestMapping(value="/user/delete",method=RequestMethod.POST)
 	public String deleteSubmit(HttpServletRequest request,ModelMap model) { 
 		String adminid1 = request.getParameter("adminid");
+		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");
 		List<AdminBean> list = adao.getAdmins();

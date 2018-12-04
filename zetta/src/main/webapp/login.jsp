@@ -75,25 +75,28 @@
 			<div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
-                        <form action="adminPage" method="post">
+                        <form action="/login" method="post">
                         	<p style="color:red" align="center">${errormsg}</p>  
+                        	<p style="color:green" align="center">${logout}</p>  
                             <div class="form-group">
                                 <label class="control-label" for="username">Care Number</label>
-                                <input type="text" placeholder="eg:Z9001" title="Please enter you username" required="Enter your Card Number" value="" name="employeeid" id="employeeid" class="form-control">
+                                <input type="text" placeholder="eg:Z9001" title="Please enter you username" required="Enter your Card Number" value="" name="admin_card_no" id="admin_card_no" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="password">Password</label>
-                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
+                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password1" id="password-field" class="form-control">
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 <!-- <span class="help-block small">Yur strong password</span> -->
                             </div> 
+                              
                             <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button>
-                            <!-- <a class="btn btn-default btn-block" href="#">Register</a> -->
+                            
                         </form>
                     </div>
                 </div>
 			</div>
 			<div class="text-center login-footer">
-				<p>Copyright © 2018. All rights reserved by <a href="https://www.zettaone.com/" target="_blank">Zettaone Technology</a></p>
+				<p><a href="index.jsp">Back to Home</a></p>
 			</div>
 		</div>   
     </div>
@@ -143,9 +146,9 @@
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
-    <!-- tawk chat JS
+     <!-- Password Visible
 		============================================ -->
-    <script src="js/tawk-chat.js"></script>
+    <script src="js/passwordvisible.js"></script>
 </body>
 
 </html>

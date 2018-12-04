@@ -48,6 +48,38 @@ public class AdminDAO {
 		}
 	}
 	
+	public void updateAdmin(AdminBean ab) {
+		int count=0;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("update admin_register set admin_name=?,dob=?,department=?,designation=?,email=?,mobile=?,location=?,role=?,password1=? where admin_card_no =?");
+			ps.setString(++count, ab.getName().trim());
+			ps.setDate(++count, new Date(DateUtil.getDateFromString(ab.getDob()).getTime()));
+			ps.setString(++count, ab.getDepartment());
+			ps.setString(++count, ab.getDesignation());
+			ps.setString(++count, ab.getEmail());
+			ps.setBigDecimal(++count, ab.getMobile()!=null && !ab.getMobile().trim().isEmpty()?new BigDecimal(ab.getMobile().trim()):new BigDecimal("0"));
+			ps.setString(++count, ab.getLocation());
+			ps.setString(++count, ab.getRole().trim());
+			ps.setString(++count, ab.getPassword1().trim()); 
+			ps.setString(++count, ab.getAdmin_card_no());
+			//System.out.println("psupdate: "+ps.toString());
+			ps.executeUpdate();
+			
+			con.close(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) { 
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public AdminBean getAdmin(String adminid, String pass) {
 		
 		AdminBean ab = new AdminBean();
