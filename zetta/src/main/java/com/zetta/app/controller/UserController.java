@@ -75,14 +75,31 @@ public class UserController {
 
 
 	@RequestMapping("/user/edit")
-	public String edit(HttpServletRequest request,ModelMap model) {
-		return "home";
+	public String edit(HttpServletRequest request,ModelMap model) { 
+		return "register";
 	}
 	
 	@RequestMapping(value="/user/edit",method=RequestMethod.POST)
 	public String editSubmit(HttpServletRequest request,ModelMap model) {
-		return "home";
+		String adminid1 = request.getParameter("adminid");
+		AdminBean ab = adao.editAdmin(adminid);
+		model.addAttribute("ab", ab);
+		return "register";
 	}	
-
-
+	
+	@RequestMapping("/user/delete")
+	public String delete(HttpServletRequest request,ModelMap model) { 
+		return "admin_register";
+	}
+	
+	@RequestMapping("/user/delete")
+	public String deleteSubmit(HttpServletRequest request,ModelMap model) { 
+		String adminid1 = request.getParameter("adminid");
+		adao.deleteAdmin(adminid1);
+		model.addAttribute("deletesuccessmessage","Deleted Successfully");
+		List<AdminBean> list = adao.getAdmins();
+		model.addAttribute("list",list); 
+		return "admin_register";
+	}
+	
 }
