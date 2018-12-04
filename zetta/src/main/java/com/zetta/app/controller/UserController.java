@@ -2,6 +2,7 @@ package com.zetta.app.controller;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -76,15 +77,29 @@ public class UserController {
 
 	@RequestMapping("/user/edit")
 	public String edit(HttpServletRequest request,ModelMap model) { 
-		return "register";
+		String adminid1 = request.getParameter("id"); 
+		AdminBean ab = adao.editAdmin(adminid1);
+		model.addAttribute("ab", ab);  
+		return "editAdmin";
 	}
 	
 	@RequestMapping(value="/user/edit",method=RequestMethod.POST)
 	public String editSubmit(HttpServletRequest request,ModelMap model) {
-		String adminid1 = request.getParameter("adminid");
-		AdminBean ab = adao.editAdmin(adminid);
-		model.addAttribute("ab", ab);
-		return "register";
+		AdminBean ab = new AdminBean(); 
+		ab.setAdmin_card_no(adminid);
+		ab.setName(request.getParameter("name"));  
+		ab.setDob(request.getParameter("dob")); 
+		//System.out.println("DOB: "+request.getParameter("dob")); 
+		ab.setDepartment(request.getParameter("department"));
+		ab.setDesignation(request.getParameter("designation"));
+		ab.setEmail(request.getParameter("email"));
+		ab.setMobile(request.getParameter("mobile"));
+		ab.setLocation(request.getParameter("location"));
+		ab.setRole(request.getParameter("role").trim());  
+		ab.setPassword1(password);
+		adao.updateAdmin(ab);
+		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
+		return "editAdmin";
 	}	
 	
 	@RequestMapping("/user/delete")
