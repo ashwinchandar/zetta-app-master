@@ -90,9 +90,11 @@ public class AdminDAO {
 			ps.setString(1, adminid);
 			ps.setString(2, pass);
 			ResultSet rs=ps.executeQuery();
-			while(rs.next()) { 
+			/*System.out.println("psdao: " + ps.toString());*/
+			
+			while(rs.next()) {  
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
-				ab.setName(rs.getString("name"));
+				ab.setName(rs.getString("admin_name"));
 				ab.setDob(rs.getString("dob"));
 				ab.setDepartment(rs.getString("department"));
 				ab.setDesignation(rs.getString("designation"));
@@ -102,6 +104,7 @@ public class AdminDAO {
 				ab.setLocation(rs.getString("location"));
 				ab.setRole(rs.getString("role"));
 				ab.setPassword1(rs.getString("password1")); 
+				System.out.println("ps while dao last ");
 			}
 			con.close();
 		} catch(Exception e) {
@@ -127,7 +130,7 @@ public class AdminDAO {
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
-				ab.setName(rs.getString("name"));
+				ab.setName(rs.getString("admin_name"));
 				ab.setDob(rs.getString("dob"));
 				ab.setDepartment(rs.getString("department"));
 				ab.setDesignation(rs.getString("designation"));
@@ -185,7 +188,7 @@ public class AdminDAO {
 			while(rs.next()) {
 				AdminBean ab = new AdminBean();
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
-				ab.setName(rs.getString("name"));
+				ab.setName(rs.getString("admin_name"));
 				ab.setDob(rs.getString("dob"));
 				ab.setDepartment(rs.getString("department"));
 				ab.setDesignation(rs.getString("designation"));

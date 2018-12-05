@@ -3,7 +3,7 @@ package com.zetta.app.vo;
 public class AdminBean {
 
 	private String admin_card_no;
-	private String name;
+	private String admin_name;
 	private String dob;
 	private String department;
 	private String designation;
@@ -20,10 +20,10 @@ public class AdminBean {
 		this.admin_card_no = admin_card_no;
 	}
 	public String getName() {
-		return name;
+		return admin_name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.admin_name = name;
 	}
 	public String getDob() {
 		return dob;

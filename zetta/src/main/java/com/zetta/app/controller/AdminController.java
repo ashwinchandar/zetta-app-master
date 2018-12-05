@@ -1,8 +1,7 @@
 package com.zetta.app.controller;
 
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
+ 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -30,14 +29,16 @@ public class AdminController {
 	public String loginSubmit(HttpServletRequest request,ModelMap model) {
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("admin_card_no");
-		String password = request.getParameter("password");
+		String password = request.getParameter("password1");
+		
 		System.out.println("user" + adminid);
+		System.out.println("pass" + password);
 		
 		AdminBean ab = adao.getAdmin(adminid, password); 
 		if(ab != null) {
-			if(ab.getRole() != null && ab.getRole().equals("admin")) { 
-				request.setAttribute("adminsuccessmsg", "Successfully logged In");
-				request.setAttribute("name", ab.getName());
+			if(ab.getRole() != null && ab.getRole().trim().equals("admin")) { 
+				model.addAttribute("adminsuccessmsg", "Successfully logged In");
+				model.addAttribute("name", ab.getName());
 				List<AdminBean> list = adao.getAdmins();
 				model.addAttribute("list", list);
 				return "admin";
@@ -59,7 +60,7 @@ public class AdminController {
 		AdminBean ab = new AdminBean(); 
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("admin_card_no");
-		String password = request.getParameter("password");
+		String password = request.getParameter("password1");
 		ab.setAdmin_card_no(adminid);
 		ab.setName(request.getParameter("name"));  
 		ab.setDob(request.getParameter("dob")); 
@@ -101,7 +102,7 @@ public class AdminController {
 		ab.setMobile(request.getParameter("mobile"));
 		ab.setLocation(request.getParameter("location"));
 		ab.setRole(request.getParameter("role").trim());  
-		String password = request.getParameter("password");
+		String password = request.getParameter("password1");
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
