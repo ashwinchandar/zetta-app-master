@@ -49,7 +49,7 @@ public class AnnounceController   {
 	
 	@RequestMapping("/announce/edit")
 	public String announceEdit(HttpServletRequest request,ModelMap model) {
-		String announce = request.getParameter("announceid");
+		String announce = request.getParameter("id");
 		Integer announceid=0;
 		if(announce != null) {
 			  announceid = Integer.parseInt(announce);
@@ -57,8 +57,7 @@ public class AnnounceController   {
 		AnnounceDAO adao = new AnnounceDAO();
 		AnnounceBean ab = adao.editAnnouncement(announceid);
 		model.addAttribute("ab", ab); 
-		return "editAnnouncement";
-	}
+		return "editAnnouncement";	}
 	
 	@RequestMapping(value="/announce/edit",method=RequestMethod.POST)
 	public String announceEditSubmit(HttpServletRequest request,ModelMap model) {
@@ -80,7 +79,7 @@ public class AnnounceController   {
 	
 	@RequestMapping("/announce/delete")
 	public String announceDelete(HttpServletRequest request,ModelMap model) {
-		String announce = request.getParameter("announceid");
+		String announce = request.getParameter("id");
 		Integer announceid=0;
 		if(announce != null) {
 			  announceid = Integer.parseInt(announce);

@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
+	<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->

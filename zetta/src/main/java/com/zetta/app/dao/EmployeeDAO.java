@@ -59,6 +59,7 @@ public class EmployeeDAO {
 			 ps.setBigDecimal(++count, eb.getMobile()!=null && !eb.getMobile().trim().isEmpty()?new BigDecimal(eb.getMobile().trim()):new BigDecimal("0"));
 			 ps.setString(++count, eb.getLocation());
 			 ps.setString(++count, eb.getEmp_card_no());
+			 System.out.println("Employeeupdate: " + ps.toString());
 			 ps.executeUpdate();
 			 con.close();
 		} catch(Exception e) {

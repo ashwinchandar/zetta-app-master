@@ -14,9 +14,9 @@
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="">Add Employee</a></li> 
                             </ul>
-                            <form action="employeeDirectory" method="post"> 
+                            <form action="employeelisting" method="post"> 
 								<div class="payment-adress"> 
-                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="employeeListing">Back to Admin List</button>
+                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="employeeListing">Back to Employee List</button>
       							</div>
 							</form>
                             <div id="myTabContent" class="tab-content custom-product-edit">

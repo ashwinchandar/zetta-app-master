@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="details" items="${list}">
+													<c:forEach var="details" items="${list}" varStatus="status">
 														<tr>
 															<td>${details.admin_card_no}</td>
 															<td>${details.name}</td>
@@ -69,19 +70,20 @@
 															<td>${details.role}</td>
 															<%-- <td>${details.password1}</td> --%>
 
-
-															<td>
-																<a href="/admin/edit?id=${details.admin_card_no}">
-																	<input type="hidden" id="adminid" name="adminid" value=''>
-																	<button class="btn btn-primary" type="submit" name="submit" value="edit">Edit</button>
+													<td><a class="btn btn-info" href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" >Edit</a></td>
+        											<td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" >Delete</a></td>
+															
+															<%-- <td>  
+																<a class="btn btn-info" href="/admin/edit?id=${details.admin_card_no}">Edit</a> 
+																	<!-- <input type="hidden" id="adminid" name="adminid" value=''>
+																	<button class="btn btn-primary" type="submit" name="submit" value="edit">Edit</button> -->
 																</a>
 															</td>
-															<td>
-																<a href="/admin/delete?id=${details.admin_card_no}">
-																	<input type="hidden" id="adminid" name="adminid" value=''>
-																	<button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button>
-																</a>
-															</td>
+															<td> 
+																<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"  href="/admin/delete?id=${details.admin_card_no}">Delete</a>
+																	 <!-- <input type="hidden" id="adminid" name="adminid" value=''>
+																	<button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button> --> 
+															</td> --%>
 														</tr>
 													</c:forEach>
 												</tbody>

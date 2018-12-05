@@ -16,7 +16,7 @@
                             </ul></center>
                             <form action="/announcelisting" method="post"> 
 								<div class="payment-adress"> 
-                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="announcementListing">Back to Admin List</button>
+                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="announcementListing">Back to Announcement List</button>
       							</div>
 							</form>
                             <div id="myTabContent" class="tab-content custom-product-edit">

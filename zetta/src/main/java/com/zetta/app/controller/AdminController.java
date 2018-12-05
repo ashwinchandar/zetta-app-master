@@ -96,7 +96,7 @@ public class AdminController {
 	@RequestMapping("/admin/edit")
 	public String edit(HttpServletRequest request,ModelMap model) {   
 		AdminDAO adao=new AdminDAO();
-		String adminid = request.getParameter("admin_card_no");
+		String adminid = request.getParameter("id");
 		AdminBean ab = adao.editAdmin(adminid);
 		model.addAttribute("ab", ab);  
 		return "editAdmin";  
@@ -125,7 +125,7 @@ public class AdminController {
 	
 	@RequestMapping("/admin/delete")
 	public String delete(HttpServletRequest request,ModelMap model) { 
-		String adminid1 = request.getParameter("admin_card_no");
+		String adminid1 = request.getParameter("id");
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");

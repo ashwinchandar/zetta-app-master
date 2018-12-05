@@ -58,7 +58,7 @@ public class EmployeeController {
 	@RequestMapping("/employee/edit")
 	public String edit(HttpServletRequest request,ModelMap model) { 
 		EmployeeDAO edao = new EmployeeDAO(); 
-		String employeeid1 = request.getParameter("employeeid");
+		String employeeid1 = request.getParameter("id");
 		EmployeeBean eb = edao.editEmployee(employeeid1); 
 		model.addAttribute("eb", eb);
 		return "editEmployee";
@@ -68,7 +68,7 @@ public class EmployeeController {
 	public String editSubmit(HttpServletRequest request,ModelMap model) {
 		EmployeeDAO edao = new EmployeeDAO();
 		EmployeeBean eb = new EmployeeBean();
-		String employeeid = request.getParameter("employeeid");
+		String employeeid = request.getParameter("emp_card_no");
 		eb.setEmp_card_no(employeeid); 
 		eb.setName(request.getParameter("name").trim());
 		eb.setDob(request.getParameter("dob"));
@@ -79,13 +79,13 @@ public class EmployeeController {
 		eb.setLocation(request.getParameter("location"));
 		edao.updateEmployee(eb);
 		model.addAttribute("empsucmsg", "Employee Modified Successfully"); 
-		return "employeeListing";
+		return "editEmployee";
 	}	
 	
 	@RequestMapping("/employee/delete")
 	public String delete(HttpServletRequest request,ModelMap model) { 
 		EmployeeDAO edao = new EmployeeDAO();
-		String employeeid = request.getParameter("employeeid");
+		String employeeid = request.getParameter("id");
 		edao.deleteEmployee(employeeid);
 		List<EmployeeBean> list = edao.getEmployees();
 		model.addAttribute("list", list); 
@@ -95,7 +95,7 @@ public class EmployeeController {
 	@RequestMapping(value="/employee/delete",method=RequestMethod.POST)
 	public String deleteSubmit(HttpServletRequest request,ModelMap model) { 
 		EmployeeDAO edao = new EmployeeDAO();
-		String employeeid = request.getParameter("employeeid");
+		String employeeid = request.getParameter("emp_card_no");
 		edao.deleteEmployee(employeeid);
 		List<EmployeeBean> list = edao.getEmployees();
 		model.addAttribute("list", list); 

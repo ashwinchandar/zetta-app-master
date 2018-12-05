@@ -46,14 +46,16 @@
 														<th scope="col">Actions</th>
 													</tr>
 												</thead>
-												<tbody>
-													<c:forEach var="announce" items="${list}">
+												<tbody> 
+													<c:forEach var="announce" items="${list}" varStatus="status">
 														<tr>
 															<td>${announce.title}</td>
 															<td>${announce.date}</td>
 															<td>${announce.announcement}</td> 
-
-															<td>
+															
+															<td><a class="btn btn-info" href="<c:url value='/announce/edit/?id=${list[status.index].announceid}' />" >Edit</a></td>
+															 <td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/announce/delete/?id=${list[status.index].announceid}' />" >Delete</a></td>
+															<%-- <td>
 																<a href="/announce/edit?id=${announce.announceid}">
 																	<input type="hidden" id="announceid" name="announceid" value=''>
 																	<button class="btn btn-primary" type="submit" name="submit" value="edit">Edit</button>
@@ -64,7 +66,7 @@
 																	<input type="hidden" id="announceid" name="announceid" value=''>
 																	<button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button>
 																</a>
-															</td>
+															</td> --%>
 														</tr>
 													</c:forEach>
 												</tbody>

@@ -53,8 +53,8 @@
 														<th scope="col"><center>Actions</center></th>
 													</tr>
 												</thead>
-												<tbody>
-													<c:forEach var="empdetails" items="${list}">
+												<tbody> 
+													<c:forEach var="empdetails" items="${list}" varStatus="status">
 														<tr>
 															<td>${empdetails.emp_card_no}</td>
 															<td>${empdetails.name}</td>
@@ -64,8 +64,10 @@
 															<td>${empdetails.email}</td>
 															<td>${empdetails.mobile}</td>
 															<td>${empdetails.location}</td> 
-
-															<td>
+															<td><a class="btn btn-info" href="<c:url value='/employee/edit?id=${list[status.index].emp_card_no}' />" >Edit</a></td>
+        													<td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/employee/delete/?id=${list[status.index].emp_card_no}' />" >Delete</a></td>
+														
+															<%-- <td>
 																<a href="/employee/edit?id=${empdetails.emp_card_no}">
 																	<input type="hidden" id="employeeid" name="employeeid" value=''>
 																	<button class="btn btn-primary" type="submit" name="submit" value="edit">Edit</button>
@@ -76,7 +78,7 @@
 																	<input type="hidden" id="employeeid" name="employeeid" value=''>
 																	<button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button>
 																</a>
-															</td>
+															</td> --%>
 														</tr>
 													</c:forEach>
 												</tbody>
