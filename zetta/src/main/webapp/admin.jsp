@@ -150,7 +150,7 @@
                     
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
-                            <form action="AnnouncePage" method="post"> 
+                            <form action="/announcelisting" method="post"> 
 	                            <Button name="submit" id="submit" value="announcementListing">
 	                            <div class="panel-body">
 	                                <div class="stats-title pull-left">

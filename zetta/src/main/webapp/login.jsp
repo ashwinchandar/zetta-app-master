@@ -89,7 +89,7 @@
                                 <!-- <span class="help-block small">Yur strong password</span> -->
                             </div> 
                               
-                            <button class="btn btn-success btn-block loginbtn" type="submit" name="loginSubmit" value="login">Login</button>
+                            <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button>
                             
                         </form>
                     </div>

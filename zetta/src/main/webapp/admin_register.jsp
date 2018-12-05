@@ -14,7 +14,7 @@
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="">Admin Registration</a></li> 
                             </ul>
-                            <form action="adminPage" method="post"> 
+                            <form action="adminlisting" method="post"> 
 								<div class="payment-adress"> 
                                      <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="adminListing">Back to Admin List</button>
       							</div>

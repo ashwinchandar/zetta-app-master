@@ -33,6 +33,7 @@ public class AdminDAO {
 			ps.setString(++count, ab.getLocation());
 			ps.setString(++count, ab.getRole().trim());
 			ps.setString(++count, ab.getPassword1()); 
+			System.out.println("Admin:" +ps.toString());
 			ps.executeUpdate();
 			con.close(); 
 		} catch(Exception e) {
@@ -52,8 +53,8 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("update admin_register set admin_name=?,dob=?,department=?,designation=?,email=?,mobile=?,location=?,role=?,password1=? where admin_card_no =?");
-			ps.setString(++count, ab.getName().trim());
+			ps = con.prepareStatement("UPDATE admin_register SET admin_name=?,dob=?,department=?,designation=?,email=?,mobile=?,location=?,role=?,password1=? WHERE admin_card_no=?");
+			ps.setString(++count, ab.getName());
 			ps.setDate(++count, new Date(DateUtil.getDateFromString(ab.getDob()).getTime()));
 			ps.setString(++count, ab.getDepartment());
 			ps.setString(++count, ab.getDesignation());
@@ -61,10 +62,10 @@ public class AdminDAO {
 			ps.setBigDecimal(++count, ab.getMobile()!=null && !ab.getMobile().trim().isEmpty()?new BigDecimal(ab.getMobile().trim()):new BigDecimal("0"));
 			ps.setString(++count, ab.getLocation());
 			ps.setString(++count, ab.getRole().trim());
-			ps.setString(++count, ab.getPassword1().trim()); 
+			ps.setString(++count, ab.getPassword1()); 
 			ps.setString(++count, ab.getAdmin_card_no()); 
+			System.out.println("AdminDAO Spring Update:" +ps.toString());
 			ps.executeUpdate();
-			
 			con.close(); 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -185,7 +186,7 @@ public class AdminDAO {
 			ps = con.prepareStatement("SELECT * FROM admin_register");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				System.out.println("getAdmins");
+				System.out.println("getAdmins list in admindao");
 				AdminBean ab = new AdminBean();
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
 				ab.setName(rs.getString("admin_name"));

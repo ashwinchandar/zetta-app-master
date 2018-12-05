@@ -93,21 +93,21 @@ public class AdminController {
 	return "adminListing";
 	}
 
-	@RequestMapping("/user/edit")
-	public String edit(HttpServletRequest request,ModelMap model) { 
-		String adminid1 = request.getParameter("id");
+	@RequestMapping("/admin/edit")
+	public String edit(HttpServletRequest request,ModelMap model) {   
 		AdminDAO adao=new AdminDAO();
-		AdminBean ab = adao.editAdmin(adminid1);
+		String adminid = request.getParameter("admin_card_no");
+		AdminBean ab = adao.editAdmin(adminid);
 		model.addAttribute("ab", ab);  
-		return "editAdmin";
+		return "editAdmin";  
 	}
 	
-	@RequestMapping(value="/user/edit",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/edit",method=RequestMethod.POST)
 	public String editSubmit(HttpServletRequest request,ModelMap model) {
 		AdminBean ab = new AdminBean(); 
 		AdminDAO adao=new AdminDAO();
-		String adminid1 = request.getParameter("id");
-		ab.setAdmin_card_no(adminid1);
+		String adminid = request.getParameter("admin_card_no");
+		ab.setAdmin_card_no(adminid);
 		ab.setName(request.getParameter("name"));  
 		ab.setDob(request.getParameter("dob"));  
 		ab.setDepartment(request.getParameter("department"));
@@ -120,12 +120,12 @@ public class AdminController {
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
-		return "adminListing";
+		return "editAdmin";
 	}	
 	
-	@RequestMapping("/user/delete")
+	@RequestMapping("/admin/delete")
 	public String delete(HttpServletRequest request,ModelMap model) { 
-		String adminid1 = request.getParameter("adminid");
+		String adminid1 = request.getParameter("admin_card_no");
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");
@@ -134,9 +134,9 @@ public class AdminController {
 		return "adminListing";
 	}
 	
-	@RequestMapping(value="/user/delete",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/delete",method=RequestMethod.POST)
 	public String deleteSubmit(HttpServletRequest request,ModelMap model) { 
-		String adminid1 = request.getParameter("adminid");
+		String adminid1 = request.getParameter("admin_card_no");
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");

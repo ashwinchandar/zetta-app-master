@@ -16,7 +16,7 @@
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="">Edit Admin Registration</a></li> 
                             </ul>
-                            <form action="adminPage" method="post"> 
+                            <form action="adminlisting" method="post"> 
 								<div class="payment-adress"> 
                                      <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="adminListing">Back to Admin List</button>
       							</div>
@@ -27,7 +27,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                     <form action="/user/edit" method="post" onsubmit="return ValidateForm(this);">
+                                                 <form action="/admin/edit" method="post" onsubmit="return ValidateForm(this);">
                                                      <p style="color:green" align="center">${successMessage}</p> 
                                                      <p style="color:red" align="center">${deletesuccessmessage}</p> 
 															<script type="text/javascript">

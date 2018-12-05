@@ -79,7 +79,7 @@ public class EmployeeController {
 		eb.setLocation(request.getParameter("location"));
 		edao.updateEmployee(eb);
 		model.addAttribute("empsucmsg", "Employee Modified Successfully"); 
-		return "editEmployee";
+		return "employeeListing";
 	}	
 	
 	@RequestMapping("/employee/delete")
