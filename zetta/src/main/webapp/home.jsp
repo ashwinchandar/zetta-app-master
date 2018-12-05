@@ -37,13 +37,11 @@
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
-                               
-                                <form action="" method="post"> 
-											
+                                	<form action="/announcelisting" method="get">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
-                                         	
- 										     <c:forEach var="announce" items="${announcement}" varStatus="status">
+                                         	<c:if test="${not empty list}">
+ 										     <c:forEach var="announce" items="${list}" varStatus="status"> 
                                            <%-- <c:forEach items="${announcement}" var="announce"> --%>
                                             <div class="review-content-section">
                                                 <div class="chat-discussion" style="height: auto"> 
@@ -55,8 +53,10 @@
                                                 </div>
                                             </div>
                                            </c:forEach> 
+                                           </c:if>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>  
                             </div>
                         </div>
@@ -70,11 +70,21 @@
                             <div class="profile-details-hr"> 
                                 <div class="row">
                                     <div class="col-lg-12">
+                                     
+                                    <c:choose>
+                                    <c:when test="${ not empty birthList }">
+ 										     <c:forEach var="birth" items="${birthList}" varStatus="status"> 
                                         <div class="address-hr">
                                         <h2>Happy birthday!</h2>
-                                        <h1>Zettaone</h1>
+                                        <h1>${birth.name}</h1>
                                             <p> We hope all your birthday wishes and dreams come true.</p>
                                         </div>
+                                      </c:forEach>
+                                      </c:when>
+                                      <c:otherwise>
+                                       <h2>No Zetta Babies born today!</h2>
+                                      </c:otherwise>
+                                       </c:choose>
                                     </div>
                                 </div> 
                             </div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file = "headerout.jsp" %>
+<%@ include file = "header.jsp" %> 
 <meta charset="ISO-8859-1"> 
 </head>
 <body> 

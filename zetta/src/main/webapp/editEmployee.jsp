@@ -3,8 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html class="no-js" lang="en">
-<head>
-<%@ include file = "headerout.jsp" %>
+<%@ include file = "header.jsp" %> 
 <meta charset="ISO-8859-1"> 
 </head>
 <body> 

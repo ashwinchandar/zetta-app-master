@@ -21,8 +21,9 @@ public class AnnounceDAO {
 			con=DBConnection.getConnection();
 			ps=con.prepareStatement("INSERT INTO announcement(title,announcement,date) VALUES(?,?,?)");
 			ps.setString(++count, ab.getTitle());
-			ps.setString(++count, ab.getAnnouncement()); 
-			ps.setDate(++count, new java.sql.Date(Calendar.getInstance().getTime().getTime())); 
+			ps.setString(++count, ab.getAnnouncement());
+			long time = System.currentTimeMillis(); 
+			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
 			/*java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());*/
 			ps.executeUpdate();
 			con.close();
@@ -68,6 +69,35 @@ public class AnnounceDAO {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM announcement order by date DESC limit 3");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				AnnounceBean ab=new AnnounceBean();
+				ab.setAnnounceid(rs.getInt("announce_id"));
+				ab.setTitle(rs.getString("title"));
+				ab.setAnnouncement(rs.getString("announcement"));
+				ab.setDate(rs.getString("date"));
+				list.add(ab);
+			}
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ps!=null) {
+				try {
+					ps.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list; 
+	}
+	
+	public List<AnnounceBean> getAnnouncementslist(){
+		List<AnnounceBean> list = new ArrayList<>();
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM announcement order by date DESC");
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				AnnounceBean ab=new AnnounceBean();

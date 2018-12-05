@@ -96,7 +96,7 @@
                 </div>
 			</div>
 			<div class="text-center login-footer">
-				<p><a href="index.jsp">Back to Home</a></p>
+				<p><a href="home.jsp">Back to Home</a></p>
 			</div>
 		</div>   
     </div>

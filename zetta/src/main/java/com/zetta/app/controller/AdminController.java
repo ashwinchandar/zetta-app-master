@@ -10,13 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zetta.app.dao.AdminDAO;
+import com.zetta.app.dao.AnnounceDAO;
+import com.zetta.app.dao.EmployeeDAO;
 import com.zetta.app.vo.AdminBean;
+import com.zetta.app.vo.AnnounceBean;
+import com.zetta.app.vo.EmployeeBean;
 
 @Controller
 public class AdminController {
 
 	@RequestMapping("/")
-	public String home(HttpServletRequest request) {
+	public String home(HttpServletRequest request, ModelMap model) {
+		AnnounceDAO adao = new AnnounceDAO();
+		List<AnnounceBean> list = adao.getAnnouncements();
+		model.addAttribute("list", list);
+		EmployeeDAO edao = new EmployeeDAO();
+		List<EmployeeBean> birthList = edao.getEmployeeBirthday();
+		model.addAttribute("birthList", birthList);
+		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
+		model.addAttribute("CURRENT_USER", ab);
 		return "home";
 	}
 	
@@ -24,7 +36,16 @@ public class AdminController {
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "login";
 	}
-
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request,ModelMap model) {
+		if(request.getSession()!=null) {
+			request.getSession().invalidate();
+			model.addAttribute("adminsuccessmsg", "Successfully logged out");
+		}
+		return "login";
+	}
+	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginSubmit(HttpServletRequest request,ModelMap model) {
 		AdminDAO adao=new AdminDAO();
@@ -41,6 +62,7 @@ public class AdminController {
 				model.addAttribute("name", ab.getName());
 				List<AdminBean> list = adao.getAdmins();
 				model.addAttribute("list", list);
+				request.getSession().setAttribute("USER", ab);
 				return "admin";
 			}else {
 				model.addAttribute("errormsg","Username or Password is incorrect");

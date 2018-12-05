@@ -80,7 +80,7 @@ public class EmployeeDAO {
 		List<EmployeeBean> list = new ArrayList<>();
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("SELECT * FROM employee_register");
+			ps = con.prepareStatement("SELECT * FROM employee_register ");
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				EmployeeBean eb = new EmployeeBean();
@@ -166,4 +166,48 @@ public class EmployeeDAO {
 		return eb;
 	}
 	
+	public List<EmployeeBean> getEmployeeBirthday() {
+		List<EmployeeBean> list = new ArrayList<>();
+		
+		ResultSet rs = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("select * from employee_register where dob >= CURRENT_DATE AND dob < CURRENT_DATE + INTERVAL '1 DAY'");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				EmployeeBean eb = new EmployeeBean();
+				eb.setEmp_card_no(rs.getString("emp_card_no"));
+				eb.setName(rs.getString("name"));
+				eb.setDob(rs.getString("dob"));
+				eb.setDepartment(rs.getString("department"));
+				eb.setDesignation(rs.getString("designation"));
+				eb.setEmail(rs.getString("email"));
+				BigDecimal bigdecimal = rs.getBigDecimal("mobile");
+				eb.setMobile(bigdecimal.toString());
+				eb.setLocation(rs.getString("location")); 
+				list.add(eb);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(rs, ps, con);
+		}
+		return list; 
+	}
+	
+	public void closeConnection(ResultSet rs, PreparedStatement ps, Connection con) {
+		try {
+			if(rs!=null) { 
+				rs.close(); 
+			}
+			if(ps!=null) {
+				ps.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!doctype html>
 <html class="no-js" lang="en">
-<%@ include file = "headerout.jsp" %> 
+<%@ include file = "header.jsp" %> 
   
 	<body> 
         <div class="widgets-programs-area">

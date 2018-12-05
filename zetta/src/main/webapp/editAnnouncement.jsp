@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<%@ include file = "headerout.jsp" %>
+<%@ include file = "header.jsp" %> 
   
 <body> 
         <!-- Single pro tab review Start-->

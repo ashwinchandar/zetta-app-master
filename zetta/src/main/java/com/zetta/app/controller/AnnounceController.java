@@ -34,7 +34,7 @@ public class AnnounceController   {
 	@RequestMapping("/announcelisting")
 	public String announcelisting(HttpServletRequest request,ModelMap model) { 
 		AnnounceDAO adao = new AnnounceDAO();
-		List<AnnounceBean> list = adao.getAnnouncements();
+		List<AnnounceBean> list = adao.getAnnouncementslist();
 		model.addAttribute("list", list); 
 		return "announcementListing";
 	}
@@ -42,7 +42,7 @@ public class AnnounceController   {
 	@RequestMapping(value="/announcelisting",method=RequestMethod.POST)
 	public String alistingSubmit(HttpServletRequest request,ModelMap model) {
 		AnnounceDAO adao = new AnnounceDAO();
-		List<AnnounceBean> list = adao.getAnnouncements();
+		List<AnnounceBean> list = adao.getAnnouncementslist();
 		model.addAttribute("list", list); 
 		return "announcementListing"; 
 	}

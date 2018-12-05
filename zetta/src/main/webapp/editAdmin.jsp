@@ -1,11 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!doctype html>
-<html class="no-js" lang="en">
-<%@ include file = "headerout.jsp" %>
- 
-
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file = "header.jsp" %> 
+<meta charset="ISO-8859-1"> 
+<script type="text/javascript">
+	function ValidateForm(frm) {
+		if (frm.password1.value != frm.password2.value) {
+			alert('Passwords do not match.');
+			frm.password1.focus();
+			return false;
+		}
+		if (frm.location.value != "bangalore"
+				&& frm.location.value != "krishnagiri") {
+			alert('Select Location!');
+			frm.location.focus();
+			return false;
+		}
+		if (frm.mobile.value.length != 10) {
+			alert('Required 10 digits, match requested format!');
+			frm.mobile.focus();
+			return false;
+		}
+	}
+</script>
+</head> 
 <body> 
         <!-- Single pro tab review Start-->
         <div class="single-pro-review-area mt-t-30 mg-b-15">
@@ -30,25 +50,7 @@
                                                  <form action="/admin/edit" method="post" onsubmit="return ValidateForm(this);">
                                                      <p style="color:green" align="center">${successMessage}</p> 
                                                      <p style="color:red" align="center">${deletesuccessmessage}</p> 
-															<script type="text/javascript">
-															function ValidateForm(frm) {
-																if (frm.password1.value != frm.password2.value) {
-																	alert('Passwords do not match.');
-																	frm.password1.focus();
-																	return false;
-																	}
-																if (frm.location.value !="bangalore" && frm.location.value !="krishnagiri") {
-																	alert('Select Location!');
-																	frm.location.focus();
-																	return false;
-																}
-																if (frm.mobile.value.length!=10){
-																	alert('Required 10 digits, match requested format!');
-																	frm.mobile.focus();
-																	return false;
-																	}
-																}   
-															</script>
+															
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             	<div class="form-group">
@@ -122,77 +124,8 @@
                     </div>
                 </div>
             </div>
-        </div>  
-    <!-- jquery
-		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="js/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-		============================================ -->
-    <script src="js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-		============================================ -->
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
-    <!-- morrisjs JS
-		============================================ -->
-    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-    <!-- calendar JS
-		============================================ -->
-    <script src="js/calendar/moment.min.js"></script>
-    <script src="js/calendar/fullcalendar.min.js"></script>
-    <script src="js/calendar/fullcalendar-active.js"></script>
-    <!-- maskedinput JS
-		============================================ -->
-    <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/masking-active.js"></script>
-    <!-- datepicker JS
-		============================================ -->
-    <script src="js/datepicker/jquery-ui.min.js"></script>
-    <script src="js/datepicker/datepicker-active.js"></script>
-    <!-- form validate JS
-		============================================ -->
-    <!-- <script src="js/form-validation/jquery.form.min.js"></script>
-    <script src="js/form-validation/jquery.validate.min.js"></script>
-    <script src="js/form-validation/form-active.js"></script> -->
-    <!-- dropzone JS
-		============================================ -->
-    <script src="js/dropzone/dropzone.js"></script>
-    <!-- tab JS
-		============================================ -->
-    <script src="js/tab.js"></script>
-    <!-- plugins JS
-		============================================ -->
-    <script src="js/plugins.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="js/main.js"></script>
-    <!-- Password Visible
-		============================================ -->
-    <script src="js/passwordvisible.js"></script>
+        </div> 
+     
+
 </body>
-
 </html>
-
