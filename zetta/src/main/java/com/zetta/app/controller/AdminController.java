@@ -1,7 +1,7 @@
 package com.zetta.app.controller;
 
 import java.util.List;
- 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class AdminController {
 	public String home(HttpServletRequest request) {
 		return "home";
 	}
-
+	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "login";
@@ -76,7 +76,22 @@ public class AdminController {
 		model.addAttribute("successMessage","Admin Registered successfully.");
 		return "admin_register";
 	}
-
+	
+	@RequestMapping("/adminlisting")
+	public String adminListing(HttpServletRequest request, ModelMap model) {
+		AdminDAO adao=new AdminDAO();
+		List<AdminBean> list = adao.getAdmins();  
+		model.addAttribute("list", list); 
+		return "adminListing"; 
+	}
+	
+	@RequestMapping(value="/adminlisting",method=RequestMethod.POST)
+	public String adminListingSubmit(HttpServletRequest request,ModelMap model) {
+	AdminDAO adao=new AdminDAO();
+	List<AdminBean> list = adao.getAdmins();  
+	model.addAttribute("list", list); 
+	return "adminListing";
+	}
 
 	@RequestMapping("/user/edit")
 	public String edit(HttpServletRequest request,ModelMap model) { 
@@ -94,8 +109,7 @@ public class AdminController {
 		String adminid1 = request.getParameter("id");
 		ab.setAdmin_card_no(adminid1);
 		ab.setName(request.getParameter("name"));  
-		ab.setDob(request.getParameter("dob")); 
-		//System.out.println("DOB: "+request.getParameter("dob")); 
+		ab.setDob(request.getParameter("dob"));  
 		ab.setDepartment(request.getParameter("department"));
 		ab.setDesignation(request.getParameter("designation"));
 		ab.setEmail(request.getParameter("email"));
@@ -106,12 +120,18 @@ public class AdminController {
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
-		return "editAdmin";
+		return "adminListing";
 	}	
 	
 	@RequestMapping("/user/delete")
 	public String delete(HttpServletRequest request,ModelMap model) { 
-		return "admin_register";
+		String adminid1 = request.getParameter("adminid");
+		AdminDAO adao=new AdminDAO();
+		adao.deleteAdmin(adminid1);
+		model.addAttribute("deletesuccessmessage","Deleted Successfully");
+		List<AdminBean> list = adao.getAdmins();
+		model.addAttribute("list",list); 
+		return "adminListing";
 	}
 	
 	@RequestMapping(value="/user/delete",method=RequestMethod.POST)
@@ -122,7 +142,6 @@ public class AdminController {
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");
 		List<AdminBean> list = adao.getAdmins();
 		model.addAttribute("list",list); 
-		return "admin_register";
-	}
-	
+		return "adminListing";
+	} 
 }

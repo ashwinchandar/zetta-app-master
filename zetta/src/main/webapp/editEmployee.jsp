@@ -3,7 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!doctype html>
 <html class="no-js" lang="en">
-<%@ include file="headerout.jsp"%>
+<head>
+<%@ include file = "headerout.jsp" %>
+<meta charset="ISO-8859-1"> 
+</head>
 <body> 
         <!-- Single pro tab review Start-->
         <div class="single-pro-review-area mt-t-30 mg-b-15">
@@ -12,7 +15,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="">Add Employee</a></li> 
+                                <li class="active"><a href="">Edit Employee</a></li> 
                             </ul>
                             <form action="employeeDirectory" method="post"> 
 								<div class="payment-adress"> 
@@ -25,7 +28,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                     <form action="/employeeregister" method="post" onsubmit="return ValidateForm(this);">
+                                                     <form action="/employee/edit" method="post" onsubmit="return ValidateForm(this);">
                                                       <p style="color:green" align="center">${empsucmsg}</p> 
                                                      <p style="color:red" align="center">${deletesuccessmessage}</p>
 														<script type="text/javascript">
@@ -34,7 +37,7 @@
 																	alert('Required 10 digits, match requested format!');
 																	frm.mobile.focus();
 																	return false;
-																	}
+																	} 
 																if (frm.location.value !="Bangalore" && frm.location.value !="Krishnagiri") {
 																	alert('Select Location!');
 																	frm.location.focus();
@@ -73,7 +76,7 @@
                                                                 	<input name="mobile" type="number" class="form-control" pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" placeholder="Mobile No." value="${eb.mobile}" required>
                                                                 </div> 
                                                                 <div class="form-group">
-                                                                    <select name="location" class="form-control" value="${eb.location}" required>
+                                                                    <select name="location" id="location" class="form-control" value="${eb.location}" required>
 																			<option value="none" selected="" disabled="">Select Location</option>
 																			<option value="Bangalore">Bangalore</option>
 																			<option value="Krishnagiri">Krishnagiri</option> 
@@ -84,7 +87,7 @@
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress"> 
-                                                                     <button class="btn btn-primary waves-effect waves-light" type="submit" name="submit" value="eregister">Submit</button>
+                                                                     <button class="btn btn-primary waves-effect waves-light" type="submit" name="submit" value="editemployee">Update</button>
                                 									<button class="btn btn-primary waves-effect waves-light" type="reset" name="reset" value="Reset">Clear</button>
                                                                 </div>
                                                             </div>
@@ -100,8 +103,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-          
+        </div> 
+     
+
     <!-- jquery
 		============================================ -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -174,3 +178,4 @@
 </body>
 
 </html>
+

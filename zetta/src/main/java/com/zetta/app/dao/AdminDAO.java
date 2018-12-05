@@ -62,8 +62,7 @@ public class AdminDAO {
 			ps.setString(++count, ab.getLocation());
 			ps.setString(++count, ab.getRole().trim());
 			ps.setString(++count, ab.getPassword1().trim()); 
-			ps.setString(++count, ab.getAdmin_card_no());
-			//System.out.println("psupdate: "+ps.toString());
+			ps.setString(++count, ab.getAdmin_card_no()); 
 			ps.executeUpdate();
 			
 			con.close(); 
@@ -104,7 +103,7 @@ public class AdminDAO {
 				ab.setLocation(rs.getString("location"));
 				ab.setRole(rs.getString("role"));
 				ab.setPassword1(rs.getString("password1")); 
-				System.out.println("ps while dao last ");
+				 
 			}
 			con.close();
 		} catch(Exception e) {
@@ -186,6 +185,7 @@ public class AdminDAO {
 			ps = con.prepareStatement("SELECT * FROM admin_register");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
+				System.out.println("getAdmins");
 				AdminBean ab = new AdminBean();
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
 				ab.setName(rs.getString("admin_name"));
@@ -198,6 +198,7 @@ public class AdminDAO {
 				ab.setLocation(rs.getString("location"));
 				ab.setRole(rs.getString("role"));
 				ab.setPassword1(rs.getString("password1")); 
+				list.add(ab);
 			}
 			con.close();
 		}catch(Exception e) {

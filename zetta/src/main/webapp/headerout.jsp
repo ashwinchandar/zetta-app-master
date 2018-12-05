@@ -1,4 +1,3 @@
-<%@ page import="java.util.List"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
@@ -138,7 +137,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-10 col-md-12 col-sm-6 col-xs-12">
-                                    <form action="adminPage" method="post">
+                                    
                                         <div class="header-top-menu tabl-d-n  ">
                                             <ul class="nav navbar-nav mai-top-nav">
                                                 <li class="nav-item"><a href="index.jsp" class="nav-link">Home</a>
@@ -152,9 +151,9 @@
                                                 <li class="nav-item"><a href="calendar.jsp" class="nav-link">Company Calendar</a>
                                                 </li> 
                                             </ul> 
-                                            <button class="btn btn-primary waves-light " type="submit" name="submit" value="logout">Logout</button>
+                                            <!-- <button class="btn btn-primary waves-light " type="submit" name="submit" value="logout">Logout</button> -->
                                         </div>
-                                     </form>
+                                    
                                     </div> 
                                 </div>
                             </div>
@@ -162,7 +161,7 @@
                     </div>
                 </div>
             </div> 
-        </div> 
+        </div>  
       </html>
 
          

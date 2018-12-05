@@ -1,12 +1,9 @@
-<%@ page import="java.util.List"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!doctype html>
 <html class="no-js" lang="en">
-<%@ include file = "headerout.jsp" %>
- 
-
+<%@ include file = "headerout.jsp" %> 
 <body> 
         <!-- Single pro tab review Start-->
         <div class="single-pro-review-area mt-t-30 mg-b-15">
