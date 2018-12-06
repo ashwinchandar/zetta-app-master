@@ -119,7 +119,7 @@ public class AdminController {
 	public String edit(HttpServletRequest request,ModelMap model) {   
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("id");
-		AdminBean ab = adao.editAdmin(adminid);   //uuduud/ 
+		AdminBean ab = adao.editAdmin(adminid);
 		model.addAttribute("ab", ab); 
 		return "editAdmin";  
 	}

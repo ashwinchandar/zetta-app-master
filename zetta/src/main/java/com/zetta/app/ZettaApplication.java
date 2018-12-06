@@ -9,7 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("com.zetta.app")
 public class ZettaApplication extends SpringBootServletInitializer {
-
+	private int maxUploadSizeInMb = 10 * 1024 * 1024;
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(ZettaApplication.class);
@@ -18,4 +19,6 @@ public class ZettaApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(ZettaApplication.class, args);
 	}
+	
+	 
 }
