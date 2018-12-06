@@ -34,18 +34,11 @@ public class AdminDAO {
 			ps.setString(++count, ab.getRole().trim());
 			ps.setString(++count, ab.getPassword1()); 
 			System.out.println("Admin:" +ps.toString());
-			ps.executeUpdate();
-			con.close(); 
+			ps.executeUpdate(); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionpscon(ps, con);
 		}
 	}
 	
@@ -64,34 +57,24 @@ public class AdminDAO {
 			ps.setString(++count, ab.getRole().trim());
 			ps.setString(++count, ab.getPassword1()); 
 			ps.setString(++count, ab.getAdmin_card_no()); 
-			System.out.println("AdminDAO Spring Update:" +ps.toString());
-			ps.executeUpdate();
-			con.close(); 
+			/*System.out.println("AdminDAO Spring Update:" +ps.toString());*/
+			ps.executeUpdate(); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionpscon(ps, con);
 		}
 	}
 	
-	public AdminBean getAdmin(String adminid, String pass) {
-		
+	public AdminBean getAdmin(String adminid, String pass) { 
 		AdminBean ab = new AdminBean();
-		try {
-			
+		ResultSet rs=null;
+		try { 
 			con=DBConnection.getConnection();
 			ps=con.prepareStatement("SELECT * FROM admin_register WHERE admin_card_no=? and password1=?");
 			ps.setString(1, adminid);
 			ps.setString(2, pass);
-			ResultSet rs=ps.executeQuery();
-			/*System.out.println("psdao: " + ps.toString());*/
-			
+			rs=ps.executeQuery(); 
 			while(rs.next()) {  
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
 				ab.setName(rs.getString("admin_name"));
@@ -103,31 +86,24 @@ public class AdminDAO {
 				ab.setMobile(bigdecimal.toString());
 				ab.setLocation(rs.getString("location"));
 				ab.setRole(rs.getString("role"));
-				ab.setPassword1(rs.getString("password1")); 
-				 
-			}
-			con.close();
+				ab.setPassword1(rs.getString("password1"));  
+			}  
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			closeConnectionrspscon(rs, ps, con);
 		}
 		return ab;
 	}
 	
 	public AdminBean editAdmin(String adminid) {
 		AdminBean ab = new AdminBean();
+		ResultSet rs = null;
 		try {
 			con=DBConnection.getConnection();
 			ps=con.prepareStatement("SELECT * FROM admin_register WHERE admin_card_no=?");
 			ps.setString(1, adminid);
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
 				ab.setName(rs.getString("admin_name"));
@@ -140,18 +116,11 @@ public class AdminDAO {
 				ab.setLocation(rs.getString("location"));
 				ab.setRole(rs.getString("role"));
 				ab.setPassword1(rs.getString("password1")); 
-			} 
-			con.close();
+			}  
 		} catch (SQLException e) { 
 			e.printStackTrace();
 		} finally {
-			if(ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionrspscon(rs, ps, con);
 		} 
 		return ab;
 	}
@@ -163,30 +132,24 @@ public class AdminDAO {
 			ps = con.prepareStatement("DELETE FROM admin_register WHERE admin_card_no=?");
 			ps.setString(1, adminid);
 			ps.executeUpdate();
-			con.close();
+			 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			closeConnectionpscon(ps, con);
 		}
 		return ab;
 	}
 	
 	public List<AdminBean> getAdmins(){
 		List<AdminBean> list = new ArrayList<>();
-		 
+		ResultSet rs = null;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM admin_register");
-			ResultSet rs = ps.executeQuery();
+			rs = ps.executeQuery();
 			while(rs.next()) {
-				System.out.println("getAdmins list in admindao");
+				/*System.out.println("getAdmins list in admindao");*/
 				AdminBean ab = new AdminBean();
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
 				ab.setName(rs.getString("admin_name"));
@@ -200,20 +163,12 @@ public class AdminDAO {
 				ab.setRole(rs.getString("role"));
 				ab.setPassword1(rs.getString("password1")); 
 				list.add(ab);
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
-		}
-		
+			 closeConnectionrspscon(rs, ps, con);
+		} 
 		return list;  
 	}
 	
@@ -231,22 +186,43 @@ public class AdminDAO {
 			ab.setAdmin_card_no(rs.getString("admin_card_no"));
 			ab.setRole(rs.getString("role"));
 			isValid=true;
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
+			closeConnectionrspscon(rs, ps, con);
+		} 
+		return isValid; 
+	}
+	
+	public void closeConnectionpscon(PreparedStatement ps, Connection con) {
+		try {
 			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
+				ps.close();
 			}
+			if(con!=null) {
+				con.close();
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		
-		return isValid;
-		
+	}
+	
+	public void closeConnectionrspscon(ResultSet rs, PreparedStatement ps, Connection con) {
+		try {
+			if(rs!=null) {
+				rs.close();
+			}
+			if(ps!=null) {
+				ps.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -25,18 +25,11 @@ public class AnnounceDAO {
 			long time = System.currentTimeMillis(); 
 			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
 			/*java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());*/
-			ps.executeUpdate();
-			con.close();
+			ps.executeUpdate(); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			closeConnectionpscon(ps, con);
 		}
 	}
 	
@@ -49,27 +42,21 @@ public class AnnounceDAO {
 			ps.setDate(++count, new java.sql.Date(Calendar.getInstance().getTime().getTime()));  
 			ps.setString(++count, ab.getAnnouncement());
 			ps.setInt(++count, ab.getAnnounceid());
-			ps.executeUpdate();
-			con.close();
+			ps.executeUpdate(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			closeConnectionpscon(ps, con);
 		}
 	}
 	
 	public List<AnnounceBean> getAnnouncements(){
 		List<AnnounceBean> list = new ArrayList<>();
+		ResultSet rs=null;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM announcement order by date DESC limit 3");
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				AnnounceBean ab=new AnnounceBean();
 				ab.setAnnounceid(rs.getInt("announce_id"));
@@ -77,28 +64,22 @@ public class AnnounceDAO {
 				ab.setAnnouncement(rs.getString("announcement"));
 				ab.setDate(rs.getString("date"));
 				list.add(ab);
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionrspscon(rs, ps, con); 
 		}
 		return list; 
 	}
 	
 	public List<AnnounceBean> getAnnouncementslist(){
 		List<AnnounceBean> list = new ArrayList<>();
+		ResultSet rs = null;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM announcement order by date DESC");
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				AnnounceBean ab=new AnnounceBean();
 				ab.setAnnounceid(rs.getInt("announce_id"));
@@ -106,46 +87,33 @@ public class AnnounceDAO {
 				ab.setAnnouncement(rs.getString("announcement"));
 				ab.setDate(rs.getString("date"));
 				list.add(ab);
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionrspscon(rs, ps, con);
 		}
 		return list; 
 	}
 	
 	public AnnounceBean editAnnouncement(Integer announceid) {
 		AnnounceBean ab = new AnnounceBean();
+		ResultSet rs = null;
 		try {
 			con=DBConnection.getConnection();
 			ps=con.prepareStatement("SELECT * FROM announcement WHERE announce_id=?");
 			ps.setInt(1, announceid);
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				ab.setAnnounceid(announceid);
 				ab.setTitle(rs.getString("title"));
 				ab.setAnnouncement(rs.getString("announcement"));
 				ab.setDate(rs.getString("date"));
-			}
-			con.close();
+			} 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionrspscon(rs, ps, con);
 		}
 		return ab;
 	}
@@ -156,20 +124,41 @@ public class AnnounceDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("DELETE FROM announcement WHERE announce_id=?");
 			ps.setInt(1, announceid);
-			ps.executeQuery();
-			con.close();
+			ps.executeQuery(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+			closeConnectionpscon(ps, con);
 		}
 		return ab;
 		
+	}
+	
+	public void closeConnectionpscon(PreparedStatement ps, Connection con) {
+		try { 
+			if(ps!=null) {
+				ps.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void closeConnectionrspscon(ResultSet rs, PreparedStatement ps, Connection con) {
+		try {
+			if(rs!=null) { 
+				rs.close(); 
+			}
+			if(ps!=null) {
+				ps.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

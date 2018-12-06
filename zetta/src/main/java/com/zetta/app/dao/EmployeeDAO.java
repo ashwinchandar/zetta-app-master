@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,19 +30,12 @@ public class EmployeeDAO {
 			 ps.setString(++count, eb.getEmail());
 			 ps.setBigDecimal(++count, eb.getMobile()!=null && !eb.getMobile().trim().isEmpty()?new BigDecimal(eb.getMobile().trim()):new BigDecimal("0"));
 			 ps.setString(++count, eb.getLocation());
-			 ps.executeUpdate();
-			 con.close();
+			 ps.executeUpdate(); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
-		} 
+			  closeConnectionpscon(ps, con);
+			} 
 	}
 	
 	public void updateEmployee(EmployeeBean eb) {
@@ -58,30 +50,23 @@ public class EmployeeDAO {
 			 ps.setString(++count, eb.getEmail());
 			 ps.setBigDecimal(++count, eb.getMobile()!=null && !eb.getMobile().trim().isEmpty()?new BigDecimal(eb.getMobile().trim()):new BigDecimal("0"));
 			 ps.setString(++count, eb.getLocation());
-			 ps.setString(++count, eb.getEmp_card_no());
-			 System.out.println("Employeeupdate: " + ps.toString());
-			 ps.executeUpdate();
-			 con.close();
+			 ps.setString(++count, eb.getEmp_card_no()); 
+			 ps.executeUpdate(); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			 closeConnectionpscon(ps, con);
 		}
 	}
 	
 	
 	public List<EmployeeBean> getEmployees(){
 		List<EmployeeBean> list = new ArrayList<>();
+		ResultSet rs = null;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM employee_register ");
-			ResultSet rs=ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				EmployeeBean eb = new EmployeeBean();
 				eb.setEmp_card_no(rs.getString("emp_card_no"));
@@ -94,30 +79,25 @@ public class EmployeeDAO {
 				eb.setMobile(bigdecimal.toString());
 				eb.setLocation(rs.getString("location")); 
 				list.add(eb);
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
+			 closeConnectionrspscon(rs, ps, con);
 			}
-		} 
-		return list;
-	}
+		return list; 
+	} 
+
 	
 	public EmployeeBean editEmployee(String employeeid) {
+		ResultSet rs = null;
 		EmployeeBean eb=new EmployeeBean();
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM employee_register WHERE emp_card_no=?");
 			ps.setString(1, employeeid);
-			ResultSet rs=ps.executeQuery();
-			while(rs.next()) {
+			rs=ps.executeQuery();
+			while(rs.next()) { 
 				eb.setEmp_card_no(rs.getString("emp_card_no"));
 				eb.setName(rs.getString("name"));
 				eb.setDob(rs.getString("dob"));
@@ -127,20 +107,13 @@ public class EmployeeDAO {
 				BigDecimal bigdecimal = rs.getBigDecimal("mobile");
 				eb.setMobile(bigdecimal.toString());
 				eb.setLocation(rs.getString("location")); 
-			}
-			con.close();
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
-		}  
-		return eb;
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return eb;  
 	}
 	
 	
@@ -150,18 +123,11 @@ public class EmployeeDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("DELETE FROM employee_register WHERE emp_card_no=?");
 			ps.setString(1, employeeid);
-			ps.executeUpdate();
-			con.close();
+			ps.executeUpdate(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) { 
-					e.printStackTrace();
-				}
-			}
+			closeConnectionpscon(ps, con);
 		} 
 		return eb;
 	}
@@ -190,12 +156,24 @@ public class EmployeeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			closeConnection(rs, ps, con);
+			closeConnectionrspscon(rs, ps, con); 
 		}
 		return list; 
 	}
 	
-	public void closeConnection(ResultSet rs, PreparedStatement ps, Connection con) {
+	public void closeConnectionpscon(PreparedStatement ps, Connection con) {
+		try { 
+			if(ps!=null) {
+				ps.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void closeConnectionrspscon(ResultSet rs, PreparedStatement ps, Connection con) {
 		try {
 			if(rs!=null) { 
 				rs.close(); 
