@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-	<link href="../../webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="../../webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->
@@ -149,17 +149,15 @@
 	<!-- main JS
 		============================================ -->
 	<script src="../../js/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-	<script src="../../js/tawk-chat.js"></script>
+	 
 </head>
  
     <!-- Start Left menu area -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="/"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
-                <strong><a href="/"><img src="img/logo/logosn.png" alt="" /></a></strong>
+                <a href="/"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
+                <strong><a href="/"><img src="../../img/logo/logosn.png" alt="" /></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -200,7 +198,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="/"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <a href="/"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>

@@ -96,7 +96,7 @@ public class AdminController {
 		ab.setPassword1(password); 
 		adao.insertAdmin(ab);
 		model.addAttribute("successMessage","Admin Registered successfully.");
-		return "admin_register";
+		return "adminListing";
 	}
 	
 	@RequestMapping("/adminlisting")
@@ -142,7 +142,7 @@ public class AdminController {
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
-		return "editAdmin";
+		return "adminListing";
 	}	
 	
 	@RequestMapping("/admin/delete")

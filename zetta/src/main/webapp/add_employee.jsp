@@ -3,7 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!doctype html>
 <html class="no-js" lang="en">
+<head>
 <%@ include file = "header.jsp" %> 
+<meta charset="ISO-8859-1"> 
+</head> 
 <body> 
         <!-- Single pro tab review Start-->
         <div class="single-pro-review-area mt-t-30 mg-b-15">

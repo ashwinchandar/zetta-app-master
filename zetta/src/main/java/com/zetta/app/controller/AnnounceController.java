@@ -28,7 +28,7 @@ public class AnnounceController   {
 		ab.setAnnouncement(request.getParameter("announcement"));
 		adao.insertAnnouncement(ab);
 		model.addAttribute("announce", "Announcement Published."); 
-		return "new_announcement";
+		return "announcementListing";
 	}
 	
 	@RequestMapping("/announcelisting")

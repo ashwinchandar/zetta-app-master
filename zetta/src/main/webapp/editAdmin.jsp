@@ -5,6 +5,10 @@
 <head>
 <%@ include file = "header.jsp" %> 
 <meta charset="ISO-8859-1"> 
+</head>
+<head>
+<%@ include file = "header.jsp" %> 
+<meta charset="ISO-8859-1"> 
 <script type="text/javascript">
 	function ValidateForm(frm) {
 		if (frm.password1.value != frm.password2.value) {
