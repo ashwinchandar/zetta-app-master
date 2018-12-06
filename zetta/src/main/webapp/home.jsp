@@ -38,61 +38,59 @@
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
-                                	<form action="/announcelisting" method="get">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
-                                         	<c:if test="${not empty list}">
- 										     <c:forEach var="announce" items="${list}" varStatus="status"> 
-                                           <%-- <c:forEach items="${announcement}" var="announce"> --%>
-                                            <div class="review-content-section">
-                                                <div class="chat-discussion" style="height: auto"> 
-                                                      <div class="message">
-                                                            <a class="message-author full-right" href="#"> ${announce.title} </a><br />	
-                                                            <span class="message-date"> ${announce.date} </span>
-                                                            <span class="message-content">   ${announce.announcement}  </span> 
-                                                      </div>  
-                                                </div>
-                                            </div>
-                                           </c:forEach> 
-                                           </c:if>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>  
+								<form action="/announcelisting" method="get">
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<c:if test="${not empty list}">
+												<c:forEach var="announce" items="${list}" varStatus="status">
+													<div class="review-content-section">
+														<div class="chat-discussion" style="height: auto">
+															<div class="message">
+																<a class="message-author full-right" href="#"> ${announce.title} </a><br /> 
+																<span class="message-date"> ${announce.date} </span> 
+																<span class="message-content"> ${announce.announcement} </span>
+															</div>
+														</div>
+													</div>
+												</c:forEach>
+											</c:if>
+										</div>
+									</div>
+								</form>
+							</div>  
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="profile-info-inner">
-                            <div class="profile-img">
-                                <img src="img/profile/1.jpg" alt="" />
-                            </div>
-                            <div class="profile-details-hr"> 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                     
-                                    <c:choose>
-                                    <c:when test="${ not empty birthList }">
- 										     <c:forEach var="birth" items="${birthList}" varStatus="status"> 
-                                        <div class="address-hr">
-                                        <h2>Happy birthday!</h2>
-                                        <h1>${birth.name}</h1>
-                                            <p> We hope all your birthday wishes and dreams come true.</p>
-                                        </div>
-                                      </c:forEach>
-                                      </c:when>
-                                      <c:otherwise>
-                                       <h2>No Zetta Babies born today!</h2>
-                                      </c:otherwise>
-                                       </c:choose>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+					<div class="profile-info-inner">
+						<div class="profile-img">
+							<img src="img/profile/1.jpg" alt="" />
+						</div>
+						<div class="profile-details-hr">
+							<div class="row">
+								<div class="col-lg-12"> 
+									<c:choose>
+										<c:when test="${ not empty birthList }">
+											<c:forEach var="birth" items="${birthList}" varStatus="status">
+												<div class="address-hr">
+													<h2>Happy birthday!</h2>
+													<h1>${birth.name}</h1>
+													<p>We hope all your birthday wishes and dreams come true.</p>
+												</div>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<h2>No Zetta Babies born today!</h2>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
             </div>
         </div>
      

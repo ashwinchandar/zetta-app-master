@@ -85,3 +85,21 @@ SELECT * FROM file_upload;
 DROP table file_upload;
 
 SELECT * FROM admin_register WHERE admin_card_no='H021' and password1='Ze88@0ne'
+
+CREATE TABLE knowledgebase(
+knowledge_id serial PRIMARY KEY,
+category CHARACTER VARYING(100),
+topic CHARACTER VARYING(200),
+subject CHARACTER VARYING,
+date TIMESTAMP WITH TIME ZONE
+);
+
+Select * from knowledgebase;
+
+select * from employee_register where dob = now() - interval '1 year';
+
+SELECT * FROM employee_register  
+WHERE
+    DATE_PART('day', dob) = date_part('day', CURRENT_DATE)
+AND
+    DATE_PART('month', dob) = date_part('month', CURRENT_DATE);

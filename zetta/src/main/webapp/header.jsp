@@ -172,7 +172,14 @@
 	<!-- main JS
 		============================================ -->
 	<script src="../../js/main.js"></script>
-	 
+	<script type="text/javascript">
+	$(document).ready(function() {
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    });
+	</script>
 </head>
  
     <!-- Start Left menu area -->
@@ -195,7 +202,7 @@
                             <a title="Organization chart" href="organization.jsp" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Organization Chart</span></a>
                         </li>
                         <li>
-                            <a title="Employee directory" href="employeedirectory.jsp" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
+                            <a title="Employee directory" href="/employeedirectory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
                         </li>
                         <li>
                             <a title="QMS" href="qms.jsp" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
@@ -245,7 +252,7 @@
                                             <ul class="nav navbar-nav mai-top-nav">
                                                 <li class="nav-item"><a href="/" class="nav-link">Home</a>
                                                 </li>
-                                                <li class="nav-item"><a href="employeedirectory.jsp" class="nav-link">Employee Directory</a>
+                                                <li class="nav-item"><a href="/employeedirectory" class="nav-link">Employee Directory</a>
                                                 </li>
                                                 <li class="nav-item"><a href="qms.jsp" class="nav-link">QMS</a>
                                                 </li> 
@@ -254,20 +261,18 @@
                                                 <li class="nav-item"><a href="calendar.jsp" class="nav-link">Company Calendar</a>
                                                 </li> 
                                                 <c:choose>
-                                                <c:when test="${ not empty CURRENT_USER }"> 
+                                                <c:when test="${ not empty sessionScope.USER}"> 
                                                  <li class="nav-item"><a href="/logout" class="nav-link">Logout</a>
                                                 </li> 
                                                 </c:when>
                                                 <c:otherwise>
                                                  <li class="nav-item"><a href="/login" class="nav-link">Login</a>
                                                 </li> 
-                                                </c:otherwise>
-                                                
+                                                </c:otherwise>  
                                                 </c:choose>                                            
                                             </ul>
                                         </div>
-                                    </div>
-                                    
+                                    </div> 
                                 </div>
                             </div>
                         </div>

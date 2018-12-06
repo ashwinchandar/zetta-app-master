@@ -15,6 +15,14 @@ import com.zetta.app.dao.EmployeeDAO;
 @Controller
 public class EmployeeController {
  
+	@RequestMapping("/employeedirectory")
+	public String userEmployeedisplay(HttpServletRequest request, ModelMap model) {
+		EmployeeDAO edao = new EmployeeDAO(); 
+		List<EmployeeBean> list = edao.getEmployees(); 
+		model.addAttribute("list", list);
+		return "employeedirectory"; 
+	}
+	
 	@RequestMapping("/employeeregister")
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "add_employee";
@@ -59,8 +67,8 @@ public class EmployeeController {
 	public String edit(HttpServletRequest request,ModelMap model) { 
 		EmployeeDAO edao = new EmployeeDAO(); 
 		String employeeid1 = request.getParameter("id");
-		EmployeeBean eb = edao.editEmployee(employeeid1); 
-		model.addAttribute("eb", eb);
+		EmployeeBean eb = edao.editEmployee(employeeid1);  
+		model.addAttribute("eb", eb); 
 		return "editEmployee";
 	}
 	
@@ -78,6 +86,8 @@ public class EmployeeController {
 		eb.setMobile(request.getParameter("mobile"));
 		eb.setLocation(request.getParameter("location"));
 		edao.updateEmployee(eb);
+		List<EmployeeBean> list = edao.getEmployees(); 
+		model.addAttribute("list", list); 
 		model.addAttribute("empsucmsg", "Employee Modified Successfully"); 
 		return "employeeListing";
 	}	

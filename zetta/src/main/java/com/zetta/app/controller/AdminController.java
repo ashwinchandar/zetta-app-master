@@ -35,8 +35,7 @@ public class AdminController {
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "login";
-	}
-	
+	} 
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request,ModelMap model) {
 		if(request.getSession()!=null) {
@@ -44,7 +43,7 @@ public class AdminController {
 			model.addAttribute("adminsuccessmsg", "Successfully logged out");
 		}
 		return "login";
-	}
+	} 
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginSubmit(HttpServletRequest request,ModelMap model) {
@@ -52,12 +51,12 @@ public class AdminController {
 		String adminid = request.getParameter("admin_card_no");
 		String password = request.getParameter("password1");
 		
-		System.out.println("user" + adminid);
-		System.out.println("pass" + password);
+		/*System.out.println("user" + adminid);
+		System.out.println("pass" + password);*/
 		
 		AdminBean ab = adao.getAdmin(adminid, password); 
 		if(ab != null) {
-			if(ab.getRole() != null && ab.getRole().trim().equals("admin")) { 
+			if(ab.getRole() != null && ab.getRole().trim().equals("Admin")) { 
 				model.addAttribute("adminsuccessmsg", "Successfully logged In");
 				model.addAttribute("name", ab.getName());
 				List<AdminBean> list = adao.getAdmins();
@@ -69,6 +68,7 @@ public class AdminController {
 				return "login";
 			}
 		}
+		model.addAttribute("CURRENT_USER", ab);
 		return "login";
 	}
 
@@ -119,8 +119,8 @@ public class AdminController {
 	public String edit(HttpServletRequest request,ModelMap model) {   
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("id");
-		AdminBean ab = adao.editAdmin(adminid);
-		model.addAttribute("ab", ab);  
+		AdminBean ab = adao.editAdmin(adminid);   //uuduud/ 
+		model.addAttribute("ab", ab); 
 		return "editAdmin";  
 	}
 	
@@ -141,6 +141,8 @@ public class AdminController {
 		String password = request.getParameter("password1");
 		ab.setPassword1(password);
 		adao.updateAdmin(ab);
+		List<AdminBean> list = adao.getAdmins();  
+		model.addAttribute("list", list);
 		model.addAttribute("successMessage","Successfully Edited Admin Record"); 
 		return "adminListing";
 	}	

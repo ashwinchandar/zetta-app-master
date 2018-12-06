@@ -138,7 +138,11 @@ public class EmployeeDAO {
 		ResultSet rs = null;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("select * from employee_register where dob >= CURRENT_DATE AND dob < CURRENT_DATE + INTERVAL '1 DAY'");
+			ps = con.prepareStatement("SELECT * FROM employee_register " + 
+					"WHERE " + 
+					"    DATE_PART('day', dob) = date_part('day', CURRENT_DATE) " + 
+					"AND " + 
+					" DATE_PART('month', dob) = date_part('month', CURRENT_DATE);");
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				EmployeeBean eb = new EmployeeBean();
