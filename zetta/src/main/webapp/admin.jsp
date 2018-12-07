@@ -61,7 +61,7 @@
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
                         
                         
-                           <form action="policyPage" method="post" enctype="multipart/form-data"> 
+                           <form action="/uploadfile" method="post" enctype="multipart/form-data"> 
 	                            <Button name="submit" id="submit" value="orgListing">
 	                            <div class="panel-body">
 	                                <div class="stats-title pull-left">
@@ -78,9 +78,7 @@
 	                            </div>
 	                            </Button>
 	                           <!--  <input type="hidden" name="submit" id="submit" value="adminListing"> -->
-                           </form>
-                           
-                           
+                           </form>  
                         </div>
                     </div>  
                     
