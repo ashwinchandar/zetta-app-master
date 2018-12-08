@@ -81,7 +81,8 @@
 											</c:forEach>
 										</c:when>
 										<c:otherwise>
-											<h2>No Zetta Babies born today!</h2>
+											<h2>Thought of the Day</h2>
+											<img src="img/product/profile-bg.jpg" alt="">
 										</c:otherwise>
 									</c:choose>
 								</div>

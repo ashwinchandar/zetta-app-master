@@ -37,57 +37,50 @@
 										</a>
 									</td> 
 									</table>
-										<div align="center">
-											<p style="color: green" align="center">${deletesuccessmessage}</p>
-											<table class="table">
-												<thead class="thead-dark">
-													<tr>
-														<th scope="col">Admin Card No</th>
-														<th scope="col">Admin Name</th>
-														<th scope="col">DOB</th>
-														<th scope="col">Department</th>
-														<th scope="col">Designation</th>
-														<th scope="col">Email</th>
-														<th scope="col">Mobile</th>
-														<th scope="col">Location</th>
-														<th scope="col">Role</th>
-														<!-- <th scope="col">Password</th> -->
-														<th scope="col">Actions</th>
-													</tr>
-												</thead>
-												<tbody>
-													<c:forEach var="details" items="${list}" varStatus="status">
-														<tr>
-															<td>${details.admin_card_no}</td>
-															<td>${details.name}</td>
-															<td>${details.dob}</td>
-															<td>${details.department}</td>
-															<td>${details.designation}</td>
-															<td>${details.email}</td>
-															<td>${details.mobile}</td>
-															<td>${details.location}</td>
-															<td>${details.role}</td>
-															<%-- <td>${details.password1}</td> --%>
-
-													<td><a class="btn btn-info" href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" >Edit</a></td>
-        											<td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" >Delete</a></td>
-															
-															<%-- <td>  
-																<a class="btn btn-info" href="/admin/edit?id=${details.admin_card_no}">Edit</a> 
-																	<!-- <input type="hidden" id="adminid" name="adminid" value=''>
-																	<button class="btn btn-primary" type="submit" name="submit" value="edit">Edit</button> -->
-																</a>
-															</td>
-															<td> 
-																<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"  href="/admin/delete?id=${details.admin_card_no}">Delete</a>
-																	 <!-- <input type="hidden" id="adminid" name="adminid" value=''>
-																	<button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button> --> 
-															</td> --%>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
+										 <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="false" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                     <thead>
+										<tr> 
+											<th data-field="state" data-checkbox="false">Admin Card No</th>
+											<th data-field="id">Name</th>
+											<th data-field="name" data-editable="false">DOB</th>
+											<th data-field="email" data-editable="false">Department</th>
+											<th data-field="phone" data-editable="false">Designation</th>
+											<th data-field="complete">Email</th>
+											<th data-field="task" data-editable="false">Mobile</th>
+											<th data-field="date" data-editable="false">Location</th> 
+											<th data-field="price" data-editable="false">Edit</th>
+											<th data-field="action">Remove</th>
+										</tr>
+									</thead>
+                                        <tbody> 
+                                        <c:forEach var="details" items="${list}" varStatus="status">
+                                            <tr>
+												<td>${details.admin_card_no}</td>
+												<td>${details.name}</td>
+												<td>${details.dob}</td>
+												<td>${details.department}</td>
+												<td>${details.designation}</td>
+												<td>${details.email}</td>
+												<td>${details.mobile}</td>
+												<td>${details.location}</td> 
+                                                <td><a href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a></td>
+		        								<td><a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 		
+                                            </tr> 
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 									</div>
 								</div>
 							</div>
@@ -96,6 +89,10 @@
 				</div>
 			</div>
 		</div>
+		   
+		   
+	  						 
+		   
 		   
 </body>
 </html>

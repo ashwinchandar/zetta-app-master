@@ -18,7 +18,7 @@
                             </ul></center>
                             <a href="/announcelisting"> 
 								<div class="payment-adress"> 
-                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-9 col-md-3" type="submit" name="submit" value="announcementListing">Back to Announcement List</button>
+                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-8 col-md-3" type="submit" name="submit" value="announcementListing">Back to Announcement List</button>
       							</div>
 							</a>
                             <div id="myTabContent" class="tab-content custom-product-edit">
@@ -33,7 +33,7 @@
                                                         	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
                                                            		 <div class="form-group">
-                                                                     <input type="hidden" id="announceid" name="announceid" value='${ab.announceid}'>
+                                                                     <input type="hidden" id="announceid" name="announceid" value='${ab.announceid}' readonly="readonly">
                                                                 </div>
                                                             	<div class="form-group">
                                                                      <input name="title" id="title" type="text" class="form-control" placeholder="Title" value="${ab.title}" required>

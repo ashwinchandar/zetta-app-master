@@ -55,8 +55,8 @@ public class UploadController {
 					
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(fileData.getBytes());
-					stream.close();
-					
+					stream.close(); 
+					 
 					uploadedFiles.add(serverFile);
 				 } catch(Exception e) {
 					 System.out.println("Error write file:" +name);
