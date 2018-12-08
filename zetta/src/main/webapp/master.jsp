@@ -10,7 +10,7 @@
         <div class="widgets-programs-area">
             <div class="container-fluid"><br />
                 <div class="row">
-                   <!--  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
                            <form action="/adminlisting" method="post"> 
                             <Button name="submit" id="submit" value="adminListing">
@@ -28,10 +28,10 @@
                                 </div>
                             </div>
                             </Button>
-                            <input type="hidden" name="submit" id="submit" value="adminListing">
+                           <!--  <input type="hidden" name="submit" id="submit" value="adminListing"> -->
                            </form>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
                             <form action="/employeelisting" method="post"> 
@@ -54,17 +54,21 @@
                            </form>
                         </div>
                     </div> 
-                     
+                    
+                    
+                    
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30"> 
+                        <div class="hpanel widget-int-shape responsive-mg-b-30">
+                        
+                        
                            <form action="/uploadfile" method="post" enctype="multipart/form-data"> 
 	                            <Button name="submit" id="submit" value="orgListing">
 	                            <div class="panel-body">
 	                                <div class="stats-title pull-left">
-	                                    <h4>Company Chart</h4>
+	                                    <h4>Add Company Chart</h4>
 	                                </div>
 	                                <div class="stats-icon pull-right">
-	                                    <i class="educate-icon educate-library"></i>
+	                                    <i class="educate-icon educate-professor"></i>
 	                                </div>
 	                                <div class="m-t-xl widget-cl-1"> 
 	                                    <small>
@@ -77,31 +81,11 @@
                            </form>  
                         </div>
                     </div>  
+                    
+                    
+                    
+                    
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30">
-                            <form action="/announcelisting" method="post"> 
-	                            <Button name="submit" id="submit" value="announcementListing">
-	                            <div class="panel-body">
-	                                <div class="stats-title pull-left">
-	                                    <h4>Announcement</h4>
-	                                </div>
-	                                <div class="stats-icon pull-right">
-	                                    <i class="educate-icon educate-department"></i>
-	                                </div>
-	                                <div class="m-t-xl widget-cl-1"> 
-	                                    <small>
-											You can add organization important message as well as drop the announcement to publish.	 
-										</small>
-	                                </div>
-	                            </div>
-	                            </Button> 
-                           </form>
-                        </div>
-                    </div>   
-                </div>
-                <br />
-                <div class="row">
-                	 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30">
                          <a href="add_qms.jsp">
                             <div class="panel-body">
@@ -119,7 +103,10 @@
                             </div>
                           </a>
                         </div>
-                    </div>
+                    </div> 
+                </div>
+                <br />
+                <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
                             <a href="add_knowledgebase.jsp">
@@ -159,7 +146,27 @@
                         </div>
                     </div>
                     
-                  
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="hpanel widget-int-shape responsive-mg-b-30">
+                            <form action="/announcelisting" method="post"> 
+	                            <Button name="submit" id="submit" value="announcementListing">
+	                            <div class="panel-body">
+	                                <div class="stats-title pull-left">
+	                                    <h4>Manage Announcement</h4>
+	                                </div>
+	                                <div class="stats-icon pull-right">
+	                                    <i class="educate-icon educate-department"></i>
+	                                </div>
+	                                <div class="m-t-xl widget-cl-1"> 
+	                                    <small>
+											You can add organization important announcement as well as drop the announcement.	 
+										</small>
+	                                </div>
+	                            </div>
+	                            </Button> 
+                           </form>
+                        </div>
+                    </div> 
                     
                     
                 </div><br /><br /><br /><br /><br /><br /><br /> 

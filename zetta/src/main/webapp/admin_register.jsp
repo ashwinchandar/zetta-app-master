@@ -82,13 +82,21 @@
 																			<option value="Krishnagiri">Krishnagiri</option> 
 																	</select>
                                                                 </div> 
-                                                                <div class="form-group"> 
+                                                                <div class="form-group">
+                                                                    <select name="role" class="form-control" value="${ab.location}" required>
+																			<option value="none" selected="" disabled="">Select Role</option>
+																			<option value="Master">Master</option>
+																			<option value="Admin">Admin</option> 
+																			<option value="Moderator">Moderator</option> 
+																	</select>
+                                                                </div> 
+                                                               <!--  <div class="form-group"> 
 				                                                   <div class="i-checks pull-left">
                                                                      <label>
 																	 <input type="checkbox" name="role" value="Admin" required> <i></i> Admin 
 																	 </label>
                                                                    </div>  
-                                                                </div>
+                                                                </div> -->
                                                                 <div class="form-group">
                                                                     <input name="password1" type="password" class="form-control" placeholder="Password" value="${ab.password1}" required>
                                                                 </div>

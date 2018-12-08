@@ -23,14 +23,14 @@
 									<div class="row">
 									<table class="full-right">
 									<td>
-										<a href="admin.jsp"
+										<a href="/admin.jsp"
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-1 col-md-12">
 											<span><i class="fa fa-arrow-left"></i> <span>Back to Main</span>
 										</span>
 										</a>
 									</td>
 									<td>
-										<a href="admin_register.jsp"
+										<a href="/admin_register.jsp"
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-2 col-md-12">
 											<span> <i class="fa fa-plus"></i> <span>Create</span>
 										</span>
@@ -52,12 +52,12 @@
 										<tr> 
 											<th data-field="state" data-checkbox="false">Admin Card No</th>
 											<th data-field="id">Name</th>
-											<th data-field="name" data-editable="false">DOB</th>
-											<th data-field="email" data-editable="false">Department</th>
-											<th data-field="phone" data-editable="false">Designation</th>
-											<th data-field="complete">Email</th>
-											<th data-field="task" data-editable="false">Mobile</th>
-											<th data-field="date" data-editable="false">Location</th> 
+											<th data-field="name" data-editable="false">Department</th>
+											<th data-field="email" data-editable="false">Designation</th>
+											<th data-field="phone" data-editable="false">Email</th>
+											<th data-field="complete">Mobile</th>
+											<th data-field="task" data-editable="false">Location</th>
+											<th data-field="date" data-editable="false">Role</th> 
 											<th data-field="price" data-editable="false">Edit</th>
 											<th data-field="action">Remove</th>
 										</tr>
@@ -66,13 +66,13 @@
                                         <c:forEach var="details" items="${list}" varStatus="status">
                                             <tr>
 												<td>${details.admin_card_no}</td>
-												<td>${details.name}</td>
-												<td>${details.dob}</td>
+												<td>${details.name}</td> 
 												<td>${details.department}</td>
 												<td>${details.designation}</td>
 												<td>${details.email}</td>
 												<td>${details.mobile}</td>
 												<td>${details.location}</td> 
+												<td>${details.role}</td>
                                                 <td><a href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a></td>
 		        								<td><a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 		
                                             </tr> 

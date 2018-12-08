@@ -40,7 +40,7 @@ public class AdminController {
 	public String logout(HttpServletRequest request,ModelMap model) {
 		if(request.getSession()!=null) {
 			request.getSession().invalidate();
-			model.addAttribute("adminsuccessmsg", "Successfully logged out");
+			model.addAttribute("adminlogout", "Successfully logged out");
 		}
 		return "login";
 	} 
@@ -56,14 +56,28 @@ public class AdminController {
 		
 		AdminBean ab = adao.getAdmin(adminid, password); 
 		if(ab != null) {
-			if(ab.getRole() != null && ab.getRole().trim().equals("Admin")) { 
-				model.addAttribute("adminsuccessmsg", "Successfully logged In");
+			if(ab.getRole() != null && ab.getRole().trim().equals("Master")) { 
+				model.addAttribute("mastersuccess", "Successfully logged In");
+				model.addAttribute("name", ab.getName());
+				List<AdminBean> list = adao.getAdmins();
+				model.addAttribute("list", list);
+				request.getSession().setAttribute("USER", ab);
+				return "master";
+			} else if(ab.getRole() != null && ab.getRole().trim().equals("Admin")) { 
+				model.addAttribute("adminsuccess", "Successfully logged In");
 				model.addAttribute("name", ab.getName());
 				List<AdminBean> list = adao.getAdmins();
 				model.addAttribute("list", list);
 				request.getSession().setAttribute("USER", ab);
 				return "admin";
-			}else {
+			} else if(ab.getRole() != null && ab.getRole().trim().equals("Moderator")) {
+				model.addAttribute("moderatorsuccess", "Successfully logged In");
+				model.addAttribute("name", ab.getName());
+				List<AdminBean> list = adao.getAdmins();
+				model.addAttribute("list", list);
+				request.getSession().setAttribute("USER", ab);
+				return "adminmoderator";
+			} else {
 				model.addAttribute("errormsg","Username or Password is incorrect");
 				return "login";
 			}
@@ -74,6 +88,9 @@ public class AdminController {
 
 	@RequestMapping("/register")
 	public String register(HttpServletRequest request,ModelMap model) {
+		AdminDAO adao=new AdminDAO();
+		List<AdminBean> list = adao.getAdmins();  
+		model.addAttribute("list", list);
 		return "admin_register";
 	}
 
@@ -94,7 +111,9 @@ public class AdminController {
 		ab.setLocation(request.getParameter("location"));
 		ab.setRole(request.getParameter("role").trim());  
 		ab.setPassword1(password); 
-		adao.insertAdmin(ab);
+		adao.insertAdmin(ab); 
+		List<AdminBean> list = adao.getAdmins();  
+		model.addAttribute("list", list);
 		model.addAttribute("successMessage","Admin Registered successfully.");
 		return "adminListing";
 	}

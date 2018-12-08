@@ -77,7 +77,7 @@
                     <div class="panel-body">
                         <form action="/login" method="post">
                         	<p style="color:red" align="center">${errormsg}</p>  
-                        	<p style="color:green" align="center">${logout}</p>  
+                        	<p style="color:green" align="center">${adminlogout}</p>  
                             <div class="form-group">
                                 <label class="control-label" for="username">Care Number</label>
                                 <input type="text" placeholder="eg:Z9001" title="Please enter you username" required="Enter your Card Number" value="" name="admin_card_no" id="admin_card_no" class="form-control">
