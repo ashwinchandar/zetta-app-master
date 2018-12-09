@@ -34,24 +34,24 @@
                                                             <div class="form-group">
                                                                <input type="hidden" id="knowledgeid" name="knowledgeid" value='${kb.knowledgeid}' readonly="readonly">
                                                             </div>
-															<div class="form-group">
+															<div class="form-group"> 
 																<select name="category" class="form-control" value="${kb.category}" required>
-																	<option value="none" selected="" disabled="">Select Category</option>
-																	<option value="Finance">Finance</option>
-																	<option value="Operation">Operation</option>
-																	<option value="SCM">SCM</option>
-																	<option value="Hardware">Hardware</option>
-																	<option value="Software">Software</option>
-																	<option value="IT">IT</option>
-																	<option value="PCBDesign">PCB Design</option>
-																	<option value="PCBLibrary">PCB Library</option> 
+																	<option value="none" disabled="">Select Category</option>
+																	<option value="Finance" ${kb.category eq"Finance"?'selected':""}>Finance</option>
+																	<option value="Operation" ${kb.category eq"Operation"?'selected':""}>Operation</option>
+																	<option value="SCM" ${kb.category eq"SCM"?'selected':""}>SCM</option>
+																	<option value="Hardware" ${kb.category eq"Hardware"?'selected':""}>Hardware</option>
+																	<option value="Software" ${kb.category eq"Software"?'selected':""}>Software</option>
+																	<option value="IT" ${kb.category eq"IT"?'selected':""}>IT</option>
+																	<option value="PCBDesign" ${kb.category eq"PCBDesign"?'selected':""}>PCB Design</option>
+																	<option value="PCBLibrary" ${kb.category eq"PCBLibrary"?'selected':""}>PCB Library</option> 
 																</select>
 															</div>
 															<div class="form-group">
                                                                      <input name="topic" type="text" class="form-control" placeholder="Topic" value="${kb.topic}" required>
                                                                 </div> 
                                                                 <div class="form-group res-mg-t-15">
-                                                                    <textarea name="subject" id="subject" placeholder="Message" value="${kb.subject}" required></textarea>
+                                                                    <textarea name="subject" id="subject" placeholder="Message" value="" required>${kb.subject}</textarea>
                                                                 </div> 
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div> 

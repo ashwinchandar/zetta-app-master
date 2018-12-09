@@ -1,8 +1,7 @@
 package com.zetta.app.vo;
 
 public class KnowledgeBean {
-	private Integer knowledgeid;
-	private String name;
+	private Integer knowledgeid; 
 	private String category;
 	private String topic;
 	private String subject;
@@ -33,13 +32,7 @@ public class KnowledgeBean {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
-	} 
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	}  
 	public String getCreatedDate() {
 		return createdDate;
 	}

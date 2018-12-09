@@ -7,12 +7,9 @@
 <meta charset="ISO-8859-1"> 
 </head>
 <body>
-	<form th:object="${ub}" method="POST" action="/uploadfile" enctype="multipart/form-data">
-	
-		Title: <br> <input th:field="*{title}" style="width: 300px;" /> <br /> <br /> 
-		File to upload: <input th:field="*{fileDatas}" type="file" /> <br />
-		<input type="submit" value="Upload"> 
-		
+	<form method="POST" action="/upload" enctype="multipart/form-data">
+		<input type="file" name="file" /><br />
+		<br /> <input type="submit" value="Submit" />
 	</form>
 </body>
 </html>

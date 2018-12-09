@@ -34,7 +34,6 @@ public class KnowledgeController{
 	public String knowledgeSubmit(HttpServletRequest request,ModelMap model) { 		
 		KnowledgeBean kb = new KnowledgeBean(); 
 		KnowledgeDAO kdao = new KnowledgeDAO(); 
-		kb.setName(request.getParameter("name"));
 		kb.setCategory(request.getParameter("category"));
 		kb.setTopic(request.getParameter("topic"));
 		kb.setSubject(request.getParameter("subject"));
@@ -86,6 +85,7 @@ public class KnowledgeController{
 		}
 		KnowledgeDAO kdao = new KnowledgeDAO();
 		KnowledgeBean kb = kdao.editKnowledgebase(knowledgeid);
+		
 		model.addAttribute("kb", kb);
 		return "editKnowledge";  
 	}
@@ -97,14 +97,19 @@ public class KnowledgeController{
 		if(knowledge != null) {
 			knowledgeid = Integer.parseInt(knowledge);
 		} 
-		KnowledgeDAO kdao = new KnowledgeDAO();
-		KnowledgeBean kb = kdao.editKnowledgebase(knowledgeid);
-		kb.setKnowledgeid(knowledgeid);
-		kb.setName(request.getParameter("name"));
+		KnowledgeBean kb = new KnowledgeBean();
+		KnowledgeDAO kdao = new KnowledgeDAO(); 
+		kb.setKnowledgeid(knowledgeid); 
 		kb.setCategory(request.getParameter("category"));
 		kb.setTopic(request.getParameter("topic"));
 		kb.setSubject(request.getParameter("subject"));
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER");  
+		kb.setUpdatedBy(ab.getName());
+		kdao.updateKnowldegebase(kb);
 		List<KnowledgeBean> list = kdao.getknowledgebaselist();
+		/*System.out.println("category");*/
+		
 		model.addAttribute("list", list); 
 		model.addAttribute("kb", kb);
 		return "knowledgebaseListing";
