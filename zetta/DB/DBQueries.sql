@@ -88,6 +88,7 @@ SELECT * FROM admin_register WHERE admin_card_no='H021' and password1='Ze88@0ne'
 
 CREATE TABLE knowledgebase(
 knowledge_id serial PRIMARY KEY,
+name CHARACTER VARYING(50),
 category CHARACTER VARYING(100),
 topic CHARACTER VARYING(200),
 subject CHARACTER VARYING,
@@ -103,3 +104,24 @@ WHERE
     DATE_PART('day', dob) = date_part('day', CURRENT_DATE)
 AND
     DATE_PART('month', dob) = date_part('month', CURRENT_DATE);
+    
+update admin_register set role='MASTER' where admin_card_no='H021';
+update admin_register set role='ADMIN' where admin_card_no='Z086';
+update admin_register set role='AMODERATOR' where admin_card_no='T20';
+
+update admin_register set password1='1234';
+
+update admin_register set role='ADMIN' where admin_card_no='Z086';
+update admin_register set role='AMODERATOR' where admin_card_no='T20';
+
+CREATE TABLE knowledgebase(
+knowledge_id serial PRIMARY KEY,
+name CHARACTER VARYING(30),
+category CHARACTER VARYING(100),
+topic CHARACTER VARYING(200),
+subject CHARACTER VARYING,
+created_date TIMESTAMP WITH TIME ZONE,
+created_by CHARACTER VARYING(30),
+updated_date TIMESTAMP WITH TIME ZONE,
+updated_by CHARACTER VARYING(30)
+);

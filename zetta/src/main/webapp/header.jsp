@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!doctype html>
 <html class="no-js" lang="en"> 
 <head>
@@ -208,7 +208,7 @@
                             <a title="QMS" href="qms.jsp" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
                         </li>
                         <li>
-                            <a title="Knowledge Base" href="knowledgebase.jsp" aria-expanded="false"><span class="educate-icon educate-form icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Knowledge Base</span></a>
+                            <a title="Knowledge Base" href="/knowledgebase" aria-expanded="false"><span class="educate-icon educate-form icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Knowledge Base</span></a>
                         </li>
                         <li>
                             <a title="Calendar" href="calendar.jsp" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Company Calendar</span></a>
@@ -252,14 +252,14 @@
                                             <ul class="nav navbar-nav mai-top-nav">
                                                 <li class="nav-item"><a href="/" class="nav-link">Home</a>
                                                 </li>
-                                                <li class="nav-item"><a href="/employeedirectory" class="nav-link">Employee Directory</a>
+                                                <!-- <li class="nav-item"><a href="/employeedirectory" class="nav-link">Employee Directory</a>
                                                 </li>
                                                 <li class="nav-item"><a href="qms.jsp" class="nav-link">QMS</a>
                                                 </li> 
-                                                <li class="nav-item"><a href="knowledgebase.jsp" class="nav-link">Knowledge Base</a>
+                                                <li class="nav-item"><a href="/knowledgebase" class="nav-link">Knowledge Base</a>
                                                 </li>
                                                 <li class="nav-item"><a href="calendar.jsp" class="nav-link">Company Calendar</a>
-                                                </li> 
+                                                </li> -->   
                                                 <c:choose>
                                                 <c:when test="${ not empty sessionScope.USER}"> 
                                                  <li class="nav-item"><a href="/logout" class="nav-link">Logout</a>

@@ -26,7 +26,9 @@ public class AnnounceController   {
 		ab.setTitle(request.getParameter("title"));
 		ab.setDate(request.getParameter("date"));
 		ab.setAnnouncement(request.getParameter("announcement"));
-		adao.insertAnnouncement(ab);
+		adao.insertAnnouncement(ab); 
+		List<AnnounceBean> list = adao.getAnnouncementslist();
+		model.addAttribute("list", list);
 		model.addAttribute("announce", "Announcement Published."); 
 		return "announcementListing";
 	}

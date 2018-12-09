@@ -7,11 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.zetta.app.dbconnection.DBConnection;
 import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.AdminBean;
+import com.zetta.app.vo.RoleVO;
 
 public class AdminDAO {
 
@@ -77,7 +79,7 @@ public class AdminDAO {
 			rs=ps.executeQuery(); 
 			while(rs.next()) {  
 				ab.setAdmin_card_no(rs.getString("admin_card_no"));
-				ab.setName(rs.getString("admin_name"));
+				ab.setName(rs.getString("admin_name").trim());
 				ab.setDob(rs.getString("dob"));
 				ab.setDepartment(rs.getString("department"));
 				ab.setDesignation(rs.getString("designation"));
@@ -85,7 +87,7 @@ public class AdminDAO {
 				BigDecimal bigdecimal = rs.getBigDecimal("mobile");
 				ab.setMobile(bigdecimal.toString());
 				ab.setLocation(rs.getString("location"));
-				ab.setRole(rs.getString("role"));
+				ab.setRole(rs.getString("role").trim());
 				ab.setPassword1(rs.getString("password1"));  
 			}  
 		} catch(Exception e) {
@@ -171,6 +173,29 @@ public class AdminDAO {
 		} 
 		return list;  
 	}
+	
+	
+	public String getRole(String role){
+		System.out.println("role dao:" +role);
+		ResultSet rs = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM role WHERE role=?");
+			ps.setString(1, role.trim());
+			System.out.println("role dao ps:" +ps.toString());
+			rs = ps.executeQuery();
+			if(rs.next()) {  
+				System.out.println("role dao rs:" +rs.getString("access"));
+				return rs.getString("access"); 
+			} 
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			 closeConnectionrspscon(rs, ps, con);
+		} 
+		return "";  
+	}
+	
 	
 	public boolean validateLogin(String adminid, String pass) {
 		boolean isValid = false;

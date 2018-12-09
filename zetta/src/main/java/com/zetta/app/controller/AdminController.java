@@ -24,6 +24,7 @@ public class AdminController {
 		AnnounceDAO adao = new AnnounceDAO();
 		List<AnnounceBean> list = adao.getAnnouncements();
 		model.addAttribute("list", list);
+		
 		EmployeeDAO edao = new EmployeeDAO();
 		List<EmployeeBean> birthList = edao.getEmployeeBirthday();
 		model.addAttribute("birthList", birthList);
@@ -49,41 +50,23 @@ public class AdminController {
 	public String loginSubmit(HttpServletRequest request,ModelMap model) {
 		AdminDAO adao=new AdminDAO();
 		String adminid = request.getParameter("admin_card_no");
-		String password = request.getParameter("password1");
-		
-		/*System.out.println("user" + adminid);
-		System.out.println("pass" + password);*/
-		
-		AdminBean ab = adao.getAdmin(adminid, password); 
-		if(ab != null) {
-			if(ab.getRole() != null && ab.getRole().trim().equals("Master")) { 
-				model.addAttribute("mastersuccess", "Successfully logged In");
-				model.addAttribute("name", ab.getName());
-				List<AdminBean> list = adao.getAdmins();
-				model.addAttribute("list", list);
-				request.getSession().setAttribute("USER", ab);
-				return "master";
-			} else if(ab.getRole() != null && ab.getRole().trim().equals("Admin")) { 
-				model.addAttribute("adminsuccess", "Successfully logged In");
-				model.addAttribute("name", ab.getName());
-				List<AdminBean> list = adao.getAdmins();
-				model.addAttribute("list", list);
-				request.getSession().setAttribute("USER", ab);
-				return "admin";
-			} else if(ab.getRole() != null && ab.getRole().trim().equals("Moderator")) {
-				model.addAttribute("moderatorsuccess", "Successfully logged In");
-				model.addAttribute("name", ab.getName());
-				List<AdminBean> list = adao.getAdmins();
-				model.addAttribute("list", list);
-				request.getSession().setAttribute("USER", ab);
-				return "adminmoderator";
-			} else {
-				model.addAttribute("errormsg","Username or Password is incorrect");
-				return "login";
-			}
-		}
-		model.addAttribute("CURRENT_USER", ab);
-		return "login";
+		String password = request.getParameter("password1"); 
+		AdminBean ab = adao.getAdmin(adminid, password);  
+		if(ab != null) { 
+			model.addAttribute("mastersuccess", "Successfully logged In");
+			model.addAttribute("name", ab.getName());
+			String role = adao.getRole(ab.getRole());
+			List<AdminBean> list = adao.getAdmins(); 
+			System.out.println("role: " +role);
+			request.getSession().setAttribute("ROLE", role);
+			model.addAttribute("list", list);
+			request.getSession().setAttribute("USER", ab);
+			model.addAttribute("CURRENT_USER", ab);
+			return "menu"; 
+		} else {
+			model.addAttribute("errormsg","Username or Password is incorrect");
+			return "login";
+		}   
 	}
 
 	@RequestMapping("/register")

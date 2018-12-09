@@ -41,7 +41,9 @@ public class EmployeeController {
 		eb.setEmail(request.getParameter("email"));
 		eb.setMobile(request.getParameter("mobile"));
 		eb.setLocation(request.getParameter("location"));
-		edao.insertEmployee(eb);
+		edao.insertEmployee(eb); 
+		List<EmployeeBean> list = edao.getEmployees(); 
+		model.addAttribute("list", list); 
 		model.addAttribute("empsucmsg", "Employee Added Successfully"); 
 		return "employeeListing";
 	}

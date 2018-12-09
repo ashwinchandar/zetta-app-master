@@ -78,23 +78,19 @@
                                                                 </div> 
                                                                 <div class="form-group">
                                                                     <select name="location" class="form-control" value="${ab.location}" required>
-																			<option value="none" selected="" disabled="">Select Location *</option>
-																			<option value="bangalore">Bangalore</option>
-																			<option value="krishnagiri">Krishnagiri</option> 
+																			<option value="none" selected="" disabled="">Select Location</option>
+																			<option value="Bangalore" ${ab.location eq"Bangalore"?'selected':""}>Bangalore</option>
+																			<option value="Krishnagiri" ${ab.location eq"Krishnagiri"?'selected':""}>Krishnagiri</option> 
 																	</select>
                                                                 </div> 
                                                                 <div class="form-group">
-                                                                  <%--   <select name="role" class="form-control" value="${ab.role}" required>
-																		<option value="none" selected="" disabled="">Select Role</option>
-																		<option value="admin">Admin</option> 
-																	</select>  --%> 
-				                                                   <div class="i-checks pull-left">
-                                                                     <label>
-																	 <input type="checkbox" name="role" value="admin" required> <i></i> Admin 
-																	 </label>
-                                                                   </div>  
-                                                                </div>
-                                                                
+                                                                    <select name="role" class="form-control" value="${ab.role}" required>
+																			<option value="none" disabled="">Select Role</option>
+																			<option value="MASTER" ${ab.role eq"MASTER"?'selected':""}>Master</option>
+																			<option value="ADMIN" ${ab.role eq"ADMIN"?'selected':""}>Admin</option> 
+																			<option value="AMODERATOR" ${ab.role eq"AMODERATOR"?'selected':""}>Moderator</option> 
+																	</select>
+                                                                </div> 
                                                                 <div class="form-group">
                                                                     <input name="password1" type="password" class="form-control" id="password-field" placeholder="Password" value="${ab.password1}" required>
                                                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> 

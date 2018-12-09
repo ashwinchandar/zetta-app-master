@@ -78,16 +78,16 @@
                                                                 <div class="form-group">
                                                                     <select name="location" class="form-control" value="${ab.location}" required>
 																			<option value="none" selected="" disabled="">Select Location</option>
-																			<option value="Bangalore">Bangalore</option>
-																			<option value="Krishnagiri">Krishnagiri</option> 
+																			<option value="Bangalore" ${ab.location eq"Bangalore"?'selected':""}>Bangalore</option>
+																			<option value="Krishnagiri" ${ab.location eq"Krishnagiri"?'selected':""}>Krishnagiri</option> 
 																	</select>
                                                                 </div> 
                                                                 <div class="form-group">
-                                                                    <select name="role" class="form-control" value="${ab.location}" required>
+                                                                    <select name="role" class="form-control" value="${ab.role}" required>
 																			<option value="none" selected="" disabled="">Select Role</option>
-																			<option value="Master">Master</option>
-																			<option value="Admin">Admin</option> 
-																			<option value="Moderator">Moderator</option> 
+																			<option value="MASTER" ${ab.role eq"MASTER"?'selected':""}>Master</option>
+																			<option value="ADMIN" ${ab.role eq"ADMIN"?'selected':""}>Admin</option> 
+																			<option value="AMODERATOR" ${ab.role eq"AMODERATOR"?'selected':""}>Moderator</option> 
 																	</select>
                                                                 </div> 
                                                                <!--  <div class="form-group"> 

@@ -75,10 +75,10 @@
                                                                 	<input name="mobile" type="number" class="form-control" pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" placeholder="Mobile No." value="${eb.mobile}" required>
                                                                 </div> 
                                                                 <div class="form-group">
-                                                                    <select name="location" id="location" class="form-control" value="${eb.location}" required>
-																			<option value="none" selected="" disabled="">Select Location</option>
-																			<option value="Bangalore">Bangalore</option>
-																			<option value="Krishnagiri">Krishnagiri</option> 
+                                                                    <select name="location" class="form-control" value="${ab.location}" required>
+																			<option value="none" disabled="">Select Location</option>
+																			<option value="Bangalore" ${ab.location eq"Bangalore"?'selected':""}>Bangalore</option>
+																			<option value="Krishnagiri" ${ab.location eq"Krishnagiri"?'selected':""}>Krishnagiri</option> 
 																	</select>
                                                                 </div>   
                                                             </div>
