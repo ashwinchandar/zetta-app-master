@@ -29,18 +29,6 @@
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=IT"> IT </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
-											<div class="review-content-section">
-												<div class="chat-discussion" style="height: auto">
-													<div class="message">
-														<a class="message-author full-right"
 															href="/getAllKnowledgeBase?id=Finance"> Finance </a><br /> <span
 															class="message-date full-right">To do Know what
 															you...</span> 
@@ -53,7 +41,79 @@
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=Operation"> Operation </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
 															href="/getAllKnowledgeBase?id=SCM"> SCM </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=Hardware"> Hardware </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=Software"> Software </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=IT"> IT </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=PCBDesign"> PCB Design </a><br /> <span
+															class="message-date full-right">To do Know what
+															you...</span> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=PCBLibrary"> PCB Library </a><br /> <span
 															class="message-date full-right">To do Know what
 															you...</span> 
 													</div>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.taglibs.standard.extra.spath.Path;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,31 +34,33 @@ public class FileUploadController {
 		model.addAttribute("ub", ub);
 		return "uploadFile";
 	}
-	
-	@PostMapping("/upload") // //new annotation since 4.3
-    public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+	 
+	@RequestMapping(value="/upload",method=RequestMethod.POST)
+		public String singleFileUpload(HttpServletRequest request,ModelMap model) {
 		
-        if (file.isEmpty()) {
+       /* System.out.println("file upload befor");
+        * if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
+            return "uploadFile";
         }
 
-        try {
-
+        try { 
             // Get the file and save it somewhere
+        	System.out.println("file upload inside try");
             byte[] bytes = file.getBytes();
             Path path = (Path) Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            /*Files.write(bytes, path);*/
-
+            System.out.println("file upload inside try path");
+            Files.write(bytes, path);
+            Files.write((java.nio.file.Path) path, bytes, null);
+            
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
-
+            
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        return "redirect:/uploadStatus";
+        }*/
+		model.addAttribute("uploadsuccess", "Your file successfully uploaded.");
+        return "uploadFile";
     }
 	
 	 

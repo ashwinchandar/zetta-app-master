@@ -12,8 +12,8 @@
 			frm.password1.focus();
 			return false;
 		}
-		if (frm.location.value != "bangalore"
-				&& frm.location.value != "krishnagiri") {
+		if (frm.location.value != "Bangalore"
+				&& frm.location.value != "Krishnagiri") {
 			alert('Select Location!');
 			frm.location.focus();
 			return false;
@@ -93,7 +93,7 @@
                                                                 </div> 
                                                                 <div class="form-group">
                                                                     <input name="password1" type="password" class="form-control" id="password-field" placeholder="Password" value="${ab.password1}" required>
-                                                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> 
+                                                                   <!--  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>  -->
                                                                 </div>
                                                                 
                                                                 <div class="form-group">

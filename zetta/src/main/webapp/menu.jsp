@@ -59,31 +59,6 @@
                         </div>
                     </div> 
                     </c:if>
-                    
-                    <c:if test = "${fn:contains(sessionScope.ROLE, 'CC')}">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30"> 
-                           <form action="/uploadfile" method="post" enctype="multipart/form-data"> 
-	                            <Button name="submit" id="submit" value="orgListing">
-	                            <div class="panel-body">
-	                                <div class="stats-title pull-left">
-	                                    <h4>Company Chart</h4>
-	                                </div>
-	                                <div class="stats-icon pull-right">
-	                                    <i class="educate-icon educate-library"></i>
-	                                </div>
-	                                <div class="m-t-xl widget-cl-1"> 
-	                                    <small>
-											You can add organization chart as well as drop organization chart as of every update may applied.	 
-										</small>
-	                                </div>
-	                            </div>
-	                            </Button>
-	                           <!--  <input type="hidden" name="submit" id="submit" value="adminListing"> -->
-                           </form>  
-                        </div>
-                    </div> 
-	                    </c:if>
 					<c:if test="${fn:contains(sessionScope.ROLE, 'KB')}">
 						<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 							<div class="hpanel widget-int-shape responsive-mg-b-30">
@@ -106,9 +81,7 @@
 							</div>
 						</div>
 					</c:if>
-				</div>
-                <br />
-                <div class="row">
+				  
                 <c:if test = "${fn:contains(sessionScope.ROLE, 'ANC')}">
                   	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
@@ -131,8 +104,34 @@
                            </form>
                         </div>
                     </div>
-                 </c:if> 
-                    <c:if test = "${fn:contains(sessionScope.ROLE, 'QMS')}">
+                 </c:if>
+                </div>
+				<%-- <c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="hpanel widget-int-shape responsive-mg-b-30">
+							<form action="/uploadfile" method="get"
+								enctype="multipart/form-data">
+								<Button name="submit" id="submit" value="orgListing">
+									<div class="panel-body">
+										<div class="stats-title pull-left">
+											<h4>Company Chart</h4>
+										</div>
+										<div class="stats-icon pull-right">
+											<i class="educate-icon educate-library"></i>
+										</div>
+										<div class="m-t-xl widget-cl-1">
+											<small> You can add organization chart as well as
+												drop organization chart as of every update may applied. </small>
+										</div>
+									</div>
+								</Button>
+								<!--  <input type="hidden" name="submit" id="submit" value="adminListing"> -->
+							</form>
+						</div>
+					</div>
+				</c:if> --%>
+				 
+                    <%-- <c:if test = "${fn:contains(sessionScope.ROLE, 'QMS')}">
                   	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30">
                          <a href="add_qms.jsp">
@@ -152,8 +151,8 @@
                           </a>
                         </div>
                     </div>  
-                    </c:if>
-                    <c:if test = "${fn:contains(sessionScope.ROLE, 'CL')}">
+                    </c:if> --%>
+                   <%--  <c:if test = "${fn:contains(sessionScope.ROLE, 'CL')}">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">
                          <a href="add_calendar.jsp">
@@ -173,7 +172,7 @@
                             </a>
                         </div>
                     </div>  
-                    </c:if>
+                    </c:if> --%>
                 </div><br /><br /><br /><br /><br /><br /><br /> 
             </div>
         </div>

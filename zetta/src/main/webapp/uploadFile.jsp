@@ -6,10 +6,22 @@
 <%@ include file = "header.jsp" %> 
 <meta charset="ISO-8859-1"> 
 </head>
-<body>
+<body><br/><br />
 	<form method="POST" action="/upload" enctype="multipart/form-data">
-		<input type="file" name="file" /><br />
-		<br /> <input type="submit" value="Submit" />
+	<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div>
+		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			<div class="file-upload-inner file-upload-inner-right ts-forms">
+				<div class="input append-small-btn">
+					<div class="file-button">
+						Browse <input type="file"
+							onchange="document.getElementById('append-small-btn').value = this.value;">
+					</div>
+					<input type="text" id="append-small-btn"
+						placeholder="no file selected">
+				</div>
+			</div>
+		</div>
+	<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div>
 	</form>
 </body>
 </html>

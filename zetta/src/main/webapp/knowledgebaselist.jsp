@@ -25,7 +25,7 @@
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-9 col-md-3">
 											<span><i class="fa fa-arrow-left"></i> <span>Back to Category</span>
 										</span>
-										</a>
+										</a><br />
 											<c:if test="${not empty list}">
 												<c:forEach var="knowledge" items="${list}" varStatus="status">
 													<div class="review-content-section">
