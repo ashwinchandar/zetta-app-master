@@ -104,8 +104,7 @@ public class KnowledgeDAO {
 				kb.setCreatedDate(rs.getString("created_date"));
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(rs.getString("updated_date"));
-				kb.setUpdatedBy(rs.getString("updated_by"));
-				
+				kb.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(kb);
 			}
 		} catch(Exception e) {

@@ -62,6 +62,7 @@ public class AdminController {
 			model.addAttribute("list", list);
 			request.getSession().setAttribute("USER", ab);
 			model.addAttribute("CURRENT_USER", ab);
+			request.getSession().setAttribute("USER_NAME", ab.getName());
 			return "menu"; 
 		} else {
 			model.addAttribute("errormsg","Username or Password is incorrect");

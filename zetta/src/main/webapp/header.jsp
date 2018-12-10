@@ -205,7 +205,7 @@
                             <a title="Employee directory" href="/employeedirectory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
                         </li>
                         <li>
-                            <a title="QMS" href="qms.jsp" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
+                            <a title="QMS" href="/qms" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
                         </li>
                         <li>
                             <a title="Knowledge Base" href="/knowledgebase" aria-expanded="false"><span class="educate-icon educate-form icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Knowledge Base</span></a>
@@ -262,11 +262,11 @@
                                                 </li> -->   
                                                 <c:choose>
                                                 <c:when test="${ not empty sessionScope.USER}"> 
-                                                 <li class="nav-item"><a href="/logout" class="nav-link">Logout</a>
+                                                 <li class="nav-item login2 pull-right pull-right-pro"><a href="/logout" class="nav-link">${sessionScope.USER_NAME}</a>
                                                 </li> 
                                                 </c:when>
                                                 <c:otherwise>
-                                                 <li class="nav-item"><a href="/login" class="nav-link">Login</a>
+                                                 <li class="nav-item login2 pull-right pull-right-pro"><a href="/login" class="nav-link">Login</a>
                                                 </li> 
                                                 </c:otherwise>  
                                                 </c:choose>                                            

@@ -125,3 +125,15 @@ created_by CHARACTER VARYING(30),
 updated_date TIMESTAMP WITH TIME ZONE,
 updated_by CHARACTER VARYING(30)
 );
+
+create table fileupload(
+file_id serial primary key,
+filename character varying(50),
+filepath character varying,
+created_date TIMESTAMP WITH TIME ZONE,
+created_by CHARACTER VARYING(30),
+updated_date TIMESTAMP WITH TIME ZONE,
+updated_by CHARACTER VARYING(30)
+);
+
+select * from fileupload;

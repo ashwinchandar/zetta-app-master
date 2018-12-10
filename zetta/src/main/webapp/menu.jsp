@@ -106,11 +106,34 @@
                     </div>
                  </c:if>
                 </div>
-				<%-- <c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
+                <div class="row">
+					<c:if test="${fn:contains(sessionScope.ROLE, 'QMS')}">
+						<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12"> 
+							<div class="hpanel widget-int-shape responsive-mg-b-30">
+							<form action="/uploadfile" method="get" enctype="multipart/form-data">
+								<Button name="submit" id="submit" value="orgListing">
+									<div class="panel-body">
+										<div class="stats-title pull-left">
+											<h4>Manage QMS</h4>
+										</div>
+										<div class="stats-icon pull-right">
+											<i class="educate-icon educate-data-table"></i>
+										</div>
+										<div class="m-t-xl widget-cl-1">
+											<small> You can add Quality Management Documents as
+												well as drop QMS document.  </small>
+										</div>
+									</div>
+								</Button> 
+							</form>
+						</div>
+						</div>
+					</c:if>
+				</div>
+					<%--  <c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 						<div class="hpanel widget-int-shape responsive-mg-b-30">
-							<form action="/uploadfile" method="get"
-								enctype="multipart/form-data">
+							<form action="/uploadfile" method="get" enctype="multipart/form-data">
 								<Button name="submit" id="submit" value="orgListing">
 									<div class="panel-body">
 										<div class="stats-title pull-left">
@@ -124,34 +147,12 @@
 												drop organization chart as of every update may applied. </small>
 										</div>
 									</div>
-								</Button>
-								<!--  <input type="hidden" name="submit" id="submit" value="adminListing"> -->
+								</Button> 
 							</form>
 						</div>
 					</div>
-				</c:if> --%>
-				 
-                    <%-- <c:if test = "${fn:contains(sessionScope.ROLE, 'QMS')}">
-                  	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30">
-                         <a href="add_qms.jsp">
-                            <div class="panel-body">
-                                <div class="stats-title pull-left">
-                                    <h4>Add QMS</h4>
-                                </div>
-                                <div class="stats-icon pull-right">
-                                    <i class="educate-icon educate-data-table"></i>
-                                </div>
-                                <div class="m-t-xl widget-cl-3"> 
-                                    <small>
-										You can add Quality Management Documents as well as drop QMS document.
-									</small>
-                                </div>
-                            </div>
-                          </a>
-                        </div>
-                    </div>  
-                    </c:if> --%>
+				</c:if>  --%> 
+                    
                    <%--  <c:if test = "${fn:contains(sessionScope.ROLE, 'CL')}">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">

@@ -7,14 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-
-import com.zetta.app.vo.UploadBean;
-
 @SpringBootApplication
 @ComponentScan("com.zetta.app")
-@EnableConfigurationProperties({
-	  UploadBean.class
-})
+ 
 public class ZettaApplication extends SpringBootServletInitializer { 
 	
 	@Override
