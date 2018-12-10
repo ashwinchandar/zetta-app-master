@@ -12,16 +12,15 @@
 		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			<div class="file-upload-inner file-upload-inner-right ts-forms">
 				<div class="input append-small-btn">
-					<div class="file-button">
-						Browse <input type="file"
-							onchange="document.getElementById('append-small-btn').value = this.value;">
-					</div>
-					<input type="text" id="append-small-btn"
-						placeholder="no file selected">
+					    <input type="file"  name="files" multiple="multiple"/><br/><br/>
 				</div>
 			</div>
 		</div>
-	<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+	<div class="form-control">
+						 <input type="submit" value="Submit" id="btnSubmit"/>
+					</div>
+	</div>
 	</form>
 </body>
 </html>
