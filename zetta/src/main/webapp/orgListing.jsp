@@ -14,7 +14,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="product-payment-inner-st">
 							<ul id="myTabedu1" class="tab-review-design">
-								<center><li class="active"><a href="">File Upload Listing</a></li></center>
+								<center><li class="active"><a href="">Organization Chart Listing</a></li></center>
 							</ul>
 
 							<div id="myTabContent" class="tab-content custom-product-edit">
@@ -30,7 +30,7 @@
 										</a>
 									</td>
 									<td>
-										<a href="/uploadFile.jsp"
+										<a href="/add_organizationchart.jsp"
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-2 col-md-12">
 											<span> <i class="fa fa-plus"></i> <span>Create</span>
 										</span>
@@ -63,20 +63,20 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="upload" items="${list}"
+													<c:forEach var="org" items="${list}"
 														varStatus="status">
 														<tr>
-															<td>${upload.fileName}</td>
-															<td>${upload.filePath}</td>
-															<td>${upload.createdDate}</td>
-															<td>${upload.createdBy}</td>  
+															<td>${org.fileName}</td>
+															<td>${org.filePath}</td>
+															<td>${org.createdDate}</td>
+															<td>${org.createdBy}</td>  
 															<td><a
 																onclick="return confirm('Are you sure you want to delete?')"
-																href="<c:url value='/upload/delete?id=${list[status.index].fileId}' />"
+																href="<c:url value='/organizationchart/delete?id=${list[status.index].orgId}' />"
 																title="Trash">
-																	<center>
-																		<i class="fa fa-trash-o" aria-hidden="true"></i>
-																	</center>
+															<center>
+																<i class="fa fa-trash-o" aria-hidden="true"></i>
+															</center>
 															</a></td> 
 														</tr>
 													</c:forEach>

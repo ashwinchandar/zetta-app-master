@@ -24,98 +24,84 @@
 								id="description">
 								<form action="/knowledgelisting" method="get">
 									<div class="row">
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Finance"> Finance </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=Finance"><img src="../../img/knowledgebase/finance.png" alt="" /></a>    
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Operation"> Operation </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=Operation"><img src="../../img/knowledgebase/h.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=SCM"> SCM </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=SCM"><img src="../../img/knowledgebase/scm.jpg" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Hardware"> Hardware </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=Hardware"><img src="../../img/knowledgebase/hardware.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Software"> Software </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=Software"><img src="../../img/knowledgebase/software.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=IT"> IT </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=IT"><img src="../../img/knowledgebase/itadmin.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=PCBDesign"> PCB Design </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=PCBDesign"><img src="../../img/knowledgebase/pcb.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=PCBLibrary"> PCB Library </a><br /> <span
-															class="message-date full-right">To do Know what
-															you...</span> 
+															href="/getAllKnowledgeBase?id=PCBLibrary"><img src="../../img/knowledgebase/pcblibrary.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>

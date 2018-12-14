@@ -17,18 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
-
 import com.zetta.app.dao.FileUploadDAO;
-import com.zetta.app.dao.KnowledgeDAO;
 import com.zetta.app.vo.AdminBean;
 import com.zetta.app.vo.FileVo;
-import com.zetta.app.vo.KnowledgeBean;
+
 @Controller  
 public class FileUploadController {
 
  
-	private static String UPLOADED_FOLDER = "../zetta/src/main/resources/static/uploadedfiles";
+	private static String UPLOADED_FOLDER = "../zetta/uploadedfiles";
 	
 	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
 	   public String uploadFileHandler(Model model) {
@@ -66,6 +63,8 @@ public class FileUploadController {
 				FileUploadDAO fdao = new FileUploadDAO();
 				fdao.insertUploadfile(fv);
 				Files.write(filePath, file.getBytes());
+				List<FileVo> list = fdao.getFileuploadlist(); 
+				model.addAttribute("list", list); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -102,13 +101,5 @@ public class FileUploadController {
 		List<FileVo> list = fdao.getFileupload();
 		model.addAttribute("list", list);  
 		return "uploadFileListing";
-	}
-	/*FileVO vo=new 
-			vo.setFilePath(filePath)
-			vo.setName(file.getOriginalFilename());
-
-	System.out.println("filePath:: "+filePath);
-	FileUploadDao dao=new FileUploadDao();
-	dao.insert(vo);*/
-	
+	}  
 }

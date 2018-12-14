@@ -193,13 +193,13 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                     	<li>
-                            <center><a aria-expanded="false"><br />Quick Lookup</a></center>
+                            <center><a aria-expanded="false"><br /><b>Quick Lookup</b></a></center>
                         </li>
                         <li>
                             <a title="Zettaone website" href="http://www.zettaone.com/" target="_blank" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Company Website</span></a>
                         </li>
                         <li class="active">
-                            <a title="Organization chart" href="/fileupload" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Organization Chart</span></a>
+                            <a title="Organization chart" href="/organization" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Organization Chart</span></a>
                         </li>
                         <li>
                             <a title="Employee directory" href="/employeedirectory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
@@ -210,9 +210,9 @@
                         <li>
                             <a title="Knowledge Base" href="/knowledgebase" aria-expanded="false"><span class="educate-icon educate-form icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Knowledge Base</span></a>
                         </li>
-                        <li>
+                       <!--  <li>
                             <a title="Calendar" href="calendar.jsp" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Company Calendar</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a title="IT Help Desk" href="https://zettaone.on.spiceworks.com/portal/tickets" target="_blank" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">IT Help Desk</span></a>
                         </li>  
@@ -233,7 +233,7 @@
                 </div>
             </div>
         </div>
-        <div class="header-advance-area">
+       <%--  <div class="header-advance-area">
             <div class="header-top-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -262,7 +262,7 @@
                                                 </li> -->   
                                                 <c:choose>
                                                 <c:when test="${ not empty sessionScope.USER}"> 
-                                                 <li class="nav-item login2 pull-right pull-right-pro"><a href="/logout" class="nav-link">${sessionScope.USER_NAME}</a>
+                                                <li class="nav-item login2 pull-right pull-right-pro"><a href="/logout" class="nav-link">${sessionScope.USER_NAME}</a>
                                                 </li> 
                                                 </c:when>
                                                 <c:otherwise>
@@ -279,8 +279,59 @@
                     </div>
                 </div>
             </div> 
-        </div> 
-          
+        </div> --%> 
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row"> 
+                                    <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12">
+                                        <div class="header-top-menu tabl-d-n">
+                                            <ul class="nav navbar-nav mai-top-nav">
+                                                <li class="nav-item"><a href="/" class="nav-link">Home</a>
+                                                </li>
+                                                <li class="nav-item"><a href="/knowledgebase" class="nav-link">Knowledge Base</a>
+                                                </li>
+                                                <li class="nav-item"><a href="/employeedirectory" class="nav-link">Employee Directory</a>
+                                                </li> 
+                                                <li class="nav-item"><a href="calendar.jsp" class="nav-link">Company Calendar</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu"> 
+                                                <li class="nav-item">
+                                                <c:choose>
+                                                <c:when test="${ not empty sessionScope.USER}"> 
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> 
+															<span class="admin-name">Hi &nbsp;${sessionScope.USER_NAME}</span>
+															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+														</a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn"> 
+                                                        <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a>
+                                                        </li>
+                                                      </c:when>
+                                                <c:otherwise>
+                                                  <li><a href="/login"><span class="edu-icon edu-locked author-log-ic"></span>Login</a>
+                                                        </li>
+                                                </c:otherwise>
+                                                </c:choose>
+                                                    </ul>
+                                                </li> 
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
       </html>
 
          

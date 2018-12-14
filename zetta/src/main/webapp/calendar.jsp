@@ -14,7 +14,7 @@
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-8">
                         <div class="pdf-single-pro"><br /><br/>
                        		<center><h1><a class="blog-ht">Calender 2018 Bangalore</a></h1>
-                            <object class="media" data="pdf/Calender18-Bangalore.pdf#toolbar=0" type="application/pdf" width="830" height="1000"></object><br /><br />
+                            <object class="media" data="/uploadedfiles/Calender.pdf#toolbar=0" type="application/pdf" width="830" height="1000"></object><br /><br />
                        		</center>
                         </div>
                         

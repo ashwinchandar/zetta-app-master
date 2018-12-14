@@ -27,13 +27,21 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                     <form action="/addknowledge" method="post" >  
+                                                     <form action="/addknowledge" method="POST" onsubmit="return ValidateForm(this);">
+                                                     <script type="text/javascript">
+														function ValidateForm(frm) {
+															if (frm.category.value == "none") {
+																alert('Please select Category!');
+																frm.category.focus();
+																return false;
+															}  
+														}
+													 </script>  
                                                         <div class="row">
                                                         	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 															<div class="form-group">
-																<select name="category" class="form-control"
-																	value="${kb.category}" required>
+																<select name="category" class="form-control" value="${kb.category}">
 																	<option value="none" selected="" disabled="">Select Category</option>
 																	<option value="Finance">Finance</option>
 																	<option value="Operation">Operation</option>
@@ -57,7 +65,7 @@
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress"> 
-                                                                     <button class="btn btn-primary waves-effect waves-light" type="submit" name="submit" value="knowledge">Submit</button>
+                                                                     <button class="btn btn-primary waves-effect waves-light" type="submit" name="submit">Submit</button>
                                 									<button class="btn btn-primary waves-effect waves-light" type="reset" name="reset" value="Reset">Clear</button>
                                                                 </div>
                                                             </div>

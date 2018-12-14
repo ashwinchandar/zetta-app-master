@@ -66,7 +66,7 @@
 									<Button name="submit" id="submit">
 										<div class="panel-body">
 											<div class="stats-title pull-left">
-												<h4>Add KnowledgeBase</h4>
+												<h4>Manage KnowledgeBase</h4>
 											</div>
 											<div class="stats-icon pull-right">
 												<i class="educate-icon educate-form"></i>
@@ -129,11 +129,11 @@
 						</div>
 						</div>
 					</c:if>
-				</div>
-					<%--  <c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
+				 
+					 <c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 						<div class="hpanel widget-int-shape responsive-mg-b-30">
-							<form action="/uploadfile" method="get" enctype="multipart/form-data">
+							<form action="/orgupload" method="get" enctype="multipart/form-data">
 								<Button name="submit" id="submit" value="orgListing">
 									<div class="panel-body">
 										<div class="stats-title pull-left">
@@ -151,8 +151,8 @@
 							</form>
 						</div>
 					</div>
-				</c:if>  --%> 
-                    
+				</c:if>  
+              </div>   
                    <%--  <c:if test = "${fn:contains(sessionScope.ROLE, 'CL')}">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30">

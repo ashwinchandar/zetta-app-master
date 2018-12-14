@@ -4,8 +4,7 @@
 <html class="no-js" lang="en">
 <head>
 <%@ include file = "header.jsp" %> 
-<meta charset="ISO-8859-1">
-
+<meta charset="ISO-8859-1"> 
 </head>
 <body><br/><br />
 	<form method="POST" action="/upload" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
