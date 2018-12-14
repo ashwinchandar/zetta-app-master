@@ -25,8 +25,8 @@
                                                 <!-- <th data-field="state" data-checkbox="true"></th> -->
                                                 <th data-field="id">ID</th>
                                                 <th data-field="name" data-editable="false">Name</th>
-                                                <th data-field="email" data-editable="false">Designation</th>
-                                                <th data-field="phone" data-editable="false">Department</th>
+                                                <th data-field="email" data-editable="false">Department</th>
+                                                <th data-field="phone" data-editable="false">Designation</th>
                                                 <th data-field="complete">Email</th>
                                                 <th data-field="task" data-editable="false">Phone</th>
                                                 <!-- <th data-field="date" data-editable="false">Skype</th> -->

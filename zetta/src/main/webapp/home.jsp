@@ -63,10 +63,7 @@
                     </div>
 
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-					<div class="profile-info-inner">
-						<div class="profile-img">
-							<img src="img/profile/1.jpg" alt="" />
-						</div>
+					<div class="profile-info-inner"> 
 						<div class="profile-details-hr">
 							<div class="row">
 								<div class="col-lg-12"> 
@@ -74,15 +71,14 @@
 										<c:when test="${ not empty birthList }">
 											<c:forEach var="birth" items="${birthList}" varStatus="status">
 												<div class="address-hr">
-													<h2>Happy birthday!</h2>
-													<h1>${birth.name}</h1>
-													<p>We hope all your birthday wishes and dreams come true.</p>
+													<h2 style="color:#72930c" align="center">Happy Birthday!</h2><br />
+													<h2 style="color:#3960ac" align="center">${birth.name}</h2><br />
+													<h4 align="center">We Wishing you the best on your birthday and everything good in the year ahead.</h4>
 												</div>
 											</c:forEach>
 										</c:when>
-										<c:otherwise>
-											<h2>Thought of the Day</h2>
-											<img src="img/product/profile-bg.jpg" alt="">
+										<c:otherwise>  
+											<img src="img/org/insp.jpeg" alt="">
 										</c:otherwise>
 									</c:choose>
 								</div>

@@ -33,7 +33,7 @@
 											<a class="blog-ht">${upload.fileName}</a>
 										</h1>
 										<object class="media" data="${upload.filePath}#toolbar=0"
-											type="application/pdf" width="830" height="1000"></object>
+											type="application/pdf" width="630" height="790"></object>
 									</center>
 								</div>
 								<!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-8"></div>   -->

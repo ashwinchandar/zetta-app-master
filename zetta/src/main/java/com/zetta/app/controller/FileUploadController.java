@@ -25,7 +25,7 @@ import com.zetta.app.vo.FileVo;
 public class FileUploadController {
 
  
-	private static String UPLOADED_FOLDER = "../zetta/uploadedfiles";
+	private static String UPLOADED_FOLDER = "../zetta/src/main/resources/static/uploadedfiles";
 	
 	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
 	   public String uploadFileHandler(Model model) {

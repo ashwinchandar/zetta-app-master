@@ -29,59 +29,17 @@
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Finance"><img src="../../img/knowledgebase/finance.png" alt="" /></a>    
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-											<div class="review-content-section">
-												<div class="chat-discussion" style="height: auto">
-													<div class="message">
-														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=Operation"><img src="../../img/knowledgebase/h.png" alt="" /></a> 
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-											<div class="review-content-section">
-												<div class="chat-discussion" style="height: auto">
-													<div class="message">
-														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=SCM"><img src="../../img/knowledgebase/scm.jpg" alt="" /></a> 
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
-											<div class="review-content-section">
-												<div class="chat-discussion" style="height: auto">
-													<div class="message">
-														<a class="message-author full-right"
 															href="/getAllKnowledgeBase?id=Hardware"><img src="../../img/knowledgebase/hardware.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 											<div class="review-content-section">
 												<div class="chat-discussion" style="height: auto">
 													<div class="message">
 														<a class="message-author full-right"
 															href="/getAllKnowledgeBase?id=Software"><img src="../../img/knowledgebase/software.png" alt="" /></a> 
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-											<div class="review-content-section">
-												<div class="chat-discussion" style="height: auto">
-													<div class="message">
-														<a class="message-author full-right"
-															href="/getAllKnowledgeBase?id=IT"><img src="../../img/knowledgebase/itadmin.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
@@ -102,6 +60,48 @@
 													<div class="message">
 														<a class="message-author full-right"
 															href="/getAllKnowledgeBase?id=PCBLibrary"><img src="../../img/knowledgebase/pcblibrary.png" alt="" /></a> 
+													</div>
+												</div>
+											</div>
+										</div> 
+									</div>
+									<div class="row"> 
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=IT"><img src="../../img/knowledgebase/itadmin.png" alt="" /></a> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=SCM"><img src="../../img/knowledgebase/scm.jpg" alt="" /></a> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=Finance"><img src="../../img/knowledgebase/finance.png" alt="" /></a>    
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+											<div class="review-content-section">
+												<div class="chat-discussion" style="height: auto">
+													<div class="message">
+														<a class="message-author full-right"
+															href="/getAllKnowledgeBase?id=Operation"><img src="../../img/knowledgebase/h.png" alt="" /></a> 
 													</div>
 												</div>
 											</div>
