@@ -6,7 +6,8 @@
 <%@ include file = "header.jsp" %> 
 <meta charset="ISO-8859-1"> 
 </head>  
-<body>
+<body> 
+	
 	<div class="pdf-viewer-area mg-b-15">
 		<div class="container-fluid">
 			<div class="row">

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.zetta.app.dao.KnowledgeDAO;
 import com.zetta.app.vo.AdminBean;
@@ -56,9 +58,25 @@ public class KnowledgeController{
 		List<KnowledgeBean> list = kdao.getKBbyCategory(category);
 		model.addAttribute("list", list); 
 		return "knowledgebaselist";
-	}
- 
+	} 
 	
+	/*@RequestMapping(value="/search")
+	public ModelAndView Search(@RequestParam(value = "searchTerm", required = false) String pSearchTerm, HttpServletRequest request, HttpServletResponse response) {
+	    ModelAndView mav = new ModelAndView("search"); 
+	    mav.addObject("searchTerm", pSearchTerm);
+	    mav.addObject("searchResult", kb.findTeamByName(pSearchTerm));      
+
+	    return mav;
+	}*/
+ 
+	@RequestMapping("/getAlltopickb")
+	public String getAlltopicKnowledgeBase(HttpServletRequest request,ModelMap model) { 
+		String topic = request.getParameter("id");
+		KnowledgeDAO kdao = new KnowledgeDAO();
+		List<KnowledgeBean> list = kdao.getKBbyTopic(topic);
+		model.addAttribute("list", list); 
+		return "knowledgebasetopic";
+	}
 	
 	@RequestMapping("/knowledgelisting")
 	public String knowledgelisting(HttpServletRequest request,ModelMap model) {  

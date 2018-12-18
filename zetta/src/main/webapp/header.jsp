@@ -72,6 +72,9 @@
 		============================================ -->
     <link rel="stylesheet" href="../../css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="../../css/data-table/bootstrap-editable.css">
+    <!-- summernote CSS
+		============================================ -->
+    <link rel="stylesheet" href="../../css/summernote/summernote.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="../../style.css">
@@ -164,7 +167,11 @@
 		============================================ -->
     <script src="../../js/chart/jquery.peity.min.js"></script>
     <script src="../../js/peity/peity-active.js"></script>	
-		
+	 <!-- summernote JS
+		============================================ -->
+    <script src="../../js/summernote/summernote.min.js"></script>
+    <script src="../../js/summernote/summernote-active.js"></script>
+    
 	<script src="../../js/tab.js"></script>
 	<!-- plugins JS
 		============================================ -->
@@ -186,8 +193,8 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="/"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
-                <strong><a href="/"><img src="../../img/logo/logosn.png" alt="" /></a></strong>
+                <a href="/home"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
+                <strong><a href="/home"><img src="../../img/logo/logosn.png" alt="" /></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -202,7 +209,7 @@
                             <a title="Organization chart" href="/organization" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Organization Chart</span></a>
                         </li>
                         <li>
-                            <a title="Employee directory" href="/employeedirectory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
+                            <a title="Employee directory" href="/directory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
                         </li>
                         <li>
                             <a title="QMS" href="/qms" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
@@ -228,7 +235,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="/"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
+                        <a href="/home"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -290,11 +297,11 @@
                                     <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
-                                                <li class="nav-item"><a href="/" class="nav-link">Home</a>
+                                                <li class="nav-item"><a href="/home" class="nav-link">Home</a>
                                                 </li>
                                                 <li class="nav-item"><a href="/knowledgebase" class="nav-link">Knowledge Base</a>
                                                 </li>
-                                                <li class="nav-item"><a href="/employeedirectory" class="nav-link">Employee Directory</a>
+                                                <li class="nav-item"><a href="/directory" class="nav-link">Employee Directory</a>
                                                 </li> 
                                                 <li class="nav-item"><a href="calendar.jsp" class="nav-link">Company Calendar</a>
                                                 </li>
@@ -311,16 +318,18 @@
 															<span class="admin-name">Hi &nbsp;${sessionScope.USER_NAME}</span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
-                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn"> 
-                                                        <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <li><a href="/menu"><span class="edu-icon edu-locked author-log-ic"></span>Manage</a>
                                                         </li>
+                                                         <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a>
+                                                        </li>
+                                                    </ul>
                                                       </c:when>
                                                 <c:otherwise>
                                                   <li><a href="/login"><span class="edu-icon edu-locked author-log-ic"></span>Login</a>
                                                         </li>
                                                 </c:otherwise>
-                                                </c:choose>
-                                                    </ul>
+                                                </c:choose>  
                                                 </li> 
                                             </ul>
                                         </div>

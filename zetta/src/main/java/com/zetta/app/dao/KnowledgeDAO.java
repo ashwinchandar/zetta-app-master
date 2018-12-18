@@ -114,7 +114,34 @@ public class KnowledgeDAO {
 		}
 		return list;
 	}
-	
+	public List<KnowledgeBean> getKBbyTopic(String topic){
+		List<KnowledgeBean> list = new ArrayList<>();
+		ResultSet rs=null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM knowledgebase where topic=? order by updated_date DESC");
+			ps.setString(1, topic); 
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				System.out.println("know topic: " + ps.toString());
+				KnowledgeBean kb = new KnowledgeBean();
+				kb.setKnowledgeid(rs.getInt("knowledge_id"));
+				kb.setCategory(rs.getString("category"));
+				kb.setTopic(rs.getString("topic"));
+				kb.setSubject(rs.getString("subject"));
+				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedBy(rs.getString("created_by")); 
+				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedBy(rs.getString("updated_by")); 
+				list.add(kb);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return list;
+	}
 	public List<KnowledgeBean> getknowledgebaselist(){
 		List<KnowledgeBean> list = new ArrayList<>(); 
 		ResultSet rs = null;

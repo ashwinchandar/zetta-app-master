@@ -19,23 +19,30 @@ import com.zetta.app.vo.EmployeeBean;
 @Controller
 public class AdminController {
 
+	
 	@RequestMapping("/")
-	public String home(HttpServletRequest request, ModelMap model) {
+	public String login(HttpServletRequest request,ModelMap model) {
+		return "login";
+	} 
+	@RequestMapping("/login")
+	public String inlogin(HttpServletRequest request,ModelMap model) {
+		return "login";
+	} 
+	@RequestMapping("/home")
+	public String home(HttpServletRequest request,ModelMap model) {
 		AnnounceDAO adao = new AnnounceDAO();
 		List<AnnounceBean> list = adao.getAnnouncements();
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); 
 		
-		EmployeeDAO edao = new EmployeeDAO();
+		AdminDAO amdao = new AdminDAO();
+		List<AdminBean> birthList = amdao.getEmployeeBirthday();
+		model.addAttribute("birthList", birthList); 
+		/*EmployeeDAO edao = new EmployeeDAO();
 		List<EmployeeBean> birthList = edao.getEmployeeBirthday();
-		model.addAttribute("birthList", birthList);
+		model.addAttribute("birthList", birthList);*/
 		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
 		model.addAttribute("CURRENT_USER", ab);
 		return "home";
-	}
-	
-	@RequestMapping("/login")
-	public String login(HttpServletRequest request,ModelMap model) {
-		return "login";
 	} 
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request,ModelMap model) {
@@ -52,27 +59,43 @@ public class AdminController {
 		String adminid = request.getParameter("admin_card_no");
 		String password = request.getParameter("password1"); 
 		AdminBean ab = adao.getAdmin(adminid, password);  
-		if(ab != null) { 
+		if(ab != null && ab.getRole() != null) { 
 			model.addAttribute("mastersuccess", "Successfully logged In");
 			model.addAttribute("name", ab.getName());
 			String role = adao.getRole(ab.getRole());
 			List<AdminBean> list = adao.getAdmins(); 
 			System.out.println("role: " +role);
+			
+			AnnounceDAO adao1 = new AnnounceDAO();
+			List<AnnounceBean> list1 = adao1.getAnnouncements();
+			model.addAttribute("list", list1); 
+			AdminDAO amdao = new AdminDAO();
+			List<AdminBean> birthList = amdao.getEmployeeBirthday();
+			model.addAttribute("birthList", birthList); 
+			/*AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
+			model.addAttribute("CURRENT_USER", ab);*/
+			
+			
 			request.getSession().setAttribute("ROLE", role);
-			model.addAttribute("list", list);
+			model.addAttribute("list", list1);
 			request.getSession().setAttribute("USER", ab);
 			model.addAttribute("CURRENT_USER", ab);
 			request.getSession().setAttribute("USER_NAME", ab.getName());
-			return "menu"; 
+			return "home";   //menu 
 		} else {
 			model.addAttribute("errormsg","Username or Password is incorrect");
 			return "login";
 		}   
 	}
-
+	
+	@RequestMapping("/menu")
+	public String menu(HttpServletRequest request,ModelMap model) { 
+		return "menu";
+	}
+	
 	@RequestMapping("/register")
 	public String register(HttpServletRequest request,ModelMap model) {
-		AdminDAO adao=new AdminDAO();
+		AdminDAO adao=new AdminDAO(); 
 		List<AdminBean> list = adao.getAdmins();  
 		model.addAttribute("list", list);
 		return "admin_register";
@@ -102,9 +125,26 @@ public class AdminController {
 		return "adminListing";
 	}
 	
+	@RequestMapping("/directory")
+	public String alluserdirectory(HttpServletRequest request, ModelMap model) {
+		AdminDAO adao=new AdminDAO();
+		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
+		List<AdminBean> list = adao.getAdminz(ab.getRole());  
+		model.addAttribute("list", list); 
+		return "employeedirectory"; 
+	}
+	
+	/*@RequestMapping("/admentirelist")
+	public String allAdminlistView(HttpServletRequest request, ModelMap model) {
+		AdminDAO adao=new AdminDAO(); 
+		List<AdminBean> list = adao.getAdmins();  
+		model.addAttribute("list", list); 
+		return "adminAllusers"; 
+	}*/
+	
 	@RequestMapping("/adminlisting")
 	public String adminListing(HttpServletRequest request, ModelMap model) {
-		AdminDAO adao=new AdminDAO();
+		AdminDAO adao=new AdminDAO(); 
 		List<AdminBean> list = adao.getAdmins();  
 		model.addAttribute("list", list); 
 		return "adminListing"; 
@@ -112,7 +152,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/adminlisting",method=RequestMethod.POST)
 	public String adminListingSubmit(HttpServletRequest request,ModelMap model) {
-	AdminDAO adao=new AdminDAO();
+	AdminDAO adao=new AdminDAO(); 
 	List<AdminBean> list = adao.getAdmins();  
 	model.addAttribute("list", list); 
 	return "adminListing";
@@ -156,6 +196,7 @@ public class AdminController {
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");
+		 
 		List<AdminBean> list = adao.getAdmins();
 		model.addAttribute("list",list); 
 		return "adminListing";
@@ -167,8 +208,23 @@ public class AdminController {
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully");
+	 
 		List<AdminBean> list = adao.getAdmins();
 		model.addAttribute("list",list); 
 		return "adminListing";
 	} 
 }
+
+
+/*@RequestMapping("/")
+public String home(HttpServletRequest request, ModelMap model) {
+	AnnounceDAO adao = new AnnounceDAO();
+	List<AnnounceBean> list = adao.getAnnouncements();
+	model.addAttribute("list", list); 
+	EmployeeDAO edao = new EmployeeDAO();
+	List<EmployeeBean> birthList = edao.getEmployeeBirthday();
+	model.addAttribute("birthList", birthList);
+	AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
+	model.addAttribute("CURRENT_USER", ab);
+	return "home";
+}*/

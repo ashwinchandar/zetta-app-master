@@ -153,27 +153,29 @@
 					</div>
 				</c:if>  
               </div>   
-                   <%--  <c:if test = "${fn:contains(sessionScope.ROLE, 'CL')}">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30">
-                         <a href="add_calendar.jsp">
-                            <div class="panel-body"> 
-                                <div class="stats-title pull-left">
-                                    <h4>Add Calendar</h4>
-                                </div>
-                                <div class="stats-icon pull-right">
-                                    <i class="educate-icon educate-event"></i>
-                                </div>
-                                <div class="m-t-xl widget-cl-2"> 
-                                    <small>
-	 									You can Add New Company Calendar as well as Drop calendar from the record.
-									</small>
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                    </div>  
-                    </c:if> --%>
+                  <c:if test="${fn:contains(sessionScope.ROLE, 'USER')}">
+				<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+					<a href="../addknowledge">
+					<div class="hpanel widget-int-shape responsive-mg-b-30">
+						<!-- <form action="/knowledgelisting" method="post">
+									<Button name="submit" id="submit"></Button>
+								</form> -->
+						<div class="panel-body">
+							<div class="stats-title pull-left">
+								<h4>Manage KnowledgeBase</h4>
+							</div>
+							<div class="stats-icon pull-right">
+								<i class="educate-icon educate-form"></i>
+							</div>
+							<div class="m-t-xl widget-cl-1">
+								<small> You can Add New Knowledge Base documents as well
+									as Drop KB document from the record. </small>
+							</div>
+						</div>
+					</div>
+					</a>
+				</div>
+			</c:if>
                 </div><br /><br /><br /><br /><br /><br /><br /> 
             </div>
         </div>

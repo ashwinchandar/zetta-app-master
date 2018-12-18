@@ -13,6 +13,7 @@ import java.util.List;
 import com.zetta.app.dbconnection.DBConnection;
 import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.AdminBean;
+import com.zetta.app.vo.EmployeeBean;
 import com.zetta.app.vo.RoleVO;
 
 public class AdminDAO {
@@ -146,9 +147,10 @@ public class AdminDAO {
 	public List<AdminBean> getAdmins(){
 		List<AdminBean> list = new ArrayList<>();
 		ResultSet rs = null;
-		try {
+		try{
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("SELECT * FROM admin_register");
+			/*ps.setString(1, role);*/
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				/*System.out.println("getAdmins list in admindao");*/
@@ -174,6 +176,37 @@ public class AdminDAO {
 		return list;  
 	}
 	
+	public List<AdminBean> getAdminz(String role){
+		List<AdminBean> list = new ArrayList<>();
+		ResultSet rs = null;
+		try{
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM admin_register where role=?");
+			ps.setString(1, role);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				/*System.out.println("getAdmins list in admindao");*/
+				AdminBean ab = new AdminBean();
+				ab.setAdmin_card_no(rs.getString("admin_card_no"));
+				ab.setName(rs.getString("admin_name"));
+				ab.setDob(rs.getString("dob"));
+				ab.setDepartment(rs.getString("department"));
+				ab.setDesignation(rs.getString("designation"));
+				ab.setEmail(rs.getString("email"));
+				BigDecimal bigdecimal = rs.getBigDecimal("mobile");
+				ab.setMobile(bigdecimal.toString());
+				ab.setLocation(rs.getString("location"));
+				ab.setRole(rs.getString("role"));
+				ab.setPassword1(rs.getString("password1")); 
+				list.add(ab);
+			} 
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			 closeConnectionrspscon(rs, ps, con);
+		} 
+		return list;  
+	}
 	
 	public String getRole(String role){
 		System.out.println("role dao:" +role);
@@ -194,6 +227,36 @@ public class AdminDAO {
 			 closeConnectionrspscon(rs, ps, con);
 		} 
 		return "";  
+	}
+	
+	
+	public List<AdminBean> getEmployeeBirthday() {
+		List<AdminBean> list = new ArrayList<>(); 
+		ResultSet rs = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM admin_register " + 
+					"WHERE " + 
+					"    DATE_PART('day', dob) = date_part('day', CURRENT_DATE) " + 
+					"AND " + 
+					" DATE_PART('month', dob) = date_part('month', CURRENT_DATE);");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				AdminBean ab = new AdminBean();
+				ab.setAdmin_card_no(rs.getString("admin_card_no"));
+				ab.setName(rs.getString("admin_name"));
+				ab.setDob(rs.getString("dob"));
+				ab.setDepartment(rs.getString("department"));
+				ab.setDesignation(rs.getString("designation"));
+				ab.setEmail(rs.getString("email"));  
+				list.add(ab);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionrspscon(rs, ps, con); 
+		}
+		return list; 
 	}
 	
 	

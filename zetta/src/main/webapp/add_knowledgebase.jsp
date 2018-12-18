@@ -37,7 +37,7 @@
 															}  
 														}
 													 </script>  
-                                                        <div class="row">
+                                                        <div class="row tinymce-single responsive-mg-b-30">
                                                         	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 															<div class="form-group">
@@ -59,9 +59,12 @@
                                                                 <div class="form-group res-mg-t-15">
                                                                     <textarea name="subject" id="subject" placeholder="Message" value="${kb.subject}" required></textarea>
                                                                 </div> 
+                                                                
+
+																	 
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div> 
-                                                        </div>
+                                                          </div>  
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress"> 
@@ -82,7 +85,22 @@
                 </div>
             </div>
         </div>
-          
+       	<!-- <div class="tinymce-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tinymce-single responsive-mg-b-30">
+                            <div class="alert-title">
+                                <h2>Basic Summernote WYSIWYG  </h2>
+                                <p>The fastest way to get Summernote WYSIWYG editor is powerfull JavaScript plugin. you can easily maintance typography system.</p>
+                            </div>
+                            <div id="summernote1">
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>   --> 
 </body>
 
 </html>

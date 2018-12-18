@@ -95,9 +95,9 @@
                     </div>
                 </div>
 			</div>
-			<div class="text-center login-footer">
+			<!-- <div class="text-center login-footer">
 				<p><a href="/">Back to Home</a></p>
-			</div>
+			</div> -->
 		</div>   
     </div>
     

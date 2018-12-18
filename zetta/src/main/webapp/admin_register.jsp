@@ -88,6 +88,7 @@
 																			<option value="MASTER" ${ab.role eq"MASTER"?'selected':""}>Master</option>
 																			<option value="ADMIN" ${ab.role eq"ADMIN"?'selected':""}>Admin</option> 
 																			<option value="AMODERATOR" ${ab.role eq"AMODERATOR"?'selected':""}>Moderator</option> 
+																			<option value="COMMONUSER" ${ab.role eq"COMMONUSER"?'selected':""}>User</option> 
 																	</select>
                                                                 </div> 
                                                                <!--  <div class="form-group"> 

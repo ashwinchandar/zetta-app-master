@@ -65,8 +65,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="knowledge" items="${list}"
-														varStatus="status">
+													<c:forEach var="knowledge" items="${list}" varStatus="status">
 														<tr>
 															<td>${knowledge.category}</td>
 															<td>${knowledge.topic}</td>
