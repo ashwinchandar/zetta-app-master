@@ -47,7 +47,7 @@
 														<div class="chat-discussion" style="height: auto">
 															<div class="message">
 																<a class="message-author full-right" href="#"> ${announce.title} </a><br /> 
-																<span class="message-date"> ${announce.date} </span> 
+																<span class="message-date"><i class="fa fa-calendar"></i>&nbsp; ${announce.date} </span> 
 																<span class="message-content"> ${announce.announcement} </span>
 															</div>
 														</div>

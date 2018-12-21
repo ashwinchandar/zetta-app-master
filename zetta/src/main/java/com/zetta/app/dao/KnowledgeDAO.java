@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zetta.app.dbconnection.DBConnection;
+import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.KnowledgeBean;
+import com.zetta.app.vo.KnowledgeReplyVO;
 
 public class KnowledgeDAO {
 
@@ -34,6 +36,81 @@ public class KnowledgeDAO {
 		} finally {
 			closeConnectionpscon(ps, con);
 		} 
+	}
+	
+	public void insertKnowledgeReply(KnowledgeReplyVO rvo) {
+		int count=0;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("insert into knowledge_reply(topic_id,topic,reply,created_date,created_by,updated_date,updated_by) values(?,?,?,?,?,?,?)");
+			ps.setInt(++count, rvo.getTopicid());
+			ps.setString(++count, rvo.getTopic());
+			ps.setString(++count, rvo.getReply());
+			long time = System.currentTimeMillis(); 
+			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
+			ps.setString(++count, rvo.getCreatedBy());
+			ps.setTimestamp(++count, new java.sql.Timestamp(time));
+			ps.setString(++count, rvo.getUpdatedBy());
+			System.out.println("Replyinsert :" +ps.toString());
+			ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionpscon(ps, con);
+		}
+	}
+	
+	public List<KnowledgeReplyVO> getKnowledgereply(Integer topic){
+		List<KnowledgeReplyVO> list = new ArrayList<>();
+		ResultSet rs=null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("Select * from knowledge_reply where topic_id=? order by updated_date DESC");
+			ps.setInt(1, topic);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				KnowledgeReplyVO kvo = new KnowledgeReplyVO();
+				kvo.setTopicid(rs.getInt("topic_id"));
+				kvo.setTopic(rs.getString("topic"));
+				kvo.setReply(rs.getString("reply")); 
+				kvo.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
+				kvo.setCreatedBy(rs.getString("created_by"));
+				kvo.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
+				kvo.setUpdatedBy(rs.getString("updated_by"));
+				list.add(kvo);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return list;
+	}
+	
+	public List<KnowledgeReplyVO> getListKnowledgereply(){
+		List<KnowledgeReplyVO> list = new ArrayList<>();
+		ResultSet rs=null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("Select * from knowledge_reply order by updated_date DESC"); 
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				KnowledgeReplyVO kvo = new KnowledgeReplyVO();
+				kvo.setTopicid(rs.getInt("topic_id"));
+				kvo.setTopic(rs.getString("topic"));
+				kvo.setReply(rs.getString("reply")); 
+				kvo.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
+				kvo.setCreatedBy(rs.getString("created_by"));
+				kvo.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
+				kvo.setUpdatedBy(rs.getString("updated_by"));
+				list.add(kvo);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return list;
 	}
 	
 	public void updateKnowldegebase(KnowledgeBean kb) {
@@ -72,9 +149,9 @@ public class KnowledgeDAO {
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
-				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
-				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(kb);
 			}
@@ -101,9 +178,9 @@ public class KnowledgeDAO {
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
-				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
-				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(kb);
 			}
@@ -129,9 +206,9 @@ public class KnowledgeDAO {
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
-				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
-				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(kb);
 			}
@@ -156,9 +233,9 @@ public class KnowledgeDAO {
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
-				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
-				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by"));
 				
 				list.add(kb); 
@@ -183,9 +260,9 @@ public class KnowledgeDAO {
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
-				kb.setCreatedDate(rs.getString("created_date"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
-				kb.setUpdatedDate(rs.getString("updated_date"));
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by"));
 			}
 		} catch(Exception e) {
@@ -202,7 +279,7 @@ public class KnowledgeDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("DELETE FROM knowledgebase WHERE knowledge_id=?");
 			ps.setInt(1, knowledgeid);
-			ps.executeQuery(); 
+			ps.executeUpdate(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -210,6 +287,24 @@ public class KnowledgeDAO {
 		}
 		return kb;
 	}  
+	
+	public KnowledgeReplyVO deleteReply(Integer topicid, String topic) {
+		 KnowledgeReplyVO kvo = new KnowledgeReplyVO();
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("DELETE FROM knowledge_reply WHERE topic_id=? and topic=?");
+			ps.setInt(1, topicid);
+			ps.setString(2, topic);
+			System.out.println("reply: " +ps.toString());
+			ps.executeUpdate(); 
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionpscon(ps, con);
+		}
+		return kvo;  
+	} 
 	
 	public void closeConnectionpscon(PreparedStatement ps, Connection con) {
 		try {

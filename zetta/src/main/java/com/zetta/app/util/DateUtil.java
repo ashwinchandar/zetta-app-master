@@ -1,16 +1,16 @@
 package com.zetta.app.util;
  
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;  
 
 public class DateUtil {
-
 	public static Date getDateFromString(String incomingDate) { 
 		Date date=null;
 		try { 
 			if(incomingDate!=null && !incomingDate.trim().isEmpty()) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
-				date=sdf.parse(incomingDate.trim());
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");  
+				date=dateFormat.parse(incomingDate.trim());
 				System.out.println(date);	 
 			}
 		}catch(Exception e) {
@@ -19,10 +19,57 @@ public class DateUtil {
 		return date;
 		  
 	}
+	
+	public static String getDatetoString(String incomingDate) { 
+		String date=null;
+		try { 
+			if(incomingDate!=null && !incomingDate.trim().isEmpty()) {
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy kk:mm a");  
+                date = dateFormat.format(getDateFromString(incomingDate));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return date; 
+	}
+	
+	 
+	/*public static Date getDateFromString(String incomingDate) { 
+		Date date=null;
+		try { 
+			if(incomingDate!=null && !incomingDate.trim().isEmpty()) {
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+				date=dateFormat.parse(incomingDate.trim());
+				System.out.println(date);	 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return date;
+		  
+	}
+	public static String getDatetoString(String incomingDate) { 
+		String date=null;
+		try { 
+			if(incomingDate!=null && !incomingDate.trim().isEmpty()) {
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd HH:mm");  
+				Date dDate=dateFormat.parse(incomingDate); 
+                date = dateFormat.format(dDate);
+				System.out.println("datetostring: "+date);	 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return date; 
+	}*/
+	
+	
 }
 
 /*public class TimeUtil {
-
+public static void main(String args[]) {
+		System.out.println(getDatetoString("2018-12-20 12:48:49.558+05:30"));
+	}
 	private static Long second = 1000L;
 	private static Long minute = 60 * second;
 	private static Long hour = 60 * minute;

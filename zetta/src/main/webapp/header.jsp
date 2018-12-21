@@ -169,8 +169,8 @@
     <script src="../../js/peity/peity-active.js"></script>	
 	 <!-- summernote JS
 		============================================ -->
-    <script src="../../js/summernote/summernote.min.js"></script>
-    <script src="../../js/summernote/summernote-active.js"></script>
+    <script src="../js/summernote/summernote.min.js"></script>
+    <script src="../js/summernote/summernote-active.js"></script>
     
 	<script src="../../js/tab.js"></script>
 	<!-- plugins JS
@@ -179,14 +179,74 @@
 	<!-- main JS
 		============================================ -->
 	<script src="../../js/main.js"></script>
-	<script type="text/javascript">
+	<!-- tawk chat JS
+		============================================ -->
+    <script src="js/tawk-chat.js"></script>
+	<!-- <script type="text/javascript">
 	$(document).ready(function() {
         history.pushState(null, null, location.href);
         window.onpopstate = function () {
             history.go(1);
         };
     });
-	</script>
+	</script> -->
+	
+	
+	<!-- Mailbox effect -->
+	
+	<!-- jquery
+		============================================ -->
+    <!-- <script src="../../js/vendor/jquery-1.12.4.min.js"></script>
+    bootstrap JS
+		============================================
+    <script src="../../js/bootstrap.min.js"></script>
+    wow JS
+		============================================
+    <script src="../../js/wow.min.js"></script>
+    price-slider JS
+		============================================
+    <script src="../../js/jquery-price-slider.js"></script>
+    meanmenu JS
+		============================================
+    <script src="../../js/jquery.meanmenu.js"></script>
+    owl.carousel JS
+		============================================
+    <script src="../../js/owl.carousel.min.js"></script>
+    sticky JS
+		============================================
+    <script src="../../js/jquery.sticky.js"></script>
+    scrollUp JS
+		============================================
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    mCustomScrollbar JS
+		============================================
+    <script src="../../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../js/scrollbar/mCustomScrollbar-active.js"></script>
+    metisMenu JS
+		============================================
+    <script src="../../js/metisMenu/metisMenu.min.js"></script>
+    <script src="../../js/metisMenu/metisMenu-active.js"></script>
+    summernote JS
+		============================================
+    <script src="../../js/summernote/summernote.min.js"></script>
+    <script src="../../js/summernote/summernote-active.js"></script>
+    tab JS
+		============================================
+    <script src="../../js/tab.js"></script>
+    plugins JS
+		============================================
+    <script src="../../js/plugins.js"></script>
+    main JS
+		============================================
+    <script src="../../js/main.js"></script>
+    tawk chat JS
+		============================================
+    <script src="../../js/tawk-chat.js"></script> -->
+	
+	 
+	
+	<!-- Mailbox effect end -->
+	
 </head>
  
     <!-- Start Left menu area -->
@@ -317,14 +377,16 @@
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> 
 															<span class="admin-name">Hi &nbsp;${sessionScope.USER_NAME}</span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
-														</a>
+													</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <c:if test="${!fn:contains(sessionScope.ROLE, 'USER')}">
                                                         <li><a href="/menu"><span class="edu-icon edu-locked author-log-ic"></span>Manage</a>
                                                         </li>
-                                                         <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a>
+                                                        </c:if>
+                                                        <li><a href="/logout"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a>
                                                         </li>
                                                     </ul>
-                                                      </c:when>
+                                                </c:when>
                                                 <c:otherwise>
                                                   <li><a href="/login"><span class="edu-icon edu-locked author-log-ic"></span>Login</a>
                                                         </li>

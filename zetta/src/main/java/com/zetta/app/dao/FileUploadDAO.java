@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zetta.app.dbconnection.DBConnection;
+import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.FileVo;
 
 public class FileUploadDAO {
@@ -49,9 +50,9 @@ public class FileUploadDAO {
 				fv.setFileId(rs.getInt("file_id"));
 				fv.setFileName(rs.getString("filename"));
 				fv.setFilePath(rs.getString("filepath"));
-				fv.setCreatedDate(rs.getString("created_date"));
+				fv.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				fv.setCreatedBy(rs.getString("created_by")); 
-				fv.setUpdatedDate(rs.getString("updated_date"));
+				fv.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				fv.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(fv);
 			}
@@ -77,9 +78,9 @@ public class FileUploadDAO {
 				fv.setFileId(rs.getInt("file_id"));
 				fv.setFileName(rs.getString("filename"));
 				fv.setFilePath(rs.getString("filepath"));
-				fv.setCreatedDate(rs.getString("created_date"));
+				fv.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				fv.setCreatedBy(rs.getString("created_by")); 
-				fv.setUpdatedDate(rs.getString("updated_date"));
+				fv.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				fv.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(fv);
 			}

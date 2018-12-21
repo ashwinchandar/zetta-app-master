@@ -7,7 +7,7 @@
 	<groupId>com.zetta</groupId>
 	<artifactId>zetta</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>zetta</name>
 	<description>Demo project for Spring Boot</description>

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.zetta.app.dbconnection.DBConnection;
+import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.AnnounceBean;
 
 
@@ -39,7 +40,8 @@ public class AnnounceDAO {
 			con=DBConnection.getConnection();
 			ps=con.prepareStatement("UPDATE announcement SET title=?,date=?,announcement=? where announce_id=?");
 			ps.setString(++count, ab.getTitle()); 
-			ps.setDate(++count, new java.sql.Date(Calendar.getInstance().getTime().getTime()));  
+			long time = System.currentTimeMillis(); 
+			ps.setTimestamp(++count, new java.sql.Timestamp(time));  
 			ps.setString(++count, ab.getAnnouncement());
 			ps.setInt(++count, ab.getAnnounceid());
 			ps.executeUpdate(); 
@@ -62,7 +64,7 @@ public class AnnounceDAO {
 				ab.setAnnounceid(rs.getInt("announce_id"));
 				ab.setTitle(rs.getString("title"));
 				ab.setAnnouncement(rs.getString("announcement"));
-				ab.setDate(rs.getString("date"));
+				ab.setDate(DateUtil.getDatetoString(rs.getString("date")));
 				list.add(ab);
 			} 
 		}catch(Exception e) {
@@ -85,7 +87,7 @@ public class AnnounceDAO {
 				ab.setAnnounceid(rs.getInt("announce_id"));
 				ab.setTitle(rs.getString("title"));
 				ab.setAnnouncement(rs.getString("announcement"));
-				ab.setDate(rs.getString("date"));
+				ab.setDate(DateUtil.getDatetoString(rs.getString("date")));
 				list.add(ab);
 			} 
 		}catch(Exception e) {
@@ -108,7 +110,7 @@ public class AnnounceDAO {
 				ab.setAnnounceid(announceid);
 				ab.setTitle(rs.getString("title"));
 				ab.setAnnouncement(rs.getString("announcement"));
-				ab.setDate(rs.getString("date"));
+				ab.setDate(DateUtil.getDatetoString(rs.getString("date")));
 			} 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -124,7 +126,7 @@ public class AnnounceDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("DELETE FROM announcement WHERE announce_id=?");
 			ps.setInt(1, announceid);
-			ps.executeQuery(); 
+			ps.executeUpdate(); 
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {

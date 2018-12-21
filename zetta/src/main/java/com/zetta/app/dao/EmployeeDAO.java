@@ -148,7 +148,7 @@ public class EmployeeDAO {
 				EmployeeBean eb = new EmployeeBean();
 				eb.setEmp_card_no(rs.getString("emp_card_no"));
 				eb.setName(rs.getString("name"));
-				eb.setDob(rs.getString("dob"));
+				eb.setDob(DateUtil.getDatetoString(rs.getString("dob")));
 				eb.setDepartment(rs.getString("department"));
 				eb.setDesignation(rs.getString("designation"));
 				eb.setEmail(rs.getString("email"));

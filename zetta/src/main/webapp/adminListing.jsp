@@ -58,8 +58,8 @@
 											<th data-field="complete">Mobile</th>
 											<th data-field="task" data-editable="false">Location</th>
 											<th data-field="date" data-editable="false">Role</th> 
-											<th data-field="price" data-editable="false">Edit</th>
-											<th data-field="action">Remove</th>
+											<th data-field="price" data-editable="false">DOB</th>
+											<th data-field="action">Action</th>
 										</tr>
 									</thead>
                                         <tbody> 
@@ -73,8 +73,9 @@
 												<td>${details.mobile}</td>
 												<td>${details.location}</td> 
 												<td>${details.role}</td>
-                                                <td><a href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a></td>
-		        								<td><a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 		
+												<td>${details.dob}</td>
+                                                <td><a href="<c:url value='/admin/edit/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-pencil-square-o" aria-hidden="true"></i></center></a>
+		        								 <a class="btn-danger" onclick="return confirm('Are you sure you want to delete?')" href="<c:url value='/admin/delete/?id=${list[status.index].admin_card_no}' />" > <center><i class="fa fa-trash-o" aria-hidden="true"></i></center></a></td> 		
                                             </tr> 
                                         </c:forEach>
                                         </tbody>

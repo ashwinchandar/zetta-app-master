@@ -71,3 +71,13 @@ created_by CHARACTER VARYING(30),
 updated_date TIMESTAMP WITH TIME ZONE,
 updated_by CHARACTER VARYING(30)
 );
+
+create table knowledge_reply(
+topic_id INTEGER,
+topic CHARACTER VARYING(200),
+reply CHARACTER VARYING,
+created_date TIMESTAMP WITH TIME ZONE,
+created_by CHARACTER VARYING(30),
+updated_date TIMESTAMP WITH TIME ZONE,
+updated_by CHARACTER VARYING(30)
+);

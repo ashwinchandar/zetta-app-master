@@ -32,8 +32,7 @@ public class AdminController {
 	public String home(HttpServletRequest request,ModelMap model) {
 		AnnounceDAO adao = new AnnounceDAO();
 		List<AnnounceBean> list = adao.getAnnouncements();
-		model.addAttribute("list", list); 
-		
+		model.addAttribute("list", list);  
 		AdminDAO amdao = new AdminDAO();
 		List<AdminBean> birthList = amdao.getEmployeeBirthday();
 		model.addAttribute("birthList", birthList); 
@@ -129,19 +128,20 @@ public class AdminController {
 	public String alluserdirectory(HttpServletRequest request, ModelMap model) {
 		AdminDAO adao=new AdminDAO();
 		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
-		List<AdminBean> list = adao.getAdminz(ab.getRole());  
+		List<AdminBean> list = null;
+		if("MASTER".equals(ab.getRole())) {
+			list = adao.getAdmins();
+		}else if("ADMIN".equals(ab.getRole())) {
+			list = adao.getAdmins();
+		}else if("AMODERATOR".equals(ab.getRole())) {
+			list = adao.getAdmins();
+		}else {
+			list = adao.getAdminz(ab.getRole());
+		}  
 		model.addAttribute("list", list); 
 		return "employeedirectory"; 
 	}
-	
-	/*@RequestMapping("/admentirelist")
-	public String allAdminlistView(HttpServletRequest request, ModelMap model) {
-		AdminDAO adao=new AdminDAO(); 
-		List<AdminBean> list = adao.getAdmins();  
-		model.addAttribute("list", list); 
-		return "adminAllusers"; 
-	}*/
-	
+	 
 	@RequestMapping("/adminlisting")
 	public String adminListing(HttpServletRequest request, ModelMap model) {
 		AdminDAO adao=new AdminDAO(); 
@@ -195,8 +195,7 @@ public class AdminController {
 		String adminid1 = request.getParameter("id");
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
-		model.addAttribute("deletesuccessmessage","Deleted Successfully");
-		 
+		model.addAttribute("deletesuccessmessage","Deleted Successfully"); 
 		List<AdminBean> list = adao.getAdmins();
 		model.addAttribute("list",list); 
 		return "adminListing";
@@ -207,24 +206,9 @@ public class AdminController {
 		String adminid1 = request.getParameter("admin_card_no");
 		AdminDAO adao=new AdminDAO();
 		adao.deleteAdmin(adminid1);
-		model.addAttribute("deletesuccessmessage","Deleted Successfully");
-	 
+		model.addAttribute("deletesuccessmessage","Deleted Successfully"); 
 		List<AdminBean> list = adao.getAdmins();
 		model.addAttribute("list",list); 
 		return "adminListing";
 	} 
-}
-
-
-/*@RequestMapping("/")
-public String home(HttpServletRequest request, ModelMap model) {
-	AnnounceDAO adao = new AnnounceDAO();
-	List<AnnounceBean> list = adao.getAnnouncements();
-	model.addAttribute("list", list); 
-	EmployeeDAO edao = new EmployeeDAO();
-	List<EmployeeBean> birthList = edao.getEmployeeBirthday();
-	model.addAttribute("birthList", birthList);
-	AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
-	model.addAttribute("CURRENT_USER", ab);
-	return "home";
-}*/
+} 

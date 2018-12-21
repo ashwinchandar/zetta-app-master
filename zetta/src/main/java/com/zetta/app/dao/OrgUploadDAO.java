@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zetta.app.dbconnection.DBConnection;
+import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.OrganizationVO;
 
 public class OrgUploadDAO {
@@ -47,9 +48,9 @@ public class OrgUploadDAO {
 				ov.setOrgId(rs.getInt("org_id"));
 				ov.setFileName(rs.getString("filename"));
 				ov.setFilePath(rs.getString("filepath"));
-				ov.setCreatedDate(rs.getString("created_date"));
+				ov.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				ov.setCreatedBy(rs.getString("created_by"));
-				ov.setUpdatedDate(rs.getString("updated_date"));
+				ov.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				ov.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(ov);
 			}
@@ -74,9 +75,9 @@ public class OrgUploadDAO {
 				ov.setOrgId(rs.getInt("org_id"));
 				ov.setFileName(rs.getString("filename"));
 				ov.setFilePath(rs.getString("filepath"));
-				ov.setCreatedDate(rs.getString("created_date"));
+				ov.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				ov.setCreatedBy(rs.getString("created_by"));
-				ov.setUpdatedDate(rs.getString("updated_date"));
+				ov.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				ov.setUpdatedBy(rs.getString("updated_by")); 
 				list.add(ov);
 			}

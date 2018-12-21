@@ -70,7 +70,8 @@
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
-				<h3>LOGIN TO ADMIN</h3> 
+				<a href="/home"><img class="main-logo" src="../../img/logo/zettalogo.png" alt="" /></a><br/>
+				<h3>LOGIN</h3> 
 			</div>
 			<div class="content-error">
 				<div class="hpanel">
@@ -87,10 +88,8 @@
                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password1" id="password-field" class="form-control">
                                 <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                                 <!-- <span class="help-block small">Yur strong password</span> -->
-                            </div> 
-                              
-                            <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button>
-                            
+                            </div>  
+                            <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button> 
                         </form>
                     </div>
                 </div>
