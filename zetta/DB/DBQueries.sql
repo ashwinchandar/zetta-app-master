@@ -32,18 +32,6 @@ announcement CHARACTER VARYING(200),
 date TIMESTAMP WITH TIME ZONE
 );
 
-CREATE TABLE knowledgebase(
-knowledge_id serial PRIMARY KEY,
-name CHARACTER VARYING(30),
-category CHARACTER VARYING(100),
-topic CHARACTER VARYING(200),
-subject CHARACTER VARYING,
-created_date TIMESTAMP WITH TIME ZONE,
-created_by CHARACTER VARYING(30),
-updated_date TIMESTAMP WITH TIME ZONE,
-updated_by CHARACTER VARYING(30)
-);
-
 create table fileupload(
 file_id serial primary key,
 filename character varying(50),
@@ -76,8 +64,28 @@ create table knowledge_reply(
 topic_id INTEGER,
 topic CHARACTER VARYING(200),
 reply CHARACTER VARYING,
+filename character varying(50),
+filepath character varying,
+imagename character varying(50),
+imagepath character varying,
 created_date TIMESTAMP WITH TIME ZONE,
 created_by CHARACTER VARYING(30),
 updated_date TIMESTAMP WITH TIME ZONE,
 updated_by CHARACTER VARYING(30)
 );
+
+CREATE TABLE knowledgebase(
+knowledge_id serial PRIMARY KEY, 
+category CHARACTER VARYING(100),
+topic CHARACTER VARYING(200),
+filename character varying(50),
+filepath character varying,
+imagename character varying(50),
+imagepath character varying,
+subject CHARACTER VARYING,
+created_date TIMESTAMP WITH TIME ZONE,
+created_by CHARACTER VARYING(30),
+updated_date TIMESTAMP WITH TIME ZONE,
+updated_by CHARACTER VARYING(30)
+);
+

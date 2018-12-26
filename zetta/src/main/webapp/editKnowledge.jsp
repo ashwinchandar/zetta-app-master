@@ -35,7 +35,7 @@
                                                                <input type="hidden" id="knowledgeid" name="knowledgeid" value='${kb.knowledgeid}' readonly="readonly">
                                                             </div>
 															<div class="form-group"> 
-																<select name="category" class="form-control" value="${kb.category}" required>
+																<select name="category" class="form-control" value="${kb.category}" readonly="readonly" required>
 																	<option value="none" disabled="">Select Category</option>
 																	<option value="Finance" ${kb.category eq"Finance"?'selected':""}>Finance</option>
 																	<option value="Operation" ${kb.category eq"Operation"?'selected':""}>Operation</option>
@@ -48,11 +48,11 @@
 																</select>
 															</div>
 															<div class="form-group">
-                                                                     <input name="topic" type="text" class="form-control" placeholder="Topic" value="${kb.topic}" required>
-                                                                </div> 
-                                                                <div class="form-group res-mg-t-15">
-                                                                    <textarea name="subject" id="subject" placeholder="Message" value="" required>${kb.subject}</textarea>
-                                                                </div> 
+                                                              <input name="topic" type="text" class="form-control" placeholder="Topic" value="${kb.topic}" required>
+                                                            </div> 
+                                                            <div class="form-group res-mg-t-15">
+                                                              <textarea name="subject" id="subject" placeholder="Message" value="" required>${kb.subject}</textarea>
+                                                            </div> 
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div> 
                                                         </div>

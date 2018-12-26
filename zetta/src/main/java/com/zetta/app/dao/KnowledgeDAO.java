@@ -20,9 +20,13 @@ public class KnowledgeDAO {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("INSERT INTO knowledgebase (category,topic,subject,created_date,created_by,updated_date,updated_by) VALUES(?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO knowledgebase (category,topic,filename,filepath,imagename,imagepath,subject,created_date,created_by,updated_date,updated_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(++count, kb.getCategory());
 			ps.setString(++count, kb.getTopic());
+			ps.setString(++count, kb.getFileName());
+			ps.setString(++count, kb.getFilePath()); 
+			ps.setString(++count, kb.getImageName());
+			ps.setString(++count, kb.getImagePath());
 			ps.setString(++count, kb.getSubject());
 			long time = System.currentTimeMillis(); 
 			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
@@ -42,10 +46,14 @@ public class KnowledgeDAO {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("insert into knowledge_reply(topic_id,topic,reply,created_date,created_by,updated_date,updated_by) values(?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("insert into knowledge_reply(topic_id,topic,reply,filename,filepath,imagename,imagepath,created_date,created_by,updated_date,updated_by) values(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(++count, rvo.getTopicid());
 			ps.setString(++count, rvo.getTopic());
 			ps.setString(++count, rvo.getReply());
+			ps.setString(++count, rvo.getFileName());
+			ps.setString(++count, rvo.getFilePath()); 
+			ps.setString(++count, rvo.getImageName());
+			ps.setString(++count, rvo.getImagePath());
 			long time = System.currentTimeMillis(); 
 			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
 			ps.setString(++count, rvo.getCreatedBy());
@@ -73,6 +81,10 @@ public class KnowledgeDAO {
 				kvo.setTopicid(rs.getInt("topic_id"));
 				kvo.setTopic(rs.getString("topic"));
 				kvo.setReply(rs.getString("reply")); 
+				kvo.setFileName(rs.getString("filename"));
+				kvo.setFilePath(rs.getString("filepath")); 
+				kvo.setImageName(rs.getString("imagename"));
+				kvo.setImagePath(rs.getString("imagepath"));
 				kvo.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kvo.setCreatedBy(rs.getString("created_by"));
 				kvo.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
@@ -98,7 +110,11 @@ public class KnowledgeDAO {
 				KnowledgeReplyVO kvo = new KnowledgeReplyVO();
 				kvo.setTopicid(rs.getInt("topic_id"));
 				kvo.setTopic(rs.getString("topic"));
-				kvo.setReply(rs.getString("reply")); 
+				kvo.setReply(rs.getString("reply"));
+				kvo.setFileName(rs.getString("filename"));
+				kvo.setFilePath(rs.getString("filepath")); 
+				kvo.setImageName(rs.getString("imagename"));
+				kvo.setImagePath(rs.getString("imagepath"));
 				kvo.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kvo.setCreatedBy(rs.getString("created_by"));
 				kvo.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
@@ -120,7 +136,7 @@ public class KnowledgeDAO {
 			ps = con.prepareStatement("UPDATE knowledgebase SET category=?,topic=?,subject=?,updated_date=?,updated_by=? WHERE knowledge_id=?");
 			System.out.println("know BEFORE" + ps.toString());
 			ps.setString(++count, kb.getCategory());
-			ps.setString(++count, kb.getTopic().trim());
+			ps.setString(++count, kb.getTopic().trim());  
 			ps.setString(++count, kb.getSubject().trim());
 			long time = System.currentTimeMillis();
 			ps.setTimestamp(++count, new java.sql.Timestamp(time));
@@ -143,10 +159,14 @@ public class KnowledgeDAO {
 			ps = con.prepareStatement("SELECT * FROM knowledgebase");
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				System.out.println("Knowledge List AAA");
+				/*System.out.println("Knowledge List AAA");*/
 				KnowledgeBean kb = new KnowledgeBean();
 				kb.setKnowledgeid(rs.getInt("knowledge_id"));
 				kb.setCategory(rs.getString("category"));
+				kb.setFileName(rs.getString("filename"));
+				kb.setFilePath(rs.getString("filepath")); 
+				kb.setImageName(rs.getString("imagename"));
+				kb.setImagePath(rs.getString("imagepath"));
 				kb.setTopic(rs.getString("topic"));
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
@@ -176,7 +196,7 @@ public class KnowledgeDAO {
 				KnowledgeBean kb = new KnowledgeBean();
 				kb.setKnowledgeid(rs.getInt("knowledge_id"));
 				kb.setCategory(rs.getString("category"));
-				kb.setTopic(rs.getString("topic"));
+				kb.setTopic(rs.getString("topic")); 
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
@@ -205,6 +225,10 @@ public class KnowledgeDAO {
 				kb.setKnowledgeid(rs.getInt("knowledge_id"));
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
+				kb.setFileName(rs.getString("filename"));
+				kb.setFilePath(rs.getString("filepath")); 
+				kb.setImageName(rs.getString("imagename"));
+				kb.setImagePath(rs.getString("imagepath"));
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
@@ -232,6 +256,11 @@ public class KnowledgeDAO {
 				kb.setKnowledgeid(rs.getInt("knowledge_id"));
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
+				kb.setFileName(rs.getString("filename"));
+				kb.setFilePath(rs.getString("filepath")); 
+				kb.setImageName(rs.getString("imagename"));
+				System.out.println("imagename: " +kb.getImageName());
+				kb.setImagePath(rs.getString("imagepath"));
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 
@@ -259,6 +288,10 @@ public class KnowledgeDAO {
 				kb.setKnowledgeid(knowledgeid);
 				kb.setCategory(rs.getString("category"));
 				kb.setTopic(rs.getString("topic"));
+				kb.setFileName(rs.getString("filename"));
+				kb.setFilePath(rs.getString("filepath")); 
+				kb.setImageName(rs.getString("imagename"));
+				kb.setImagePath(rs.getString("imagepath"));
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				kb.setCreatedBy(rs.getString("created_by")); 

@@ -60,7 +60,12 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- modernizr JS
 		============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<style>
+	body {
+		background-image: url("img/org/10.jpg");
+		}
+	</style>
 </head>
 
 <body>
@@ -70,8 +75,8 @@
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
-				<a href="/home"><img class="main-logo" src="../../img/logo/zettalogo.png" alt="" /></a><br/>
-				<h3>LOGIN</h3> 
+				<a href="/"><img class="main-logo" src="../../img/logo/logo68.png" alt="" /></a><br/><br/>
+				<h3 style="color:#ffffff">LOGIN</h3> 
 			</div>
 			<div class="content-error">
 				<div class="hpanel">

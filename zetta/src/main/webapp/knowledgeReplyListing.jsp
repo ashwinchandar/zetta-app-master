@@ -48,7 +48,9 @@
 												data-click-to-select="true" data-toolbar="#toolbar">
 												<thead>
 													<tr>
-														<th data-field="state" data-checkbox="false">Topic</th>
+														<th data-field="state" data-checkbox="false">Topic</th> 
+														<th data-field="filename">File Name</th>
+														<th data-field="imagename">Image Name</th>
 														<th data-field="id">Reply</th>
 														<th data-field="date" data-editable="false">Created Date</th>
 														<th data-field="task" data-editable="false">Created By</th> 
@@ -58,7 +60,9 @@
 												<tbody>
 													<c:forEach var="dreply" items="${list}" varStatus="status">
 														<tr>
-															<td>${dreply.topic}</td>
+															<td>${dreply.topic}</td> 
+															<td>${dreply.fileName}</td>
+															<td>${dreply.imageName}</td>
 															<td>${dreply.reply}</td>
 															<td>${dreply.createdDate}</td>
 															<td>${dreply.createdBy}</td> 

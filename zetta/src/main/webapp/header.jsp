@@ -190,8 +190,18 @@
         };
     });
 	</script> -->
-	
-	
+	<!-- <script type="text/javascript">
+	 $(document).ready(function(){
+  // when input type file is changed
+		$("input:file").change(function (){
+      // find the name of the value, remove C:/fakepath 
+			var fileName = $(this).val().replace(/C:\\fakepath\\/i, '');
+      // output into the classed element the name
+			$(this).parent(".file-upload-button").find(".uploaded-file").html(fileName);
+		});
+});
+	 </script>  --> 
+	  
 	<!-- Mailbox effect -->
 	
 	<!-- jquery

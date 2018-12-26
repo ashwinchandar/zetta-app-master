@@ -46,8 +46,7 @@ public class OrganizationController {
 	}
 	 
 	@RequestMapping(value="/chartinsert",method=RequestMethod.POST)
-	public String orgChartUpload(HttpServletRequest request, @RequestParam("files") MultipartFile [] files,ModelMap model) {
-	
+	public String orgChartUpload(HttpServletRequest request, @RequestParam("files") MultipartFile [] files,ModelMap model) { 
 	for(MultipartFile file:files){
 		Path filePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename());
 		try {
@@ -59,7 +58,7 @@ public class OrganizationController {
 			AdminBean ab = (AdminBean)session.getAttribute("USER"); 
 			ov.setCreatedBy(ab.getName());
 			ov.setUpdatedBy(ab.getName());
-			System.out.println("filePath:: "+filePath);
+			/*System.out.println("filePath:: "+filePath);*/
 			OrgUploadDAO odao = new OrgUploadDAO(); 
 			odao.insertOrgfile(ov);
 			Files.write(filePath, file.getBytes()); 

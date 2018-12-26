@@ -42,8 +42,7 @@
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6">
 						<div class="login-horizental cancel-wp pull-left form-bc-ele"> 
-							<button class="btn btn-sm btn-primary login-submit-cs"
-								type="submit">Upload</button>
+							<button class="btn btn-sm btn-primary login-submit-cs" type="submit">Upload</button>
 							<button class="btn btn-white" type="reset">Cancel</button><br /><br />
 							<a href="/menu.jsp">  Back to List  </a>
 						</div> 

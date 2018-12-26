@@ -1,33 +1,19 @@
 package com.zetta.app.vo;
 
-/*import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;*/
-
-/*@Indexed
-@Entity*/
+ 
 public class KnowledgeBean {
-	
-	/*@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)*/
-	private Integer knowledgeid; 
-	/*@Field*/
-	private String category;
-	/*@Field*/
-	private String topic;
-	/*@Field*/
-	private String subject;
-	/*@Field*/
-	private String createdDate;
-	/*@Field*/
-	private String createdBy;
-	/*@Field*/
-	private String updatedDate;
-	/*@Field*/
+	 
+	private Integer knowledgeid;  
+	private String category; 
+	private String topic; 
+	private String fileName;
+	private String filePath;
+	private String imageName;
+	private String imagePath;
+	private String subject; 
+	private String createdDate; 
+	private String createdBy; 
+	private String updatedDate; 
 	private String updatedBy;
 	public Integer getKnowledgeid() {
 		return knowledgeid;
@@ -46,6 +32,30 @@ public class KnowledgeBean {
 	}
 	public void setTopic(String topic) {
 		this.topic = topic;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	public String getSubject() {
 		return subject;
@@ -77,6 +87,7 @@ public class KnowledgeBean {
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
+	 
 	
 }
 

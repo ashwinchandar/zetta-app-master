@@ -4,6 +4,10 @@ public class KnowledgeReplyVO {
 
 	private Integer topicid;
 	private String topic;
+	private String fileName;
+	private String filePath;
+	private String imageName;
+	private String imagePath;
 	private String reply;
 	private String createdDate; 
 	private String createdBy; 
@@ -27,6 +31,30 @@ public class KnowledgeReplyVO {
 	}
 	public void setReply(String reply) {
 		this.reply = reply;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	public String getCreatedDate() {
 		return createdDate;

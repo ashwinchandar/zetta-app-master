@@ -27,16 +27,41 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                     <form action="/addknowledge" method="POST" onsubmit="return ValidateForm(this);">
+                                                     <form action="/addknowledge" method="POST" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
                                                      <script type="text/javascript">
-														function ValidateForm(frm) {
+														 function ValidateForm(frm) {
 															if (frm.category.value == "none") {
 																alert('Please select Category!');
 																frm.category.focus();
 																return false;
-															}  
+															}
+														}
+														  function imgValidation(){
+														    var fileInput = document.getElementById('kimg');
+														    var filePath = fileInput.value; 
+														    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+														    if(!allowedExtensions.exec(filePath)){
+														        alert('Please upload image having extensions .jpeg/.jpg/.png/.gif only.');
+														        fileInput.value = ''; 
+														        return false;
+														    } 
+														}   
+														function fileValidation(){
+														    var fileInput = document.getElementById('files');
+														    var filePath = fileInput.value; 
+														    var allowedExtensions = /(\.pdf|\.PDF)$/i;
+														    if(!allowedExtensions.exec(filePath)){
+														        alert('Please upload image/file having extension .pdf only.');
+														        fileInput.value = ''; 
+														        return false;
+														    } 
 														}
 													 </script>  
+													  <!--  <script type="text/javascript">
+														    $(document).ready(function() {
+														        $('.file-upload').file_upload();
+														    });
+														</script> -->
                                                         <div class="row tinymce-single responsive-mg-b-30">
                                                         	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -55,10 +80,43 @@
 															</div>
 															<div class="form-group">
                                                                 <input name="topic" type="text" class="form-control" placeholder="Topic" value="${kb.topic}" required>
-                                                            </div> 
-                                                                <div class="form-group res-mg-t-15">
-                                                                    <textarea name="subject" id="subject" placeholder="Message" value="${kb.subject}" required></textarea>
-                                                                </div> 	 
+                                                            </div>
+                                                            <div class="form-group">
+																<div class="file-upload-inner ts-forms">
+																	<div class="input prepend-small-btn">
+																		<div class="file-button"> File
+																		<input type="file" name="files" id="files" multiple="multiple"
+																				onchange="document.getElementById('prepend-small-btn').value = this.value; return fileValidation()">
+																		</div>
+																		<input type="text" id="prepend-small-btn" placeholder="no file selected">
+																	</div>
+																</div>
+															</div> 
+															<div class="form-group"> 
+															<div class="file-upload-inner ts-forms">
+																<div class="input prepend-big-btn">
+																	<div class="file-button"> Image
+																	<input type="file" name="kimg" id="kimg" multiple="multiple"
+																			onchange="document.getElementById('prepend-big-btn').value = this.value; return imgValidation()">
+																	</div>
+																	<input type="text" id="prepend-big-btn" placeholder="no image selected"/> 
+																</div>  	
+															</div>   
+															</div>
+														  	
+														  <!-- 	<form class="form-horizontal">
+															    <div class="form-group">
+															        <div class="col-sm-offset-2 col-sm-10">
+															            <label class="file-upload btn btn-primary">
+															                Browse for file ... <input type="file" />
+															            </label>
+															        </div>
+															    </div>
+															</form> -->
+														  	
+															<div class="form-group res-mg-t-15">
+                                                               <textarea name="subject" id="subject" placeholder="Share your knowledge" value="${kb.subject}" required></textarea>
+                                                           </div> 	 
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div> 
                                                           </div>  
@@ -66,7 +124,7 @@
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress"> 
                                                                      <button class="btn btn-primary waves-effect waves-light" type="submit" name="submit">Submit</button>
-                                									<button class="btn btn-primary waves-effect waves-light" type="reset" name="reset" value="Reset">Clear</button>
+                                									<button class="btn btn-primary waves-effect waves-light" type="reset">Clear</button>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -57,6 +57,8 @@
 													<tr>
 														<th data-field="state" data-checkbox="false">Category</th>
 														<th data-field="id">Topic</th>
+														<th data-field="imagename" data-editable="false">Image Name</th>  
+														<th data-field="name" data-editable="false">File Name</th> 
 														<th data-field="date" data-editable="false">Created Date</th>
 														<th data-field="task" data-editable="false">Created By</th> 
 														<th data-field="email" data-editable="false">Subject</th>
@@ -69,6 +71,8 @@
 														<tr>
 															<td>${knowledge.category}</td>
 															<td>${knowledge.topic}</td>
+															<td>${knowledge.imageName}</td>  
+															<td>${knowledge.fileName} </td> 
 															<td>${knowledge.createdDate}</td>
 															<td>${knowledge.createdBy}</td>
 															<td>${knowledge.subject}</td>
@@ -100,11 +104,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		   
-		   
-	  						 
-		   
-		   
+		</div> 	   
 </body>
 </html>
