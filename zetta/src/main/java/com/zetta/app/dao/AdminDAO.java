@@ -27,8 +27,8 @@ public class AdminDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("INSERT INTO admin_register(admin_card_no,admin_name,dob,department,designation,email,mobile,location,role,password1) VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(++count, ab.getAdmin_card_no());
-			ps.setString(++count, ab.getName());
-			ps.setDate(++count, new Date(DateUtil.getDateFromString(ab.getDob()).getTime()));
+			ps.setString(++count, ab.getName()); 
+			ps.setDate(++count, new Date(DateUtil.getDateFromStringinup(ab.getDob()).getTime())); 
 			ps.setString(++count, ab.getDepartment());
 			ps.setString(++count, ab.getDesignation());
 			ps.setString(++count, ab.getEmail());
@@ -51,7 +51,7 @@ public class AdminDAO {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("UPDATE admin_register SET admin_name=?,dob=?,department=?,designation=?,email=?,mobile=?,location=?,role=?,password1=? WHERE admin_card_no=?");
 			ps.setString(++count, ab.getName());
-			ps.setDate(++count, new Date(DateUtil.getDateFromString(ab.getDob()).getTime()));
+			ps.setDate(++count, new Date(DateUtil.getDateFromStringinup(ab.getDob()).getTime()));
 			ps.setString(++count, ab.getDepartment());
 			ps.setString(++count, ab.getDesignation());
 			ps.setString(++count, ab.getEmail());

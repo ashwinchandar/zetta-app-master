@@ -32,7 +32,7 @@
 										<h1>
 											<a class="blog-ht">${upload.fileName}</a>
 										</h1>
-										<object class="media" data="${upload.filePath}#toolbar=0"
+										<object class="media" data="C:/Workspace/repo/zetta-app-master${upload.filePath}"
 											type="application/pdf" width="630" height="790"></object>
 									</center>
 								</div>

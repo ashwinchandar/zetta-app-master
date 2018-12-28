@@ -50,7 +50,7 @@ public class OrganizationController {
 	for(MultipartFile file:files){
 		Path filePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename());
 		try {
-			OrganizationVO ov = new OrganizationVO(); 
+			OrganizationVO ov = new OrganizationVO();
 			ov.setFileName(file.getOriginalFilename());
 			String sFilepath = "/orgchart/" +file.getOriginalFilename().trim();
 			ov.setFilePath(sFilepath);
@@ -58,7 +58,7 @@ public class OrganizationController {
 			AdminBean ab = (AdminBean)session.getAttribute("USER"); 
 			ov.setCreatedBy(ab.getName());
 			ov.setUpdatedBy(ab.getName());
-			/*System.out.println("filePath:: "+filePath);*/
+			System.out.println("filePath:: "+filePath);
 			OrgUploadDAO odao = new OrgUploadDAO(); 
 			odao.insertOrgfile(ov);
 			Files.write(filePath, file.getBytes()); 

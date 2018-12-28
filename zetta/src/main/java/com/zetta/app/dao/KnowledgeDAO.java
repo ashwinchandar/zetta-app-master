@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.zetta.app.dbconnection.DBConnection;
 import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.KnowledgeBean;
@@ -16,15 +18,18 @@ public class KnowledgeDAO {
 	static Connection con;
 	static PreparedStatement ps;
 	
+	 
+	 
+	 
 	public void insertKnowledgebase(KnowledgeBean kb) {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("INSERT INTO knowledgebase (category,topic,filename,filepath,imagename,imagepath,subject,created_date,created_by,updated_date,updated_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(++count, kb.getCategory());
-			ps.setString(++count, kb.getTopic());
+			ps.setString(++count, kb.getTopic());   
 			ps.setString(++count, kb.getFileName());
-			ps.setString(++count, kb.getFilePath()); 
+			ps.setString(++count, kb.getFilePath());
 			ps.setString(++count, kb.getImageName());
 			ps.setString(++count, kb.getImagePath());
 			ps.setString(++count, kb.getSubject());

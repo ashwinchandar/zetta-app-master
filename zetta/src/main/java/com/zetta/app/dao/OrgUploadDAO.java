@@ -20,7 +20,9 @@ public class OrgUploadDAO {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("insert into orgupload (filename,filepath,created_date,created_by,updated_date,updated_by) values (?,?,?,?,?,?)");
-			ps.setString(++count, ov.getFileName());
+			String filename=ov.getFileName().contains(".")?ov.getFileName().substring(0, ov.getFileName().lastIndexOf('.')):"";
+			ps.setString(++count, filename);
+			/*ps.setString(++count, ov.getFileName());*/
 			ps.setString(++count, ov.getFilePath());
 			long time = System.currentTimeMillis(); 
 			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
