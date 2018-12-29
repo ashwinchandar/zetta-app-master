@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.zetta.app.dao.AdminDAO;
 import com.zetta.app.dao.AnnounceDAO;
 import com.zetta.app.dao.EmployeeDAO;
+import com.zetta.app.dao.KnowledgeDAO;
 import com.zetta.app.vo.AdminBean;
 import com.zetta.app.vo.AnnounceBean;
 import com.zetta.app.vo.EmployeeBean;
@@ -89,6 +90,9 @@ public class AdminController {
 	
 	@RequestMapping("/menu")
 	public String menu(HttpServletRequest request,ModelMap model) { 
+		KnowledgeDAO kdao = new KnowledgeDAO();
+		String count=kdao.getknowledgebasePendingCount();
+		model.addAttribute("pendingCount", count);
 		return "menu";
 	}
 	

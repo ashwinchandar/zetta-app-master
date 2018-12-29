@@ -28,6 +28,8 @@
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
                                                      <form action="/addknowledge" method="POST" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
+                                                     <p style="color:green" align="center">${kbpost}</p> 
+                                                     <p style="color:green" align="center">${kball}</p> 
                                                      <script type="text/javascript">
 														 function ValidateForm(frm) {
 															if (frm.category.value == "none") {

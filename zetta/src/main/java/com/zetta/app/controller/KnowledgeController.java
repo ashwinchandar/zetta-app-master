@@ -10,21 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.zetta.app.dao.AdminDAO;
 import com.zetta.app.dao.KnowledgeDAO;
-import com.zetta.app.dao.OrgUploadDAO;
 import com.zetta.app.vo.AdminBean;
 import com.zetta.app.vo.KnowledgeBean;
 import com.zetta.app.vo.KnowledgeReplyVO;
-import com.zetta.app.vo.OrganizationVO;
 
 @Controller 
 public class KnowledgeController{
@@ -48,6 +42,8 @@ public class KnowledgeController{
 	public String knowledgeSubmit(HttpServletRequest request, @RequestParam("files") MultipartFile [] files,@RequestParam("kimg") MultipartFile [] images,ModelMap model) { 
 		KnowledgeBean kb = new KnowledgeBean();
 		KnowledgeDAO kdao = new KnowledgeDAO();
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
 		kb.setCategory(request.getParameter("category"));
 		kb.setTopic(request.getParameter("topic")); 
 		for(MultipartFile file:files) {
@@ -72,16 +68,47 @@ public class KnowledgeController{
 				e.printStackTrace();
 			} 
 		}
-		kb.setSubject(request.getParameter("subject"));
-		HttpSession session = request.getSession(); 
-		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
+		kb.setSubject(request.getParameter("subject")); 
 		kb.setCreatedBy(ab.getName());
 		kb.setUpdatedBy(ab.getName());
-		kdao.insertKnowledgebase(kb);  
-		List<KnowledgeBean> list = kdao.getknowledgebaselist();
+		List<KnowledgeBean> list = null;
+		if(ab.getRole().equals("COMMONUSER")) {
+			kb.setStatus("PENDING");
+			model.addAttribute("kbpost", "Your knowledge shared Successfully, Please wait for approval to publish.");  
+		} else {
+			kb.setStatus("ACTIVE");
+			model.addAttribute("kball", "Dear Admin, Your knowledge Published.");   
+		}
+		kdao.insertKnowledgebase(kb);
+		if(ab.getRole().equals("COMMONUSER")) { 
+			 list = kdao.getknowledgebaselist(ab.getName());
+		} else { 
+			 list = kdao.getknowledgebaselist();
+		}
+		model.addAttribute("role", ab.getRole());  
 		model.addAttribute("list", list);
 		model.addAttribute("knowledge", "Knowledgebase Published."); 
-		return "knowledgebaseListing";
+		/*return "add_knowledgebase";*/
+		return "knowledgebaseListing"; 
+	}
+	 
+	@RequestMapping(value="/publish",method=RequestMethod.GET)
+	public String knowledgepublishPost(HttpServletRequest request,ModelMap model) {
+		KnowledgeDAO kdao = new KnowledgeDAO(); 
+		KnowledgeBean kb = new KnowledgeBean();
+		kb.setKnowledgeid(Integer.parseInt(request.getParameter("id")));
+		kdao.publishkb(kb);
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
+		List<KnowledgeBean> list = null;
+		if(ab.getRole().equals("COMMONUSER")) { 
+			 list = kdao.getknowledgebaselist(ab.getName());
+		} else {  
+			 list = kdao.getknowledgebaselist();
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("role", ab.getRole());
+		return "knowledgebaseListing"; 
 	}
 	
 	@RequestMapping("/reply")
@@ -164,10 +191,19 @@ public class KnowledgeController{
 	
 	@RequestMapping("/knowledgelisting")
 	public String knowledgelisting(HttpServletRequest request,ModelMap model) {  
-		KnowledgeDAO kdao = new KnowledgeDAO();
-		List<KnowledgeBean> list = kdao.getknowledgebaselist();
-		list.forEach(li->{System.out.println("dddd" +li.getImageName());});
-		model.addAttribute("list", list); 
+		KnowledgeDAO kdao = new KnowledgeDAO(); 
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
+		List<KnowledgeBean> list = null;
+		if(ab.getRole().equals("COMMONUSER")) { 
+			 list = kdao.getknowledgebaselist(ab.getName());
+		} else {  
+			 list = kdao.getknowledgebaselist();
+		}
+		model.addAttribute("role", ab.getRole()); 
+		/*list.forEach(li->{System.out.println("dddd" +li.getImageName());});*/
+		model.addAttribute("list", list);
+		   
 		return "knowledgebaseListing";
 	}
 	

@@ -62,8 +62,11 @@
 														<th data-field="date" data-editable="false">Created Date</th>
 														<th data-field="task" data-editable="false">Created By</th> 
 														<th data-field="email" data-editable="false">Subject</th>
+														<c:if test="${not empty role and role ne 'COMMONUSER'}">
+														<th data-field="actions" data-editable="false">Action</th> 
 														<th data-field="price" data-editable="false">Edit</th>
 														<th data-field="action">Remove</th>
+														</c:if> 
 													</tr>
 												</thead>
 												<tbody>
@@ -76,6 +79,24 @@
 															<td>${knowledge.createdDate}</td>
 															<td>${knowledge.createdBy}</td>
 															<td>${knowledge.subject}</td>
+															<c:if test="${not empty role and role ne 'COMMONUSER'}">
+															<%-- <c:if test="${knowledge.status eq 'PENDING'}"> --%>
+															<c:choose>
+															<c:when test="${knowledge.status eq 'PENDING'}">
+															<td><a
+																href="<c:url value='/publish?id=${list[status.index].knowledgeid}' />"
+																title="publish">
+																	<center>
+																		<i class="fa fa-check" aria-hidden="true"></i>
+																	</center>
+															</a></td>
+															</c:when>
+															<c:otherwise>
+															<td> </td>
+															</c:otherwise>
+															</c:choose>
+															
+															 
 															<td><a
 																href="<c:url value='/knowledge/edit?id=${list[status.index].knowledgeid}' />"
 																title="Edit">
@@ -91,6 +112,7 @@
 																		<i class="fa fa-trash-o" aria-hidden="true"></i>
 																	</center>
 															</a></td>
+															</c:if>
 														</tr>
 													</c:forEach>
 												</tbody>

@@ -46,7 +46,10 @@
 									</div>
 									<div class="m-t-xl widget-cl-1">
 										<small> You can Add New Knowledge Base documents as
-											well as Drop KB document from the record. </small>
+											well as Drop KB document from the record. </small><br/>
+											<c:if test="${not empty pendingCount }">
+											<strong>You have <span class="label label-info">${pendingCount}</span> records to approve.</strong>
+											</c:if>
 									</div>
 								</div>
 							</a>

@@ -68,7 +68,12 @@
 										<div class="datatable-dashv1-list custom-datatable-overright"> 
 											 <div id="toolbar">
 												<h2>Knowledge Sharing</h2>
-											</div>  
+											</div> <br/>
+											 <form action="/addknowledge" method="get"> 
+												<div class="payment-adress"> 
+				                                     <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="">Create</button>
+				      							</div>
+											</form> 
 											<table id="table" data-toggle="table" data-pagination="true"
 												data-search="true" data-show-columns="false"
 												data-show-pagination-switch="false" data-show-refresh="false"

@@ -15,6 +15,8 @@ public class KnowledgeBean {
 	private String createdBy; 
 	private String updatedDate; 
 	private String updatedBy;
+	private String status;
+	
 	public Integer getKnowledgeid() {
 		return knowledgeid;
 	}
@@ -87,8 +89,12 @@ public class KnowledgeBean {
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
-	 
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	} 
 }
 
 

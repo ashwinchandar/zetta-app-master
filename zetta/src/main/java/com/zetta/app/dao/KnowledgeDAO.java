@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
+import java.util.List; 
 import com.zetta.app.dbconnection.DBConnection;
 import com.zetta.app.util.DateUtil;
 import com.zetta.app.vo.KnowledgeBean;
@@ -17,15 +14,12 @@ public class KnowledgeDAO {
 
 	static Connection con;
 	static PreparedStatement ps;
-	
-	 
-	 
-	 
+	  
 	public void insertKnowledgebase(KnowledgeBean kb) {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("INSERT INTO knowledgebase (category,topic,filename,filepath,imagename,imagepath,subject,created_date,created_by,updated_date,updated_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO knowledgebase (category,topic,filename,filepath,imagename,imagepath,subject,created_date,created_by,updated_date,updated_by,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(++count, kb.getCategory());
 			ps.setString(++count, kb.getTopic());   
 			ps.setString(++count, kb.getFileName());
@@ -38,7 +32,8 @@ public class KnowledgeDAO {
 			ps.setString(++count, kb.getCreatedBy());
 			ps.setTimestamp(++count, new java.sql.Timestamp(time));
 			ps.setString(++count, kb.getUpdatedBy());
-			System.out.println("insert" +ps.toString());
+			ps.setString(++count, kb.getStatus());
+			/*System.out.println("insert" +ps.toString());*/
 			ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -146,6 +141,7 @@ public class KnowledgeDAO {
 			long time = System.currentTimeMillis();
 			ps.setTimestamp(++count, new java.sql.Timestamp(time));
 			ps.setString(++count, kb.getUpdatedBy());
+			ps.setString(++count, kb.getStatus());
 			ps.setInt(++count, kb.getKnowledgeid()); 
 			System.out.println("know Upbate" + ps.toString()); 
 			ps.executeUpdate(); 
@@ -156,12 +152,27 @@ public class KnowledgeDAO {
 		}
 	}
 	
+	public void publishkb(KnowledgeBean kb) {
+		int count=0;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("update knowledgebase set status='ACTIVE' where knowledge_id=? and status='PENDING'"); 
+			ps.setInt(++count, kb.getKnowledgeid());
+			ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionpscon(ps, con);
+		}
+	}
+	
+	
 	public List<KnowledgeBean> getKnowledgebases(){
 		List<KnowledgeBean> list = new ArrayList<>();
 		ResultSet rs=null;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("SELECT * FROM knowledgebase");
+			ps = con.prepareStatement("SELECT * FROM knowledgebase where status='ACTIVE' order by updated_date desc");
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				/*System.out.println("Knowledge List AAA");*/
@@ -178,6 +189,7 @@ public class KnowledgeDAO {
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
+				kb.setStatus(rs.getString("status"));
 				list.add(kb);
 			}
 		} catch(Exception e) {
@@ -193,7 +205,7 @@ public class KnowledgeDAO {
 		ResultSet rs=null;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("SELECT * FROM knowledgebase where category=? order by updated_date DESC");
+			ps = con.prepareStatement("SELECT * FROM knowledgebase where category=? and status='ACTIVE' order by updated_date DESC");
 			ps.setString(1, category); 
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -207,6 +219,7 @@ public class KnowledgeDAO {
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
+				kb.setStatus(rs.getString("status"));
 				list.add(kb);
 			}
 		} catch(Exception e) {
@@ -239,6 +252,7 @@ public class KnowledgeDAO {
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by")); 
+				kb.setStatus(rs.getString("status"));
 				list.add(kb);
 			}
 		} catch(Exception e) {
@@ -271,13 +285,67 @@ public class KnowledgeDAO {
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by"));
-				
+				kb.setStatus(rs.getString("status"));
 				list.add(kb); 
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public List<KnowledgeBean> getknowledgebaselist(String user){
+		List<KnowledgeBean> list = new ArrayList<>(); 
+		ResultSet rs = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("SELECT * FROM knowledgebase where created_by=? order by updated_date DESC"); 
+			ps.setString(1, user);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				System.out.println("know updated date" + ps.toString());
+				KnowledgeBean kb = new KnowledgeBean();
+				kb.setKnowledgeid(rs.getInt("knowledge_id"));
+				kb.setCategory(rs.getString("category"));
+				kb.setTopic(rs.getString("topic"));
+				kb.setFileName(rs.getString("filename"));
+				kb.setFilePath(rs.getString("filepath")); 
+				kb.setImageName(rs.getString("imagename"));
+				System.out.println("imagename: " +kb.getImageName());
+				kb.setImagePath(rs.getString("imagepath"));
+				kb.setSubject(rs.getString("subject"));
+				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
+				kb.setCreatedBy(rs.getString("created_by")); 
+				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
+				kb.setUpdatedBy(rs.getString("updated_by"));
+				kb.setStatus(rs.getString("status"));
+				
+				list.add(kb); 
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}  finally {
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return list;
+	}
+	
+	public String getknowledgebasePendingCount(){
+		String count="";
+		ResultSet rs = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement("select count(*) as count from knowledgebase where status='PENDING'");   
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				count=String.valueOf(rs.getInt("count"));   
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnectionrspscon(rs, ps, con);
+		}
+		return count;
 	}
 	
 	public KnowledgeBean editKnowledgebase(Integer knowledgeid) {
@@ -302,6 +370,7 @@ public class KnowledgeDAO {
 				kb.setCreatedBy(rs.getString("created_by")); 
 				kb.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
 				kb.setUpdatedBy(rs.getString("updated_by"));
+				kb.setStatus(rs.getString("status"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
