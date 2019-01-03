@@ -23,7 +23,7 @@
 									<div class="row">
 									<table class="full-right">
 									<td>
-										<a href="/menu.jsp"
+										<a href="/menu"
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-1 col-md-12">
 											<span><i class="fa fa-arrow-left"></i> <span>Back to Main</span>
 										</span>
@@ -69,7 +69,7 @@
 															 
 															<td><a
 																onclick="return confirm('Are you sure you want to delete?')"
-																href="<c:url value='/reply/delete?id=${list[status.index].topicid}&topic=${list[status.index].topic}' />"
+																href="<c:url value='/reply/delete?id=${list[status.index].replyid}' />"
 																title="Trash">
 																	<center>
 																		<i class="fa fa-trash-o" aria-hidden="true"></i>

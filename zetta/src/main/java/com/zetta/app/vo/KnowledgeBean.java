@@ -1,8 +1,7 @@
 package com.zetta.app.vo;
 
  
-public class KnowledgeBean {
-	 
+public class KnowledgeBean { 
 	private Integer knowledgeid;  
 	private String category; 
 	private String topic; 

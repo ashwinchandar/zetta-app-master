@@ -55,6 +55,8 @@
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="css/loginstyle.css">
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="css/responsive.css">
@@ -78,14 +80,41 @@
 				<a href="/"><img class="main-logo" src="../../img/logo/logo68.png" alt="" /></a><br/><br/>
 				<h3 style="color:#ffffff">LOGIN</h3> 
 			</div>
-			<div class="content-error">
+			<div class="single_contant_right">
+                  <form action="/login" method="post">
+                      	<p style="color:red" align="center">${errormsg}</p>  
+                      	<p style="color:green" align="center">${adminlogout}</p> 
+                     <div class="row">
+                         <div class="col-md-12">
+                             <div class="form-group">
+                                 <input type="text" placeholder="User Name" title="Please enter you username" required="Enter your Card Number" value="" name="admin_card_no" id="admin_card_no" class="form-control">
+                             </div>
+                         </div>
+                     </div>
+					<div class="row">
+                         <div class="col-md-12">
+                             <div class="form-group">
+                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password1" id="password-field" class="form-control">
+                             </div>
+                         </div>
+                     </div> 
+                     <div class="row">
+                     	 <div class="col-md-3"></div>
+                         <div class="col-md-6">
+                              <button class="btn btn-success btn-block loginbtn" type="submit" name="submit" value="login">Login</button>
+                         </div>
+                         <div class="col-md-3"></div>
+                     </div>
+                 </form> 
+             </div>
+			<%-- <div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
                         <form action="/login" method="post">
                         	<p style="color:red" align="center">${errormsg}</p>  
                         	<p style="color:green" align="center">${adminlogout}</p>  
                             <div class="form-group">
-                                <label class="control-label" for="username">Care Number</label>
+                                <label class="control-label" for="username">Card Number</label>
                                 <input type="text" placeholder="eg:Z9001" title="Please enter you username" required="Enter your Card Number" value="" name="admin_card_no" id="admin_card_no" class="form-control">
                             </div>
                             <div class="form-group">
@@ -98,7 +127,7 @@
                         </form>
                     </div>
                 </div>
-			</div>
+			</div> --%>
 			<!-- <div class="text-center login-footer">
 				<p><a href="/">Back to Home</a></p>
 			</div> -->

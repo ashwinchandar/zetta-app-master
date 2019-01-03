@@ -25,7 +25,7 @@ import com.zetta.app.vo.OrganizationVO;
 @Controller
 public class OrganizationController {
 	 
-	private static String UPLOADED_FOLDER = "../zetta/src/main/resources/static/orgchart";
+	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/orgchart";
 	
 	@RequestMapping(value="/orgupload", method = RequestMethod.GET)
 	   public String organizationHandler(Model model) {

@@ -58,7 +58,6 @@
                                                                 </div>
                                                                 <div class="form-group"> 
                                                                 <input name="name" type="text" class="form-control" placeholder="Full Name" value="${ab.name}" required>
-                                                                </div> 
                                                                 <div class="form-group">
                                                                     <input name="dob" type="date" class="form-control" placeholder="Date of Birth" value="${ab.dob}" required>
                                                                 </div>

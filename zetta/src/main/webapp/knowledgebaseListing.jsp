@@ -21,7 +21,7 @@
 								<div class="product-tab-list tab-pane fade active in"
 									id="description">
 									<div class="row">
-									<table class="full-right">
+									<!-- <table class="full-right">
 									<td>
 										<a href="/menu.jsp"
 											class="btn btn-primary m-btn m-btn--custom m-btn--icon col-md-offset-1 col-md-12">
@@ -36,7 +36,7 @@
 										</span>
 										</a>
 									</td> 
-									</table>
+									</table> -->
 									<div class="sparkline13-graph">
 										<div class="datatable-dashv1-list custom-datatable-overright">
 											<div id="toolbar">
@@ -92,7 +92,9 @@
 															</a></td>
 															</c:when>
 															<c:otherwise>
-															<td> </td>
+															<td>	<center>
+																		<i class="fa fa-globe" aria-hidden="true" title="published"></i>
+																	</center> </td>
 															</c:otherwise>
 															</c:choose>
 															

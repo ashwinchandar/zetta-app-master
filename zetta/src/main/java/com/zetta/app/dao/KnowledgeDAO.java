@@ -46,7 +46,7 @@ public class KnowledgeDAO {
 		int count=0;
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("insert into knowledge_reply(topic_id,topic,reply,filename,filepath,imagename,imagepath,created_date,created_by,updated_date,updated_by) values(?,?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("insert into knowledge_reply(topic_id,topic,reply,filename,filepath,imagename,imagepath,created_date,created_by,updated_date,updated_by) values(?,?,?,?,?,?,?,?,?,?,?)"); 
 			ps.setInt(++count, rvo.getTopicid());
 			ps.setString(++count, rvo.getTopic());
 			ps.setString(++count, rvo.getReply());
@@ -68,16 +68,17 @@ public class KnowledgeDAO {
 		}
 	}
 	
-	public List<KnowledgeReplyVO> getKnowledgereply(Integer topic){
+	public List<KnowledgeReplyVO> getKnowledgereply(Integer replyid){
 		List<KnowledgeReplyVO> list = new ArrayList<>();
 		ResultSet rs=null;
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("Select * from knowledge_reply where topic_id=? order by updated_date DESC");
-			ps.setInt(1, topic);
+			ps.setInt(1, replyid);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				KnowledgeReplyVO kvo = new KnowledgeReplyVO();
+				kvo.setReplyid(rs.getInt("reply_id"));
 				kvo.setTopicid(rs.getInt("topic_id"));
 				kvo.setTopic(rs.getString("topic"));
 				kvo.setReply(rs.getString("reply")); 
@@ -108,6 +109,7 @@ public class KnowledgeDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				KnowledgeReplyVO kvo = new KnowledgeReplyVO();
+				kvo.setReplyid(rs.getInt("reply_id"));
 				kvo.setTopicid(rs.getInt("topic_id"));
 				kvo.setTopic(rs.getString("topic"));
 				kvo.setReply(rs.getString("reply"));
@@ -140,8 +142,7 @@ public class KnowledgeDAO {
 			ps.setString(++count, kb.getSubject().trim());
 			long time = System.currentTimeMillis();
 			ps.setTimestamp(++count, new java.sql.Timestamp(time));
-			ps.setString(++count, kb.getUpdatedBy());
-			ps.setString(++count, kb.getStatus());
+			ps.setString(++count, kb.getUpdatedBy()); 
 			ps.setInt(++count, kb.getKnowledgeid()); 
 			System.out.println("know Upbate" + ps.toString()); 
 			ps.executeUpdate(); 
@@ -270,7 +271,7 @@ public class KnowledgeDAO {
 			ps = con.prepareStatement("SELECT * FROM knowledgebase order by updated_date DESC"); 
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				System.out.println("know updated date" + ps.toString());
+				/*System.out.println("know updated date" + ps.toString());*/
 				KnowledgeBean kb = new KnowledgeBean();
 				kb.setKnowledgeid(rs.getInt("knowledge_id"));
 				kb.setCategory(rs.getString("category"));
@@ -278,7 +279,7 @@ public class KnowledgeDAO {
 				kb.setFileName(rs.getString("filename"));
 				kb.setFilePath(rs.getString("filepath")); 
 				kb.setImageName(rs.getString("imagename"));
-				System.out.println("imagename: " +kb.getImageName());
+				/*System.out.println("imagename: " +kb.getImageName());*/
 				kb.setImagePath(rs.getString("imagepath"));
 				kb.setSubject(rs.getString("subject"));
 				kb.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
@@ -395,13 +396,12 @@ public class KnowledgeDAO {
 		return kb;
 	}  
 	
-	public KnowledgeReplyVO deleteReply(Integer topicid, String topic) {
+	public KnowledgeReplyVO deleteReply(Integer replyid) {
 		 KnowledgeReplyVO kvo = new KnowledgeReplyVO();
 		try {
 			con = DBConnection.getConnection();
-			ps = con.prepareStatement("DELETE FROM knowledge_reply WHERE topic_id=? and topic=?");
-			ps.setInt(1, topicid);
-			ps.setString(2, topic);
+			ps = con.prepareStatement("DELETE FROM knowledge_reply WHERE reply_id=?");
+			ps.setInt(1, replyid); 
 			System.out.println("reply: " +ps.toString());
 			ps.executeUpdate(); 
 			

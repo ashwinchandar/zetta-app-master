@@ -90,7 +90,7 @@
 																		<input type="file" name="files" id="files" multiple="multiple"
 																				onchange="document.getElementById('prepend-small-btn').value = this.value; return fileValidation()">
 																		</div>
-																		<input type="text" id="prepend-small-btn" placeholder="no file selected">
+																		<input type="text" id="prepend-small-btn" placeholder="no file selected(only .pdf allowed)">
 																	</div>
 																</div>
 															</div> 

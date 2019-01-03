@@ -23,9 +23,9 @@ import com.zetta.app.vo.KnowledgeReplyVO;
 @Controller 
 public class KnowledgeController{
 	 
-	private static String UPLOADED_FOLDER = "../zetta/src/main/resources/static/knowledgefiles"; 
+	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/knowledgefiles"; 
 	
-	@RequestMapping("/knowledgebase")
+	@RequestMapping("/knowledgebase") 
 	public String userEmployeedisplay(HttpServletRequest request, ModelMap model) {
 		KnowledgeDAO kdao = new KnowledgeDAO();
 		List<KnowledgeBean> list = kdao.getknowledgebaselist();
@@ -114,9 +114,9 @@ public class KnowledgeController{
 	@RequestMapping("/reply")
 	public String reply(HttpServletRequest request,ModelMap model) {  
 		KnowledgeDAO kdao = new KnowledgeDAO(); 
-		Integer topic_id = Integer.parseInt(request.getParameter("id"));
+		Integer replyid = Integer.parseInt(request.getParameter("id"));
 		String topic = request.getParameter("topic");
-		List<KnowledgeReplyVO> replylist = kdao.getKnowledgereply(topic_id);
+		List<KnowledgeReplyVO> replylist = kdao.getKnowledgereply(replyid);
 		List<KnowledgeBean> list = kdao.getKBbyTopic(topic);
 		model.addAttribute("list", list);
 		model.addAttribute("replylist", replylist);
@@ -128,6 +128,7 @@ public class KnowledgeController{
 	public String replySubmit(HttpServletRequest request, @RequestParam("files") MultipartFile [] rfiles,@RequestParam("kimg") MultipartFile [] rimages,ModelMap model) {  
 		KnowledgeReplyVO rvo = new KnowledgeReplyVO();
 		KnowledgeDAO kdao = new KnowledgeDAO(); 
+/*		Integer replyid = Integer.parseInt(request.getParameter("reply_id"));*/
 		Integer topicid = Integer.parseInt(request.getParameter("topicid"));
 		String topic = request.getParameter("topic");
 		rvo.setTopicid(topicid);
@@ -159,7 +160,7 @@ public class KnowledgeController{
 		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
 		rvo.setCreatedBy(ab.getName());
 		rvo.setUpdatedBy(ab.getName());
-		kdao.insertKnowledgeReply(rvo);
+		kdao.insertKnowledgeReply(rvo); 
 		List<KnowledgeReplyVO> replylist = kdao.getKnowledgereply(topicid);
 		List<KnowledgeBean> list = kdao.getKBbyTopic(topic);
 		model.addAttribute("list", list);
@@ -180,9 +181,9 @@ public class KnowledgeController{
 	@RequestMapping("/getAlltopickb")
 	public String getAlltopicKnowledgeBase(HttpServletRequest request,ModelMap model) {  
 		KnowledgeDAO kdao = new KnowledgeDAO();
-		Integer topicid = Integer.parseInt(request.getParameter("id"));
+		Integer replyid = Integer.parseInt(request.getParameter("id"));
 		String topic = request.getParameter("topic");
-		List<KnowledgeReplyVO> replylist = kdao.getKnowledgereply(topicid);
+		List<KnowledgeReplyVO> replylist = kdao.getKnowledgereply(replyid);
 		List<KnowledgeBean> list = kdao.getKBbyTopic(topic);
 		model.addAttribute("list", list);
 		model.addAttribute("replylist", replylist);  
@@ -200,11 +201,10 @@ public class KnowledgeController{
 		} else {  
 			 list = kdao.getknowledgebaselist();
 		}
-		model.addAttribute("role", ab.getRole()); 
-		/*list.forEach(li->{System.out.println("dddd" +li.getImageName());});*/
-		model.addAttribute("list", list);
-		   
+		model.addAttribute("role", ab.getRole());  
+		model.addAttribute("list", list); 
 		return "knowledgebaseListing";
+		/*list.forEach(li->{System.out.println("dddd" +li.getImageName());});*/
 	}
 	
 	@RequestMapping(value="/knowledgelisting",method=RequestMethod.POST)
@@ -262,8 +262,19 @@ public class KnowledgeController{
 		}
 		KnowledgeDAO kdao = new KnowledgeDAO();
 		kdao.deleteKnowledgebase(knowledgeid);
-		List<KnowledgeBean> list = kdao.getknowledgebaselist();
+		/*List<KnowledgeBean> list = kdao.getknowledgebaselist();
 		model.addAttribute("list", list);  
+		return "knowledgebaseListing";*/
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
+		List<KnowledgeBean> list = null;
+		if(ab.getRole().equals("COMMONUSER")) { 
+			 list = kdao.getknowledgebaselist(ab.getName());
+		} else {  
+			 list = kdao.getknowledgebaselist();
+		}
+		model.addAttribute("role", ab.getRole());  
+		model.addAttribute("list", list); 
 		return "knowledgebaseListing";
 	}
 	
@@ -276,8 +287,19 @@ public class KnowledgeController{
 		}
 		KnowledgeDAO kdao = new KnowledgeDAO();
 		kdao.deleteKnowledgebase(knowledgeid);
-		List<KnowledgeBean> list = kdao.getknowledgebaselist();
+		/*List<KnowledgeBean> list = kdao.getknowledgebaselist();
 		model.addAttribute("list", list);  
+		return "knowledgebaseListing";*/ 
+		HttpSession session = request.getSession(); 
+		AdminBean ab = (AdminBean)session.getAttribute("USER"); 
+		List<KnowledgeBean> list = null;
+		if(ab.getRole().equals("COMMONUSER")) { 
+			 list = kdao.getknowledgebaselist(ab.getName());
+		} else {  
+			 list = kdao.getknowledgebaselist();
+		}
+		model.addAttribute("role", ab.getRole());  
+		model.addAttribute("list", list); 
 		return "knowledgebaseListing";
 	}
 	
@@ -299,24 +321,22 @@ public class KnowledgeController{
 	
 	@RequestMapping("/reply/delete")
 	public String deleteReply(HttpServletRequest request,ModelMap model) { 
-		Integer topicid = Integer.parseInt(request.getParameter("id")); 
-		String topic = request.getParameter("topic");
+		Integer replyid = Integer.parseInt(request.getParameter("id"));  
 		KnowledgeDAO kdao = new KnowledgeDAO();
-		kdao.deleteReply(topicid,topic);
+		kdao.deleteReply(replyid);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully"); 
-		List<KnowledgeReplyVO> list = kdao.getKnowledgereply(topicid);
+		List<KnowledgeReplyVO> list = kdao.getListKnowledgereply(); 
 		model.addAttribute("list",list); 
 		return "knowledgeReplyListing";
 	}
 	
 	@RequestMapping(value="/reply/delete",method=RequestMethod.POST)
 	public String dreplySubmit(HttpServletRequest request,ModelMap model) { 
-		Integer topicid = Integer.parseInt(request.getParameter("topicid"));
-		String topic = request.getParameter("topic");
+		Integer replyid = Integer.parseInt(request.getParameter("replyid")); 
 		KnowledgeDAO kdao = new KnowledgeDAO();
-		kdao.deleteReply(topicid,topic);
+		kdao.deleteReply(replyid);
 		model.addAttribute("deletesuccessmessage","Deleted Successfully"); 
-		List<KnowledgeReplyVO> list = kdao.getKnowledgereply(topicid);
+		List<KnowledgeReplyVO> list = kdao.getListKnowledgereply(); 
 		model.addAttribute("list",list); 
 		return "knowledgeReplyListing";
 	} 

@@ -16,6 +16,16 @@
 			return false;
 		}  
 	}
+	function fileValidation(){
+	    var fileInput = document.getElementById('files');
+	    var filePath = fileInput.value; 
+	    var allowedExtensions = /(\.pdf|\.PDF)$/i;
+	    if(!allowedExtensions.exec(filePath)){
+	        alert('Please upload image/file having extension .pdf only.');
+	        fileInput.value = ''; 
+	        return false;
+	    }
+	}
 </script>
 		<div class="row"> 
 			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"> 
@@ -27,10 +37,10 @@
 					<div class="input prepend-small-btn"> 
 						<div class="file-button">
 							Browse <input type="file" name="files" multiple="multiple"
-								onchange="document.getElementById('prepend-small-btn').value = this.value;">
+								onchange="document.getElementById('prepend-small-btn').value = this.value; return fileValidation()">
 						</div>
 						<input type="text" id="prepend-small-btn" 
-							placeholder="no file selected">
+							placeholder="no file selected (only .pdf allowed)">
 					</div>
 				</div>
 			</div>

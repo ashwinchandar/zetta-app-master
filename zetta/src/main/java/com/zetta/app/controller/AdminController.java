@@ -64,8 +64,7 @@ public class AdminController {
 			model.addAttribute("name", ab.getName());
 			String role = adao.getRole(ab.getRole());
 			List<AdminBean> list = adao.getAdmins(); 
-			System.out.println("role: " +role);
-			
+			/*System.out.println("role: " +role); */
 			AnnounceDAO adao1 = new AnnounceDAO();
 			List<AnnounceBean> list1 = adao1.getAnnouncements();
 			model.addAttribute("list", list1); 
@@ -73,9 +72,7 @@ public class AdminController {
 			List<AdminBean> birthList = amdao.getEmployeeBirthday();
 			model.addAttribute("birthList", birthList); 
 			/*AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
-			model.addAttribute("CURRENT_USER", ab);*/
-			
-			
+			model.addAttribute("CURRENT_USER", ab);*/  
 			request.getSession().setAttribute("ROLE", role);
 			model.addAttribute("list", list1);
 			request.getSession().setAttribute("USER", ab);
@@ -131,7 +128,7 @@ public class AdminController {
 	@RequestMapping("/directory")
 	public String alluserdirectory(HttpServletRequest request, ModelMap model) {
 		AdminDAO adao=new AdminDAO();
-		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER");
+		AdminBean ab = (AdminBean) request.getSession().getAttribute("USER"); 
 		List<AdminBean> list = null;
 		if("MASTER".equals(ab.getRole())) {
 			list = adao.getAdmins();

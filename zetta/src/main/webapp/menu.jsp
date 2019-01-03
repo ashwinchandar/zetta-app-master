@@ -55,6 +55,26 @@
 							</a>
 						</div>
 					</div>
+				</c:if> 
+				<c:if test="${fn:contains(sessionScope.ROLE, 'RLY')}">
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<a href="/knowledgereplylisting">
+							<div class="hpanel widget-int-shape responsive-mg-b-30">
+								<div class="panel-body">
+									<div class="stats-title pull-left">
+										<h4>Manage Knowledge Comments</h4>
+									</div>
+									<div class="stats-icon pull-right">
+										<i class="educate-icon educate-form"></i>
+									</div>
+									<div class="m-t-xl widget-cl-1">
+										<small> Here you can view all comments and perform
+											delete too. </small>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 				</c:if>
 				<c:if test="${fn:contains(sessionScope.ROLE, 'ANC')}">
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -76,7 +96,9 @@
 						</div>
 					</div>
 				</c:if>
-				<c:if test="${fn:contains(sessionScope.ROLE, 'QMS')}">
+			</div><br/>
+            <div class="row">
+            	<c:if test="${fn:contains(sessionScope.ROLE, 'QMS')}">
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 						<div class="hpanel widget-int-shape responsive-mg-b-30">
 							<a href="/uploadfile">
@@ -96,8 +118,6 @@
 						</div>
 					</div>
 				</c:if>
-			</div><br/>
-            <div class="row">
 				<c:if test="${fn:contains(sessionScope.ROLE, 'CC')}">
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 						<div class="hpanel widget-int-shape responsive-mg-b-30">
@@ -118,26 +138,7 @@
 						</div>
 					</div>
 				</c:if>
-				<c:if test="${fn:contains(sessionScope.ROLE, 'RLY')}">
-					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-						<a href="/knowledgereplylisting">
-							<div class="hpanel widget-int-shape responsive-mg-b-30">
-								<div class="panel-body">
-									<div class="stats-title pull-left">
-										<h4>Manage Knowledge Comments</h4>
-									</div>
-									<div class="stats-icon pull-right">
-										<i class="educate-icon educate-form"></i>
-									</div>
-									<div class="m-t-xl widget-cl-1">
-										<small> Here you can view all comments and perform
-											delete too. </small>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-				</c:if>
+				
 				<%-- <c:if test = "${fn:contains(sessionScope.ROLE, 'ME')}">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="hpanel widget-int-shape responsive-mg-b-30"> 

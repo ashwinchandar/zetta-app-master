@@ -1,7 +1,7 @@
 package com.zetta.app.vo;
 
 public class KnowledgeReplyVO {
-
+	private Integer replyid;
 	private Integer topicid;
 	private String topic;
 	private String fileName;
@@ -14,6 +14,12 @@ public class KnowledgeReplyVO {
 	private String updatedDate; 
 	private String updatedBy;
 	
+	public Integer getReplyid() {
+		return replyid;
+	}
+	public void setReplyid(Integer replyid) {
+		this.replyid = replyid;
+	}
 	public Integer getTopicid() {
 		return topicid;
 	}
