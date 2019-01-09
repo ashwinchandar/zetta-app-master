@@ -32,8 +32,9 @@
 										<%-- <h1>
 											<a class="blog-ht">${orgvar.fileName}</a>
 										</h1> --%>
-										<object class="media" data="${orgvar.filePath}#toolbar=0"
-											type="application/pdf" width="830" height="630"></object>
+										<%-- <object class="media" data="${orgvar.filePath}#toolbar=0"
+											type="application/pdf" width="830" height="630"></object> --%>
+											<embed src="http://localhost/zetta/orgchart/${orgvar.fileName}#toolbar=0" type="application/pdf" width="830" height="630" />
 									</center>
 								</div>
 								<!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-8"></div>   -->

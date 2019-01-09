@@ -32,8 +32,10 @@
 										<h1>
 											<a class="blog-ht">${upload.fileName}</a>
 										</h1>
-										<object class="media" data="C:/Workspace/repo/zetta-app-master${upload.filePath}"
-											type="application/pdf" width="630" height="790"></object>
+										<%-- <object class="media" data="C:/Workspace/repo/zetta-app-master${upload.filePath}"
+											type="application/pdf" width="630" height="790"></object> --%>
+										<embed src="http://localhost/zetta/qms/${upload.fileName}#toolbar=0" type="application/pdf" width="630" height="790" />  
+										<%-- <embed src="${request.contextPath}/${upload.filePath}" type="application/pdf" width="630" height="790" /> --%>
 									</center>
 								</div>
 								<!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-8"></div>   -->

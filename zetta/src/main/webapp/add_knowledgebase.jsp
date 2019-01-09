@@ -16,11 +16,11 @@
                            <center> <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="">New KnowledgeBase</a></li> 
                             </ul></center>
-                            <form action="/knowledgelisting" method="post"> 
+                            <!-- <form action="/knowledgelisting" method="post"> 
 								<div class="payment-adress"> 
                                      <button class="btn btn-primary waves-effect waves-light col-md-offset-10 col-md-2" type="submit" name="submit" value="knowledgelisting">Back to Knowledge List</button>
       							</div>
-							</form>
+							</form> -->
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">

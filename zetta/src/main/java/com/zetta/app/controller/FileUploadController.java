@@ -1,13 +1,16 @@
 package com.zetta.app.controller;
 
  
+import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -25,8 +28,7 @@ import com.zetta.app.vo.FileVo;
 public class FileUploadController {
 
  
-	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/uploadedfiles";
-	
+	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/qms/";
 	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
 	   public String uploadFileHandler(Model model) {
 		FileUploadDAO fdao = new FileUploadDAO();
@@ -37,11 +39,11 @@ public class FileUploadController {
 	}
 	
 	@RequestMapping(value="/qms", method = RequestMethod.GET)
-	   public String qms(Model model) {
+	   public String qms(Model model, HttpServletRequest request, HttpServletResponse response) { 
 		FileUploadDAO fdao = new FileUploadDAO();
-		List<FileVo> list = fdao.getFileuploadlist();
+		List<FileVo> list = fdao.getFileuploadlist(); 
 		System.out.println("List: " +list.size());
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); 
 		return "qms";
 	}
 	 
@@ -53,7 +55,7 @@ public class FileUploadController {
 			try {
 				FileVo fv = new FileVo();
 				fv.setFileName(file.getOriginalFilename());
-				String sFilepath = "/uploadedfiles/" +file.getOriginalFilename();
+				String sFilepath = UPLOADED_FOLDER +file.getOriginalFilename();
 				fv.setFilePath(sFilepath);
 				HttpSession session = request.getSession(); 
 				AdminBean ab = (AdminBean)session.getAttribute("USER"); 
@@ -63,12 +65,22 @@ public class FileUploadController {
 				FileUploadDAO fdao = new FileUploadDAO();
 				fdao.insertUploadfile(fv);
 				Files.write(filePath, file.getBytes());
-				List<FileVo> list = fdao.getFileuploadlist(); 
+				List<FileVo> list = fdao.getFileuploadlist();
+				Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/qms/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/qms/"+file.getOriginalFilename()));
+				if(temp != null) 
+		        { 
+		            System.out.println("File renamed and moved successfully"); 
+		        } 
+		        else
+		        { 
+		            System.out.println("Failed to move the file"); 
+		        } 
 				model.addAttribute("list", list); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+			
+		} 
 		model.addAttribute("uploadsuccess", "Your file successfully uploaded.");
         return "uploadFileListing";
     }

@@ -63,7 +63,7 @@
 																<span class="message-date"><b><i class="fa fa-user" aria-hidden="true"></i>&nbsp;${knowledge.createdBy}</b></span><br /> 
 																<span class="message-date full-right"><i class="fa fa-calendar"></i>&nbsp; ${knowledge.createdDate}</span><br />
 																<span class="message-content"> ${knowledge.subject}</span> 
-																 <img src="${knowledge.imagePath}" title="${knowledge.imageName}" width="300" height="300" /> <br/>
+																 <img src="http://localhost/zetta/knowledgefiles/${knowledge.imageName}" title="${knowledge.imageName}" width="300" height="300" /> <br/>
 																 
 																 <a href="${knowledge.filePath}" download> 
 																	 ${knowledge.fileName}
@@ -120,9 +120,9 @@
 																			<p><span class="glyphicon glyphicon-user"></span> &nbsp;<strong>${reply.createdBy}</strong><br/>
 																			<i class="fa fa-calendar"></i>&nbsp; ${reply.createdDate} <br/>
 																			${reply.reply} <br/>
-																			<img src="${reply.imagePath}" title="${reply.imageName}" width="300" height="300" /><br/><br/>
+																			<img src="http://localhost/zetta/knowledgefiles/${reply.imageName}" title="${reply.imageName}" width="300" height="300" /><br/><br/>
 																			
-																			<a href="${reply.filePath}" download> 
+																			<a href="http://localhost/zetta/knowledgefiles/${reply.fileName}" target="_blank" download> 
 																				  ${reply.fileName}
 																			</a> 
 																			</p>

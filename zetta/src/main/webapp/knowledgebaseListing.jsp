@@ -74,8 +74,8 @@
 														<tr>
 															<td>${knowledge.category}</td>
 															<td>${knowledge.topic}</td>
-															<td>${knowledge.imageName}</td>  
-															<td>${knowledge.fileName} </td> 
+															<td>${knowledge.imageName}</td>
+															<td>${knowledge.fileName} </td>
 															<td>${knowledge.createdDate}</td>
 															<td>${knowledge.createdBy}</td>
 															<td>${knowledge.subject}</td>

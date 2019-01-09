@@ -181,7 +181,7 @@
 	<script src="../../js/main.js"></script>
 	<!-- tawk chat JS
 		============================================ -->
-    <script src="js/tawk-chat.js"></script>
+    
 	<!-- <script type="text/javascript">
 	$(document).ready(function() {
         history.pushState(null, null, location.href);
@@ -249,7 +249,7 @@
     main JS
 		============================================
     <script src="../../js/main.js"></script>
-    tawk chat JS
+    tawk chat JS <script src="js/tawk-chat.js"></script>
 		============================================
     <script src="../../js/tawk-chat.js"></script> -->
 	
@@ -273,7 +273,7 @@
                             <center><a aria-expanded="false"><br /><b>Quick Lookup</b></a></center>
                         </li>
                         <li>
-                            <a title="Zettaone website" href="http://www.zettaone.com/" target="_blank" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Company Website</span></a>
+                            <a title="Zettaone website" href="https://www.zettaone.com/" target="_blank" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Company Website</span></a>
                         </li>
                         <li class="active">
                             <a title="Organization chart" href="/organization" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Organization Chart</span></a>

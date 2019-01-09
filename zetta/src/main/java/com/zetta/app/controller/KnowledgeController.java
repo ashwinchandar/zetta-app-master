@@ -21,9 +21,9 @@ import com.zetta.app.vo.KnowledgeBean;
 import com.zetta.app.vo.KnowledgeReplyVO;
 
 @Controller 
-public class KnowledgeController{
+public class KnowledgeController{ 
 	 
-	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/knowledgefiles"; 
+	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/knowledgefiles/"; 
 	
 	@RequestMapping("/knowledgebase") 
 	public String userEmployeedisplay(HttpServletRequest request, ModelMap model) {
@@ -50,20 +50,38 @@ public class KnowledgeController{
 			Path filePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename()); 
 			try {
 			kb.setFileName(file.getOriginalFilename());
-			String sFilePath = "/knowledgefiles/" +file.getOriginalFilename().trim();
+			String sFilePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			kb.setFilePath(sFilePath); 
 			Files.write(filePath, file.getBytes());
-			} catch (IOException e) { 
+			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			if(temp != null) 
+	        { 
+	            System.out.println("File renamed and moved successfully"); 
+	        } 
+	        else
+	        {
+	            System.out.println("Failed to move the file");
+	        }
+			} catch (IOException e) {
 				e.printStackTrace();
-			} 
+			}
 		}
 		for(MultipartFile file:images) {
 			Path imagePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename()); 
 			try {
 			kb.setImageName(file.getOriginalFilename());
-			String simagePath = "/knowledgefiles/" +file.getOriginalFilename().trim();
+			String simagePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			kb.setImagePath(simagePath); 
 			Files.write(imagePath, file.getBytes());
+			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			if(temp != null) 
+	        { 
+	            System.out.println("File renamed and moved successfully"); 
+	        } 
+	        else
+	        { 
+	            System.out.println("Failed to move the file"); 
+	        }
 			} catch (IOException e) { 
 				e.printStackTrace();
 			} 
@@ -138,9 +156,18 @@ public class KnowledgeController{
 			Path filePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename()); 
 			try {
 			rvo.setFileName(file.getOriginalFilename());
-			String sFilePath = "/knowledgefiles/" +file.getOriginalFilename().trim();
+			String sFilePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			rvo.setFilePath(sFilePath); 
 			Files.write(filePath, file.getBytes());
+			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			if(temp != null) 
+	        { 
+	            System.out.println("File renamed and moved successfully"); 
+	        } 
+	        else
+	        { 
+	            System.out.println("Failed to move the file"); 
+	        }
 			} catch (IOException e) { 
 				e.printStackTrace();
 			} 
@@ -149,9 +176,18 @@ public class KnowledgeController{
 			Path imagePath=Paths.get(UPLOADED_FOLDER,file.getOriginalFilename()); 
 			try {
 			rvo.setImageName(file.getOriginalFilename());
-			String simagePath = "/knowledgefiles/" +file.getOriginalFilename().trim();
+			String simagePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			rvo.setImagePath(simagePath); 
 			Files.write(imagePath, file.getBytes());
+			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			if(temp != null) 
+	        { 
+	            System.out.println("File renamed and moved successfully"); 
+	        } 
+	        else
+	        { 
+	            System.out.println("Failed to move the file"); 
+	        }
 			} catch (IOException e) { 
 				e.printStackTrace();
 			} 

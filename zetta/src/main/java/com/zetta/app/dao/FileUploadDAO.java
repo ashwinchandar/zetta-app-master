@@ -21,9 +21,9 @@ public class FileUploadDAO {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement("insert into fileupload (filename,filepath,created_date,created_by,updated_date,updated_by) values (?,?,?,?,?,?)");
-			String filename=fv.getFileName().contains(".")?fv.getFileName().substring(0, fv.getFileName().lastIndexOf('.')):"";
-			ps.setString(++count, filename);
-			/*ps.setString(++count, fv.getFileName());*/
+			/*String filename=fv.getFileName().contains(".")?fv.getFileName().substring(0, fv.getFileName().lastIndexOf('.')):"";*/
+			/*ps.setString(++count, filename);*/
+			ps.setString(++count, fv.getFileName()); 
 			ps.setString(++count, fv.getFilePath());
 			long time = System.currentTimeMillis(); 
 			ps.setTimestamp(++count, new java.sql.Timestamp(time)); 
@@ -82,7 +82,7 @@ public class FileUploadDAO {
 				fv.setCreatedDate(DateUtil.getDatetoString(rs.getString("created_date")));
 				fv.setCreatedBy(rs.getString("created_by")); 
 				fv.setUpdatedDate(DateUtil.getDatetoString(rs.getString("updated_date")));
-				fv.setUpdatedBy(rs.getString("updated_by")); 
+				fv.setUpdatedBy(rs.getString("updated_by"));
 				list.add(fv);
 			}
 		} catch(Exception e) {
