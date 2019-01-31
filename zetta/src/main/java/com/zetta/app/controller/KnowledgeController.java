@@ -21,7 +21,7 @@ import com.zetta.app.vo.KnowledgeBean;
 import com.zetta.app.vo.KnowledgeReplyVO;
 
 @Controller 
-public class KnowledgeController{ 
+public class KnowledgeController{ 				 
 	 
 	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/knowledgefiles/"; 
 	

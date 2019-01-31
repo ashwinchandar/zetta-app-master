@@ -1,0 +1,6 @@
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:handlers /-[name='BonCode-Tomcat-CFM-Handler',path='*.cfm',verb='*',type='BonCodeIIS.BonCodeCallHandler',preCondition='integratedMode']
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:handlers /-[name='BonCode-Tomcat-CFC-Handler',path='*.cfc',verb='*',type='BonCodeIIS.BonCodeCallHandler',preCondition='integratedMode']
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:defaultDocument /-files.[value='index.cfm']
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:handlers /-[name='BonCode-Tomcat-JSP-Handler',path='*.jsp',verb='*',type='BonCodeIIS.BonCodeCallHandler',preCondition='integratedMode']
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:defaultDocument /-files.[value='index.jsp']
+%windir%\system32\inetsrv\appcmd set config "ZettaOne" /section:handlers /-[name='BonCode-Tomcat-WC-Handler',path='*',verb='*',type='BonCodeIIS.BonCodeCallHandler',preCondition='integratedMode']
