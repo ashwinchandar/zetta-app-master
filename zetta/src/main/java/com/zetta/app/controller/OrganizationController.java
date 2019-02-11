@@ -25,9 +25,9 @@ import com.zetta.app.vo.OrganizationVO;
 
  
 @Controller
-public class OrganizationController { 
+public class OrganizationController {  
 	 
-	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/orgchart/";
+	private static String UPLOADED_FOLDER = "C:/Workspace/zetta-app-master/orgchart/";
 	
 	@RequestMapping(value="/orgupload", method = RequestMethod.GET)
 	   public String organizationHandler(Model model) {
@@ -63,8 +63,8 @@ public class OrganizationController {
 			System.out.println("filePath:: "+filePath);
 			OrgUploadDAO odao = new OrgUploadDAO(); 
 			odao.insertOrgfile(ov);
-			Files.write(filePath, file.getBytes());  
-			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/orgchart/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/orgchart/"+file.getOriginalFilename()));
+			Files.write(filePath, file.getBytes());  	 
+			Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/orgchart/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/orgchart/"+file.getOriginalFilename()));
 			if(temp != null) 
 	        { 
 	            System.out.println("File renamed and moved successfully"); 

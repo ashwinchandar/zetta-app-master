@@ -28,7 +28,7 @@ import com.zetta.app.vo.FileVo;
 public class FileUploadController {
 
  
-	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/qms/";
+	private static String UPLOADED_FOLDER = "C:/Workspace/zetta-app-master/qms/";
 	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
 	   public String uploadFileHandler(Model model) {
 		FileUploadDAO fdao = new FileUploadDAO();
@@ -66,7 +66,7 @@ public class FileUploadController {
 				fdao.insertUploadfile(fv);
 				Files.write(filePath, file.getBytes());
 				List<FileVo> list = fdao.getFileuploadlist();
-				Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/qms/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/qms/"+file.getOriginalFilename()));
+				Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/qms/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/qms/"+file.getOriginalFilename()));
 				if(temp != null) 
 		        { 
 		            System.out.println("File renamed and moved successfully"); 

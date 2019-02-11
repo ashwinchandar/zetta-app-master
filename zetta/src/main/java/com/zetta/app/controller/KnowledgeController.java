@@ -21,9 +21,9 @@ import com.zetta.app.vo.KnowledgeBean;
 import com.zetta.app.vo.KnowledgeReplyVO;
 
 @Controller 
-public class KnowledgeController{ 				 
+public class KnowledgeController{ 			 	 
 	 
-	private static String UPLOADED_FOLDER = "C:/Workspace/repo/zetta-app-master/knowledgefiles/"; 
+	private static String UPLOADED_FOLDER = "C:/Workspace/zetta-app-master/knowledgefiles/"; 
 	
 	@RequestMapping("/knowledgebase") 
 	public String userEmployeedisplay(HttpServletRequest request, ModelMap model) {
@@ -53,7 +53,7 @@ public class KnowledgeController{
 			String sFilePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			kb.setFilePath(sFilePath); 
 			Files.write(filePath, file.getBytes());
-			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
 			if(temp != null) 
 	        { 
 	            System.out.println("File renamed and moved successfully"); 
@@ -73,7 +73,7 @@ public class KnowledgeController{
 			String simagePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			kb.setImagePath(simagePath); 
 			Files.write(imagePath, file.getBytes());
-			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
 			if(temp != null) 
 	        { 
 	            System.out.println("File renamed and moved successfully"); 
@@ -159,7 +159,7 @@ public class KnowledgeController{
 			String sFilePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			rvo.setFilePath(sFilePath); 
 			Files.write(filePath, file.getBytes());
-			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
 			if(temp != null) 
 	        { 
 	            System.out.println("File renamed and moved successfully"); 
@@ -179,7 +179,7 @@ public class KnowledgeController{
 			String simagePath = UPLOADED_FOLDER +file.getOriginalFilename().trim();
 			rvo.setImagePath(simagePath); 
 			Files.write(imagePath, file.getBytes());
-			Path temp = Files.move(Paths.get("C:/Workspace/repo/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
+			Path temp = Files.move(Paths.get("C:/Workspace/zetta-app-master/knowledgefiles/"+file.getOriginalFilename()), Paths.get("C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs/zetta/knowledgefiles/"+file.getOriginalFilename()));
 			if(temp != null) 
 	        { 
 	            System.out.println("File renamed and moved successfully"); 

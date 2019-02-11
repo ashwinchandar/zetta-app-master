@@ -34,7 +34,7 @@
 										</h1>
 										<%-- <object class="media" data="C:/Workspace/repo/zetta-app-master${upload.filePath}"
 											type="application/pdf" width="630" height="790"></object> --%>
-										<embed src="http://localhost/zetta/qms/${upload.fileName}#toolbar=0" type="application/pdf" width="630" height="790" />  
+										<embed src="http://10.0.0.30/zetta/qms/${upload.fileName}#toolbar=0" type="application/pdf" width="630" height="790" />  
 										<%-- <embed src="${request.contextPath}/${upload.filePath}" type="application/pdf" width="630" height="790" /> --%>
 									</center>
 								</div>
