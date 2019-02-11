@@ -182,14 +182,15 @@
 	<!-- tawk chat JS
 		============================================ -->
     
-	<!-- <script type="text/javascript">
-	$(document).ready(function() {
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
-    });
-	</script> -->
+	 <script type="text/javascript">
+		$(document).ready(function() {
+	        history.pushState(null, null, location.href);
+	        window.onpopstate = function () {
+	            history.go(1);
+	        };
+	    });
+	  </script> 
+	 
 	<!-- <script type="text/javascript">
 	 $(document).ready(function(){
   // when input type file is changed
