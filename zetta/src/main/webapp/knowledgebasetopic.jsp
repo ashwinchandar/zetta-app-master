@@ -65,7 +65,7 @@
 																<span class="message-content"> ${knowledge.subject}</span> 
 																 <img src="http://10.0.0.30/zetta/knowledgefiles/${knowledge.imageName}" title="${knowledge.imageName}" width="300" height="300" /> <br/>
 																 
-																 <a href="${knowledge.filePath}" download> 
+																 <a href="http://10.0.0.30/zetta/knowledgefiles/${knowledge.fileName}" download> 
 																	 ${knowledge.fileName}
 																 </a> 
 																  
