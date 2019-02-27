@@ -261,7 +261,7 @@
 </head>
  
     <!-- Start Left menu area -->
-    <div class="left-sidebar-pro">
+     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
                 <a href="/home"><img class="main-logo" src="../../img/logo/logo.png" alt="" /></a>
@@ -283,6 +283,15 @@
                             <a title="Employee directory" href="/directory" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Employee Directory</span></a>
                         </li>
                         <li>
+                            <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="All Professors" href="all-professors.html"><span class="mini-sub-pro">All Professors</span></a></li>
+                                <li><a title="Add Professor" href="add-professor.html"><span class="mini-sub-pro">Add Professor</span></a></li>
+                                <li><a title="Edit Professor" href="edit-professor.html"><span class="mini-sub-pro">Edit Professor</span></a></li>
+                                <li><a title="Professor Profile" href="professor-profile.html"><span class="mini-sub-pro">Professor Profile</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
                             <a title="QMS" href="/qms" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">QMS</span></a>
                         </li>
                         <li>
@@ -298,7 +307,7 @@
                 </nav>
             </div>
         </nav>
-    </div>
+    </div>  
     <!-- End Left menu area -->
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">

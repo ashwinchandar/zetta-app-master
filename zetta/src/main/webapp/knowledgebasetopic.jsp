@@ -65,19 +65,19 @@
 																<span class="message-content"> ${knowledge.subject}</span> 
 																 <img src="http://10.0.0.30/zetta/knowledgefiles/${knowledge.imageName}" title="${knowledge.imageName}" width="300" height="300" /> <br/>
 																 
-																 <a href="http://10.0.0.30/zetta/knowledgefiles/${knowledge.fileName}" download> 
+																 <a href="http://10.0.0.30/zetta/knowledgefiles/${knowledge.fileName}" target="_blank" download> 
 																	 ${knowledge.fileName}
 																 </a> 
 																  
 																<br/><a href="/reply?id=${knowledge.knowledgeid}&topic=${knowledge.topic}" style="color:blue">Click to Comment</a>
 																 
-																<c:if test="${not empty isReply}"> 
-																		<form action="/replySubmit" method="post" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
-																			<input type="hidden" name="topicid" value="${knowledge.knowledgeid}"><br/>
-																			<input type="hidden" name="topic" value="${knowledge.topic}"><br/>
-																			<div class="form-group res-mg-t-15"> 	
-																			<textarea name="reply" id="reply" placeholder="Your comment" class="res-mg-t-15" required></textarea><br/>
-																			</div>
+									<c:if test="${not empty isReply}"> 
+										<form action="/replySubmit" method="post" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
+											<input type="hidden" name="topicid" value="${knowledge.knowledgeid}"><br/>
+											<input type="hidden" name="topic" value="${knowledge.topic}"><br/>
+											<div class="form-group res-mg-t-15"> 	
+											<textarea name="reply" id="reply" placeholder="Your comment" class="res-mg-t-15" required></textarea><br/>
+											</div>
 												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 														<div class="form-group">
 															<div class="file-upload-inner ts-forms">
@@ -112,22 +112,23 @@
 													 type="reset">Clear
 													</button>
 												</div>
-																		</form>
-																	</c:if><br/><br/>
-																	<c:if test="${not empty replylist}">
-																		<br/><h6>Comments</h6>
-																		<c:forEach var="reply" items="${replylist}" varStatus="status">  
-																			<p><span class="glyphicon glyphicon-user"></span> &nbsp;<strong>${reply.createdBy}</strong><br/>
-																			<i class="fa fa-calendar"></i>&nbsp; ${reply.createdDate} <br/>
-																			${reply.reply} <br/>
-																			<img src="http://10.0.0.30/zetta/knowledgefiles/${reply.imageName}" title="${reply.imageName}" width="300" height="300" /><br/><br/>
-																			
-																			<a href="http://10.0.0.30/zetta/knowledgefiles/${reply.fileName}" target="_blank" download> 
-																				  ${reply.fileName}
-																			</a> 
-																			</p>
-																		</c:forEach>
-																	</c:if> 
+										</form>
+									</c:if><br/><br/>
+									
+									<c:if test="${not empty replylist}">
+										<br/><h6>Comments</h6>
+										<c:forEach var="reply" items="${replylist}" varStatus="status">  
+											<p><span class="glyphicon glyphicon-user"></span> &nbsp;<strong>${reply.createdBy}</strong><br/>
+											<i class="fa fa-calendar"></i>&nbsp; ${reply.createdDate} <br/>
+											${reply.reply} <br/>
+											<img src="http://10.0.0.30/zetta/knowledgefiles/${reply.imageName}" title="${reply.imageName}" width="300" height="300" /><br/><br/>
+											
+											<a href="http://10.0.0.30/zetta/knowledgefiles/${reply.fileName}" target="_blank" download> 
+												  ${reply.fileName}
+											</a> 
+											</p>
+										</c:forEach>
+									</c:if> 
 															</div>
 														</div>
 													</div>

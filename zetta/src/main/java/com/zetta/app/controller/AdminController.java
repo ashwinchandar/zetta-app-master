@@ -137,7 +137,7 @@ public class AdminController {
 		}else if("AMODERATOR".equals(ab.getRole())) {
 			list = adao.getAdmins();
 		}else {
-			list = adao.getAdminz(ab.getRole());
+			list = adao.getAdmins();
 		}  
 		model.addAttribute("list", list); 
 		return "employeedirectory"; 

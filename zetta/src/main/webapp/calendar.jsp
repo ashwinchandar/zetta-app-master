@@ -14,10 +14,9 @@
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-8">
                         <div class="pdf-single-pro"><br /><br/>
                        		<center><h1><a class="blog-ht">Calender 2019 Bangalore</a></h1>
-                            <object class="media" data="/uploadedfiles/Calender2019.pdf#toolbar=0" type="application/pdf" width="830" height="1050"></object><br /><br />
+                            <object class="media" data="/upload/Calender2019.pdf#toolbar=0" type="application/pdf" width="830" height="1050"></object><br /><br />
                        		</center>
-                        </div>
-                        
+                        </div> 
                     </div> 
                 </div> 
             </div>
